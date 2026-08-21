@@ -13,7 +13,10 @@ import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
 import com.example.techfix.R;
+import com.example.techfix.data.firebase.FirebaseAuthRepository;
+import com.example.techfix.data.firebase.FirestoreConstants;
 import com.example.techfix.databinding.FragmentTechLoginBinding;
+import com.example.techfix.model.User;
 
 public class TechLoginFragment extends Fragment {
 
@@ -46,8 +49,27 @@ public class TechLoginFragment extends Fragment {
             }
             binding.etPassword.setError(null);
 
-            Toast.makeText(requireContext(), "Technician Login Successful", Toast.LENGTH_SHORT).show();
-            Navigation.findNavController(v).navigate(R.id.action_techLogin_to_techDashboard);
+            binding.btnLogin.setEnabled(false);
+            binding.btnLogin.setText("Authenticating...");
+
+            FirebaseAuthRepository.getInstance().login(email, password, FirestoreConstants.ROLE_TECHNICIAN, new FirebaseAuthRepository.AuthCallback() {
+                @Override
+                public void onSuccess(User user, String role) {
+                    if (binding == null) return;
+                    binding.btnLogin.setEnabled(true);
+                    binding.btnLogin.setText("LOG IN");
+                    Toast.makeText(requireContext(), "Welcome " + user.getName() + " (Technician)", Toast.LENGTH_SHORT).show();
+                    Navigation.findNavController(view).navigate(R.id.action_techLogin_to_techDashboard);
+                }
+
+                @Override
+                public void onFailure(String errorMessage) {
+                    if (binding == null) return;
+                    binding.btnLogin.setEnabled(true);
+                    binding.btnLogin.setText("LOG IN");
+                    Toast.makeText(requireContext(), "Authentication Error: " + errorMessage, Toast.LENGTH_LONG).show();
+                }
+            });
         });
 
         binding.tvForgotPassword.setOnClickListener(v -> {

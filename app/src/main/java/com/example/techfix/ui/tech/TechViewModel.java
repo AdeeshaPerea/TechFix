@@ -1,30 +1,32 @@
 package com.example.techfix.ui.tech;
 
+import android.net.Uri;
+
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.example.techfix.data.RepairRepository;
-import com.example.techfix.data.SparePartRepository;
+import com.example.techfix.data.firebase.FirebaseRepairRepository;
+import com.example.techfix.data.firebase.FirebaseSparePartRepository;
 import com.example.techfix.model.RepairItem;
 import com.example.techfix.model.SparePartItem;
 
 import java.util.List;
 
 public class TechViewModel extends ViewModel {
-    private final RepairRepository repairRepository;
-    private final SparePartRepository sparePartRepository;
+    private final FirebaseRepairRepository repairRepository;
+    private final FirebaseSparePartRepository sparePartRepository;
 
     public TechViewModel() {
-        repairRepository = RepairRepository.getInstance();
-        sparePartRepository = SparePartRepository.getInstance();
+        repairRepository = FirebaseRepairRepository.getInstance();
+        sparePartRepository = FirebaseSparePartRepository.getInstance();
     }
 
     public LiveData<List<RepairItem>> getRepairs() {
-        return repairRepository.getRepairs();
+        return repairRepository.getRepairsLiveData();
     }
 
     public LiveData<List<SparePartItem>> getSparePartsCatalog() {
-        return sparePartRepository.getSpareParts();
+        return sparePartRepository.getSparePartsLiveData();
     }
 
     public RepairItem getRepairById(String id) {
@@ -32,26 +34,30 @@ public class TechViewModel extends ViewModel {
     }
 
     public void updateStatus(String repairId, String status) {
-        repairRepository.updateStatus(repairId, status);
+        repairRepository.updateStatus(repairId, status, null);
     }
 
     public void saveDiagnosis(String repairId, String summary, String problem, String recommended, int hours, String partsNote) {
-        repairRepository.saveDiagnosis(repairId, summary, problem, recommended, hours, partsNote);
+        repairRepository.saveDiagnosis(repairId, summary, problem, recommended, hours, null);
     }
 
-    public void addNote(String repairId, String author, String category, String text) {
-        repairRepository.addNote(repairId, author, category, text);
+    public void addNote(String repairId, String author, String status, String text) {
+        repairRepository.addRepairNote(repairId, author, status, text, null);
     }
 
     public void addSparePartUsed(String repairId, String partId, String partName, int qty, double unitPrice) {
-        repairRepository.addSparePartUsed(repairId, partId, partName, qty, unitPrice);
+        repairRepository.addSparePartUsed(repairId, partId, partName, qty, unitPrice, null);
+    }
+
+    public void uploadRepairImage(String repairId, String type, Uri imageUri, FirebaseRepairRepository.ImageUploadCallback callback) {
+        repairRepository.uploadRepairImage(repairId, type, imageUri, callback);
     }
 
     public void addBeforePhoto(String repairId, String photoTag) {
-        repairRepository.addBeforePhoto(repairId, photoTag);
+        repairRepository.uploadRepairImage(repairId, "BEFORE", null, null);
     }
 
     public void addAfterPhoto(String repairId, String photoTag) {
-        repairRepository.addAfterPhoto(repairId, photoTag);
+        repairRepository.uploadRepairImage(repairId, "AFTER", null, null);
     }
 }
