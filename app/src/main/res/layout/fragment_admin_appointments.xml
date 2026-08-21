@@ -8,36 +8,47 @@
     android:orientation="vertical"
     android:background="#F8FAFC">
 
-
+    <!-- Top Navy Header Banner -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:background="#FFFFFF"
-        android:padding="16dp"
-        android:elevation="2dp">
+        android:background="#17253D"
+        android:paddingHorizontal="20dp"
+        android:paddingTop="24dp"
+        android:paddingBottom="20dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Appointment Management"
-            android:textSize="20sp"
+            android:textSize="22sp"
             android:textStyle="bold"
-            android:textColor="#0F172A" />
+            android:textColor="#FFFFFF" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:hint="Search Customer, device or appointment ID..."
-            app:startIconDrawable="@android:drawable/ic_menu_search">
+            android:layout_marginTop="2dp"
+            android:text="Review, Accept or Reassign Customer Service Bookings"
+            android:textSize="13sp"
+            android:textColor="#94A3B8" />
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etSearchAppts"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-        </com.google.android.material.textfield.TextInputLayout>
+        <!-- Search Input Bar -->
+        <EditText
+            android:id="@+id/etSearchAppointments"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_white_pill"
+            android:hint="Search customer, appointment code, or device..."
+            android:textColor="#0F172A"
+            android:textColorHint="#94A3B8"
+            android:textSize="14sp"
+            android:paddingHorizontal="16dp"
+            android:drawableStart="@android:drawable/ic_menu_search"
+            android:drawablePadding="10dp"
+            android:inputType="text" />
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -46,7 +57,33 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:paddingVertical="8dp"
-        tools:listitem="@layout/item_appointment_card" />
+        tools:listitem="@layout/item_appointment_card"
+        tools:itemCount="3" />
 
+    <!-- Empty State -->
+    <LinearLayout
+        android:id="@+id/layoutEmptyAppointments"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="32dp"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:src="@android:drawable/ic_menu_month"
+            app:tint="#CBD5E1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="No Appointments Found"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#475569" />
+    </LinearLayout>
 
 </LinearLayout>

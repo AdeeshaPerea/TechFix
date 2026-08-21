@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,11 +18,14 @@ import com.example.techfix.databinding.FragmentAdminDashboardBinding;
 import com.example.techfix.model.AppointmentItem;
 import com.example.techfix.ui.common.AppointmentAdapter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class AdminDashboardFragment extends Fragment {
 
     private FragmentAdminDashboardBinding binding;
     private AdminViewModel viewModel;
-    private AppointmentAdapter appointmentAdapter;
+    private AppointmentAdapter adapter;
 
     @Nullable
     @Override
@@ -35,7 +39,7 @@ public class AdminDashboardFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         viewModel = new ViewModelProvider(requireActivity()).get(AdminViewModel.class);
 
-        appointmentAdapter = new AppointmentAdapter(new AppointmentAdapter.OnAppointmentActionListener() {
+        adapter = new AppointmentAdapter(new AppointmentAdapter.OnAppointmentActionListener() {
             @Override
             public void onAppointmentClick(AppointmentItem item) {
                 Bundle bundle = new Bundle();
@@ -46,43 +50,46 @@ public class AdminDashboardFragment extends Fragment {
             @Override
             public void onAcceptClick(AppointmentItem item) {
                 viewModel.updateAppointmentStatus(item.getId(), "CONFIRMED");
+                Toast.makeText(requireContext(), "Appointment #" + item.getAppointmentCode() + " Accepted", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onRejectClick(AppointmentItem item) {
                 viewModel.updateAppointmentStatus(item.getId(), "REJECTED");
+                Toast.makeText(requireContext(), "Appointment #" + item.getAppointmentCode() + " Rejected", Toast.LENGTH_SHORT).show();
             }
         });
 
         binding.rvRecentAppointments.setLayoutManager(new LinearLayoutManager(requireContext()));
-        binding.rvRecentAppointments.setAdapter(appointmentAdapter);
+        binding.rvRecentAppointments.setAdapter(adapter);
 
         viewModel.getAppointments().observe(getViewLifecycleOwner(), appointmentItems -> {
             if (appointmentItems != null) {
-                appointmentAdapter.setAppointmentItems(appointmentItems);
-                int pending = 0;
-                for (AppointmentItem a : appointmentItems) {
-                    if ("PENDING".equals(a.getStatus())) pending++;
+                List<AppointmentItem> recent = new ArrayList<>();
+                int limit = Math.min(appointmentItems.size(), 3);
+                for (int i = 0; i < limit; i++) {
+                    recent.add(appointmentItems.get(i));
                 }
-                binding.tvPendingAppointments.setText(String.valueOf(pending));
-            }
-        });
+                adapter.setAppointmentItems(recent);
 
-        viewModel.getRepairs().observe(getViewLifecycleOwner(), repairItems -> {
-            if (repairItems != null) {
-                binding.tvTotalRepairs.setText(String.valueOf(repairItems.size()));
-                int completed = 0;
-                for (var r : repairItems) {
-                    if ("COMPLETED".equals(r.getStatus())) completed++;
+                int pendingCount = 0;
+                for (AppointmentItem appt : appointmentItems) {
+                    if ("PENDING".equalsIgnoreCase(appt.getStatus())) {
+                        pendingCount++;
+                    }
                 }
-                binding.tvCompletedRepairs.setText(String.valueOf(completed));
+                binding.tvPendingAppointments.setText(pendingCount + " Appointments");
             }
         });
 
         viewModel.getTechnicians().observe(getViewLifecycleOwner(), technicians -> {
             if (technicians != null) {
-                binding.tvActiveTechs.setText(String.valueOf(technicians.size()));
+                binding.tvTotalTechnicians.setText(technicians.size() + " Staff");
             }
+        });
+
+        binding.tvViewAllAppointments.setOnClickListener(v -> {
+            Navigation.findNavController(v).navigate(R.id.adminAppointmentsFragment);
         });
     }
 

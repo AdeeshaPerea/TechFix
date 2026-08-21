@@ -10,68 +10,130 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:paddingBottom="24dp">
 
-        <!-- Top Header Card -->
+        <!-- Top Header Banner with Back Button -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="#17253D"
+            android:paddingHorizontal="20dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="20dp">
+
+            <TextView
+                android:id="@+id/btnBackHeader"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="← Back to Repairs"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="#38BDF8"
+                android:paddingVertical="4dp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_toStartOf="@id/tvDetailStatusBadge"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvDetailRepairCode"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="#TF-2026-00125"
+                        android:textSize="22sp"
+                        android:textStyle="bold"
+                        android:textColor="#FFFFFF" />
+
+                    <TextView
+                        android:id="@+id/tvDetailDevice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="Samsung Galaxy A54 • Mobile"
+                        android:textSize="14sp"
+                        android:textColor="#94A3B8" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvDetailStatusBadge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:text="DIAGNOSING"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:textColor="#1E40AF"
+                    android:background="@drawable/bg_pill_badge"
+                    android:backgroundTint="#DBEAFE"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="5dp" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <!-- Main Info Card -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="16dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginTop="16dp"
+            app:cardCornerRadius="20dp"
             app:cardElevation="2dp"
+            app:strokeColor="#E2E8F0"
+            app:strokeWidth="1.2dp"
             app:cardBackgroundColor="#FFFFFF">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:padding="16dp">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:id="@+id/tvDetailRepairCode"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="TF-2026-00125"
-                        android:textSize="20sp"
-                        android:textStyle="bold"
-                        android:textColor="#0F172A" />
-
-                    <TextView
-                        android:id="@+id/tvDetailPriority"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:text="HIGH"
-                        android:textSize="12sp"
-                        android:textStyle="bold"
-                        android:textColor="#FFFFFF"
-                        android:background="#EF4444"
-                        android:paddingHorizontal="12dp"
-                        android:paddingVertical="5dp" />
-                </RelativeLayout>
+                android:padding="20dp">
 
                 <TextView
-                    android:id="@+id/tvDetailDevice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Samsung Galaxy A54 (SM-A546B)"
-                    android:textSize="16sp"
+                    android:text="CUSTOMER &amp; REPAIR INFORMATION"
+                    android:textSize="11sp"
                     android:textStyle="bold"
-                    android:textColor="#1E293B" />
+                    android:letterSpacing="0.05"
+                    android:textColor="#94A3B8" />
 
                 <TextView
-                    android:id="@+id/tvDetailService"
+                    android:id="@+id/tvCustomerName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:text="Service: Screen Replacement"
+                    android:layout_marginTop="10dp"
+                    android:text="Customer: Kasun Perera (+94 77 123 4567)"
                     android:textSize="14sp"
-                    android:textColor="#0284C7"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:textColor="#0F172A" />
+
+                <TextView
+                    android:id="@+id/tvServiceRequested"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="Service Requested: Screen Replacement"
+                    android:textSize="14sp"
+                    android:textColor="#2563EB" />
+
+                <TextView
+                    android:id="@+id/tvProblemDescription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="Issue: Cracked front glass digitizer and touch response drop."
+                    android:textSize="13sp"
+                    android:textColor="#475569" />
 
                 <View
                     android:layout_width="match_parent"
@@ -79,260 +141,198 @@
                     android:layout_marginVertical="12dp"
                     android:background="#F1F5F9" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Problem Reported by Customer:"
-                    android:textSize="12sp"
-                    android:textStyle="bold"
-                    android:textColor="#64748B" />
-
-                <TextView
-                    android:id="@+id/tvDetailProblem"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:text="Cracked display glass and touch responsiveness issue after drop."
-                    android:textSize="14sp"
-                    android:textColor="#334155" />
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-        <!-- Customer & Info Card -->
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="2dp"
-            app:cardBackgroundColor="#FFFFFF">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Repair Overview"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    android:textColor="#0F172A" />
-
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp">
+                    android:layout_height="wrap_content">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Customer Name:"
-                        android:textSize="13sp"
-                        android:textColor="#64748B" />
-
-                    <TextView
-                        android:id="@+id/tvDetailCustomer"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:text="Kamal Silva (+94 77 123 4567)"
-                        android:textSize="13sp"
-                        android:textStyle="bold"
-                        android:textColor="#0F172A" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Branch:"
-                        android:textSize="13sp"
-                        android:textColor="#64748B" />
-
-                    <TextView
-                        android:id="@+id/tvDetailBranch"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:text="TechFix Colombo"
-                        android:textSize="13sp"
-                        android:textStyle="bold"
-                        android:textColor="#0F172A" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Appointment Time:"
-                        android:textSize="13sp"
-                        android:textColor="#64748B" />
-
-                    <TextView
-                        android:id="@+id/tvDetailAppointment"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:text="2026-08-22 at 10:30 AM"
-                        android:textSize="13sp"
-                        android:textStyle="bold"
-                        android:textColor="#0F172A" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Current Status:"
-                        android:textSize="13sp"
-                        android:textColor="#64748B" />
-
-                    <TextView
-                        android:id="@+id/tvDetailStatus"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:text="REPAIRING"
-                        android:textSize="13sp"
-                        android:textStyle="bold"
-                        android:textColor="#1E40AF" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Estimated Total Cost:"
+                        android:text="Estimated Repair Cost:"
                         android:textSize="14sp"
-                        android:textStyle="bold"
-                        android:textColor="#0F172A" />
+                        android:textColor="#64748B" />
 
                     <TextView
-                        android:id="@+id/tvDetailCost"
+                        android:id="@+id/tvTotalCost"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
                         android:text="Rs. 25,000"
-                        android:textSize="16sp"
+                        android:textSize="18sp"
                         android:textStyle="bold"
-                        android:textColor="#16A34A" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Assigned Tech:"
-                        android:textSize="13sp"
-                        android:textColor="#64748B" />
-
-                    <TextView
-                        android:id="@+id/tvDetailTech"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:text="Alex Perera"
-                        android:textSize="13sp"
-                        android:textStyle="bold"
-                        android:textColor="#0284C7" />
+                        android:textColor="#059669" />
                 </RelativeLayout>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
-        <!-- Actions Title -->
+        <!-- Quick Action Buttons Section -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
             android:layout_marginTop="20dp"
-            android:text="Technician Quick Actions"
-            android:textSize="16sp"
+            android:text="TECHNICIAN ACTIONS"
+            android:textSize="12sp"
             android:textStyle="bold"
-            android:textColor="#0F172A" />
+            android:letterSpacing="0.05"
+            android:textColor="#64748B" />
 
-        <!-- Actions Grid / Buttons -->
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnStartDiagnosis"
-            style="@style/Widget.Material3.Button.TonalButton"
+        <GridLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="8dp"
-            android:text="Diagnosis &amp; Problem Details"
-            android:textSize="14sp"
-            app:icon="@android:drawable/ic_menu_edit" />
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:paddingHorizontal="12dp"
+            android:layout_marginTop="8dp">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnUpdateStatus"
-            style="@style/Widget.Material3.Button.TonalButton"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="8dp"
-            android:text="Repair Status Timeline"
-            android:textSize="14sp"
-            app:icon="@android:drawable/ic_menu_send" />
+            <!-- Action 1: Diagnosis -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardActionDiagnosis"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_margin="6dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp"
+                app:strokeColor="#E2E8F0"
+                app:strokeWidth="1dp"
+                app:cardBackgroundColor="#FFFFFF">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnAddNotes"
-            style="@style/Widget.Material3.Button.TonalButton"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="8dp"
-            android:text="Repair Notes Log"
-            android:textSize="14sp"
-            app:icon="@android:drawable/ic_menu_agenda" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:gravity="center">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnManageParts"
-            style="@style/Widget.Material3.Button.TonalButton"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="8dp"
-            android:text="Manage Spare Parts Used"
-            android:textSize="14sp"
-            app:icon="@android:drawable/ic_menu_manage" />
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:src="@android:drawable/ic_menu_search"
+                        app:tint="#2563EB" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnBeforeAfterPhotos"
-            style="@style/Widget.Material3.Button.TonalButton"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="8dp"
-            android:text="Before / After Repair Photos"
-            android:textSize="14sp"
-            app:icon="@android:drawable/ic_menu_camera" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Diagnosis &amp; Notes"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:textColor="#0F172A" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnCompleteRepair"
-            android:layout_width="match_parent"
-            android:layout_height="54dp"
-            android:layout_marginTop="16dp"
-            android:text="Mark Repair as COMPLETED"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            android:backgroundTint="#059669"
-            app:cornerRadius="14dp" />
+            <!-- Action 2: Update Status -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardActionStatus"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_margin="6dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp"
+                app:strokeColor="#E2E8F0"
+                app:strokeWidth="1dp"
+                app:cardBackgroundColor="#FFFFFF">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:src="@android:drawable/ic_menu_agenda"
+                        app:tint="#F5A623" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Status Timeline"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:textColor="#0F172A" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Action 3: Spare Parts -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardActionSpareParts"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_margin="6dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp"
+                app:strokeColor="#E2E8F0"
+                app:strokeWidth="1dp"
+                app:cardBackgroundColor="#FFFFFF">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:src="@android:drawable/ic_menu_manage"
+                        app:tint="#10B981" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Spare Parts Used"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:textColor="#0F172A" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Action 4: Before / After Photos -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardActionGallery"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_margin="6dp"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp"
+                app:strokeColor="#E2E8F0"
+                app:strokeWidth="1dp"
+                app:cardBackgroundColor="#FFFFFF">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:src="@android:drawable/ic_menu_camera"
+                        app:tint="#8B5CF6" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Before/After Photos"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:textColor="#0F172A" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </GridLayout>
 
     </LinearLayout>
 

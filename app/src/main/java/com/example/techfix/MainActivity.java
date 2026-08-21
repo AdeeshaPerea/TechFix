@@ -22,10 +22,15 @@ public class MainActivity extends AppCompatActivity {
 
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.navHostFragment);
-
         if (navHostFragment != null) {
             navController = navHostFragment.getNavController();
         }
+
+        binding.topAppToolbar.setNavigationOnClickListener(v -> {
+            if (navController != null) {
+                navController.navigateUp();
+            }
+        });
 
         setupNavigation();
     }
@@ -35,18 +40,37 @@ public class MainActivity extends AppCompatActivity {
             int destId = destination.getId();
 
             if (destId == R.id.roleSelectFragment || destId == R.id.techLoginFragment || destId == R.id.adminLoginFragment) {
+                binding.topAppToolbar.setVisibility(View.GONE);
                 binding.bottomNavTech.setVisibility(View.GONE);
                 binding.bottomNavAdmin.setVisibility(View.GONE);
-            } else if (destId == R.id.techDashboardFragment || destId == R.id.techRepairsFragment || 
-                       destId == R.id.techRepairDetailFragment || destId == R.id.techDiagnosisFragment || 
-                       destId == R.id.techRepairStatusFragment || destId == R.id.techRepairNotesFragment || 
-                       destId == R.id.techSparePartsUsedFragment || destId == R.id.techRepairGalleryFragment || 
-                       destId == R.id.techProfileFragment || destId == R.id.techNotificationsFragment) {
-                binding.bottomNavTech.setVisibility(View.VISIBLE);
-                binding.bottomNavAdmin.setVisibility(View.GONE);
+            } else if (destId == R.id.techRepairsFragment || destId == R.id.techDashboardFragment || 
+                       destId == R.id.adminDashboardFragment || destId == R.id.adminAppointmentsFragment || 
+                       destId == R.id.adminBranchesFragment || destId == R.id.adminTechniciansFragment || 
+                       destId == R.id.adminSparePartsFragment || destId == R.id.adminServicesFragment) {
+                // Top Level Dashboard Screens (Show bottom nav, hide top toolbar)
+                binding.topAppToolbar.setVisibility(View.GONE);
+                if (destId == R.id.techRepairsFragment || destId == R.id.techDashboardFragment) {
+                    binding.bottomNavTech.setVisibility(View.VISIBLE);
+                    binding.bottomNavAdmin.setVisibility(View.GONE);
+                } else {
+                    binding.bottomNavTech.setVisibility(View.GONE);
+                    binding.bottomNavAdmin.setVisibility(View.VISIBLE);
+                }
             } else {
-                binding.bottomNavTech.setVisibility(View.GONE);
-                binding.bottomNavAdmin.setVisibility(View.VISIBLE);
+                // Detail & Inner Sub-screens (Show Top Toolbar with Back Arrow, hide bottom nav or keep as secondary)
+                binding.topAppToolbar.setVisibility(View.VISIBLE);
+                binding.topAppToolbar.setTitle(destination.getLabel() != null ? destination.getLabel() : "TechFix");
+
+                if (destId == R.id.techRepairDetailFragment || destId == R.id.techDiagnosisFragment || 
+                    destId == R.id.techRepairStatusFragment || destId == R.id.techRepairNotesFragment || 
+                    destId == R.id.techSparePartsUsedFragment || destId == R.id.techRepairGalleryFragment || 
+                    destId == R.id.techProfileFragment || destId == R.id.techNotificationsFragment) {
+                    binding.bottomNavTech.setVisibility(View.VISIBLE);
+                    binding.bottomNavAdmin.setVisibility(View.GONE);
+                } else {
+                    binding.bottomNavTech.setVisibility(View.GONE);
+                    binding.bottomNavAdmin.setVisibility(View.VISIBLE);
+                }
             }
         });
 

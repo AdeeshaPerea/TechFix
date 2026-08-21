@@ -14,10 +14,21 @@ import java.util.List;
 
 public class BranchAdapter extends RecyclerView.Adapter<BranchAdapter.BranchViewHolder> {
 
-    private List<BranchItem> branches = new ArrayList<>();
+    public interface OnBranchClickListener {
+        void onBranchClick(BranchItem branch);
+    }
 
-    public void setBranches(List<BranchItem> list) {
-        this.branches = list != null ? list : new ArrayList<>();
+    private List<BranchItem> branchList = new ArrayList<>();
+    private OnBranchClickListener listener;
+
+    public BranchAdapter() {}
+
+    public BranchAdapter(OnBranchClickListener listener) {
+        this.listener = listener;
+    }
+
+    public void setBranches(List<BranchItem> branches) {
+        this.branchList = branches != null ? branches : new ArrayList<>();
         notifyDataSetChanged();
     }
 
@@ -32,15 +43,15 @@ public class BranchAdapter extends RecyclerView.Adapter<BranchAdapter.BranchView
 
     @Override
     public void onBindViewHolder(@NonNull BranchViewHolder holder, int position) {
-        holder.bind(branches.get(position));
+        holder.bind(branchList.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return branches.size();
+        return branchList.size();
     }
 
-    static class BranchViewHolder extends RecyclerView.ViewHolder {
+    class BranchViewHolder extends RecyclerView.ViewHolder {
         private final ItemBranchCardBinding binding;
 
         public BranchViewHolder(ItemBranchCardBinding binding) {
@@ -50,11 +61,13 @@ public class BranchAdapter extends RecyclerView.Adapter<BranchAdapter.BranchView
 
         public void bind(BranchItem branch) {
             binding.tvBranchName.setText(branch.getName());
-            binding.tvTechCount.setText(branch.getTechnicianCount() + " Technicians");
-            binding.tvBranchAddress.setText(branch.getAddress());
-            binding.tvBranchPhoneAndHours.setText("Ph: " + branch.getPhone() + " • Hours: " + branch.getOpeningHours());
-            binding.tvActiveRepairs.setText("Active Repairs: " + branch.getActiveRepairsCount());
-            binding.tvCoordinates.setText("GPS: " + branch.getLatitude() + "° N, " + branch.getLongitude() + "° E");
+            binding.tvBranchStatsBadge.setText(branch.getTechnicianCount() + " Techs • " + branch.getActiveRepairsCount() + " Repairs");
+            binding.tvBranchAddress.setText("📍 " + branch.getAddress());
+            binding.tvBranchContactAndHours.setText("📞 " + branch.getPhone() + "  •  🕒 " + branch.getOpeningHours());
+
+            itemView.setOnClickListener(v -> {
+                if (listener != null) listener.onBranchClick(branch);
+            });
         }
     }
 }

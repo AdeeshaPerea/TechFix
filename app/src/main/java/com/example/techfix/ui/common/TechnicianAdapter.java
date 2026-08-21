@@ -14,19 +14,21 @@ import java.util.List;
 
 public class TechnicianAdapter extends RecyclerView.Adapter<TechnicianAdapter.TechnicianViewHolder> {
 
-    public interface OnTechnicianActionListener {
-        void onEditTech(User user);
+    public interface OnTechClickListener {
+        void onTechClick(User user);
     }
 
-    private List<User> technicians = new ArrayList<>();
-    private final OnTechnicianActionListener listener;
+    private List<User> techList = new ArrayList<>();
+    private OnTechClickListener listener;
 
-    public TechnicianAdapter(OnTechnicianActionListener listener) {
+    public TechnicianAdapter() {}
+
+    public TechnicianAdapter(OnTechClickListener listener) {
         this.listener = listener;
     }
 
-    public void setTechnicians(List<User> list) {
-        this.technicians = list != null ? list : new ArrayList<>();
+    public void setTechnicians(List<User> technicians) {
+        this.techList = technicians != null ? technicians : new ArrayList<>();
         notifyDataSetChanged();
     }
 
@@ -41,12 +43,12 @@ public class TechnicianAdapter extends RecyclerView.Adapter<TechnicianAdapter.Te
 
     @Override
     public void onBindViewHolder(@NonNull TechnicianViewHolder holder, int position) {
-        holder.bind(technicians.get(position));
+        holder.bind(techList.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return technicians.size();
+        return techList.size();
     }
 
     class TechnicianViewHolder extends RecyclerView.ViewHolder {
@@ -59,12 +61,12 @@ public class TechnicianAdapter extends RecyclerView.Adapter<TechnicianAdapter.Te
 
         public void bind(User user) {
             binding.tvTechName.setText(user.getName());
-            binding.tvSpecialization.setText(user.getSpecialization());
-            binding.tvBranchAndHours.setText(user.getBranchName() + " • " + user.getWorkingHours());
-            binding.tvActiveRepairsBadge.setText(user.getActiveRepairsCount() + " Active");
+            binding.tvTechSpecialization.setText(user.getSpecialization());
+            binding.tvTechBranchAndPhone.setText(user.getBranchName() + "  •  " + user.getPhone());
+            binding.tvTechActiveJobsBadge.setText(user.getActiveRepairsCount() + " Active Jobs");
 
-            binding.btnEditTech.setOnClickListener(v -> {
-                if (listener != null) listener.onEditTech(user);
+            itemView.setOnClickListener(v -> {
+                if (listener != null) listener.onTechClick(user);
             });
         }
     }

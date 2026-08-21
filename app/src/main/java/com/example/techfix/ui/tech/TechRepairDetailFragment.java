@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -42,6 +41,10 @@ public class TechRepairDetailFragment extends Fragment {
             repairId = "REP_001";
         }
 
+        binding.btnBackHeader.setOnClickListener(v -> {
+            Navigation.findNavController(v).navigateUp();
+        });
+
         viewModel.getRepairs().observe(getViewLifecycleOwner(), repairItems -> {
             RepairItem item = viewModel.getRepairById(repairId);
             if (item != null) {
@@ -49,60 +52,42 @@ public class TechRepairDetailFragment extends Fragment {
             }
         });
 
-        binding.btnStartDiagnosis.setOnClickListener(v -> {
+        binding.cardActionDiagnosis.setOnClickListener(v -> {
             Bundle bundle = new Bundle();
             bundle.putString("repairId", repairId);
             Navigation.findNavController(v).navigate(R.id.action_techRepairDetail_to_techDiagnosis, bundle);
         });
 
-        binding.btnUpdateStatus.setOnClickListener(v -> {
+        binding.cardActionStatus.setOnClickListener(v -> {
             Bundle bundle = new Bundle();
             bundle.putString("repairId", repairId);
             Navigation.findNavController(v).navigate(R.id.action_techRepairDetail_to_techRepairStatus, bundle);
         });
 
-        binding.btnAddNotes.setOnClickListener(v -> {
-            Bundle bundle = new Bundle();
-            bundle.putString("repairId", repairId);
-            Navigation.findNavController(v).navigate(R.id.action_techRepairDetail_to_techRepairNotes, bundle);
-        });
-
-        binding.btnManageParts.setOnClickListener(v -> {
+        binding.cardActionSpareParts.setOnClickListener(v -> {
             Bundle bundle = new Bundle();
             bundle.putString("repairId", repairId);
             Navigation.findNavController(v).navigate(R.id.action_techRepairDetail_to_techSpareParts, bundle);
         });
 
-        binding.btnBeforeAfterPhotos.setOnClickListener(v -> {
+        binding.cardActionGallery.setOnClickListener(v -> {
             Bundle bundle = new Bundle();
             bundle.putString("repairId", repairId);
             Navigation.findNavController(v).navigate(R.id.action_techRepairDetail_to_techGallery, bundle);
         });
-
-        binding.btnCompleteRepair.setOnClickListener(v -> {
-            viewModel.updateStatus(repairId, "COMPLETED");
-            Toast.makeText(requireContext(), "Repair marked as COMPLETED!", Toast.LENGTH_SHORT).show();
-        });
     }
 
     private void bindRepairDetails(RepairItem item) {
-        binding.tvDetailRepairCode.setText(item.getRepairCode());
-        binding.tvDetailPriority.setText(item.getPriority().toUpperCase());
-        binding.tvDetailPriority.setBackgroundTintList(ColorStateList.valueOf(FormatUtils.getPriorityColor(item.getPriority())));
+        binding.tvDetailRepairCode.setText("#" + item.getRepairCode());
+        binding.tvDetailDevice.setText(item.getDeviceName() + " • " + (item.getDeviceModel() != null ? item.getDeviceModel() : "Mobile"));
+        binding.tvDetailStatusBadge.setText(item.getStatus());
+        binding.tvDetailStatusBadge.setBackgroundTintList(ColorStateList.valueOf(FormatUtils.getStatusBgColor(item.getStatus())));
+        binding.tvDetailStatusBadge.setTextColor(FormatUtils.getStatusTextColor(item.getStatus()));
 
-        binding.tvDetailDevice.setText(item.getDeviceName() + " (" + (item.getDeviceModel() != null ? item.getDeviceModel() : "") + ")");
-        binding.tvDetailService.setText("Service: " + item.getServiceRequested());
-        binding.tvDetailProblem.setText(item.getProblemDescription());
-
-        binding.tvDetailCustomer.setText(item.getCustomerName() + " (" + item.getCustomerPhone() + ")");
-        binding.tvDetailBranch.setText(item.getBranchName());
-        binding.tvDetailAppointment.setText(item.getAppointmentDate() + " at " + item.getAppointmentTime());
-
-        binding.tvDetailStatus.setText(item.getStatus());
-        binding.tvDetailStatus.setTextColor(FormatUtils.getStatusTextColor(item.getStatus()));
-
-        binding.tvDetailCost.setText(FormatUtils.formatCurrency(item.getEstimatedCost()));
-        binding.tvDetailTech.setText(item.getAssignedTechName());
+        binding.tvCustomerName.setText("Customer: " + item.getCustomerName() + " (" + item.getCustomerPhone() + ")");
+        binding.tvServiceRequested.setText("Service Requested: " + item.getServiceRequested());
+        binding.tvProblemDescription.setText("Issue: " + item.getProblemDescription());
+        binding.tvTotalCost.setText(FormatUtils.formatCurrency(item.getEstimatedCost()));
     }
 
     @Override

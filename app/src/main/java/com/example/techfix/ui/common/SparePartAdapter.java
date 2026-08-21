@@ -15,19 +15,21 @@ import java.util.List;
 
 public class SparePartAdapter extends RecyclerView.Adapter<SparePartAdapter.SparePartViewHolder> {
 
-    public interface OnSparePartClickListener {
+    public interface OnPartClickListener {
         void onPartClick(SparePartItem part);
     }
 
-    private List<SparePartItem> parts = new ArrayList<>();
-    private final OnSparePartClickListener listener;
+    private List<SparePartItem> partList = new ArrayList<>();
+    private OnPartClickListener listener;
 
-    public SparePartAdapter(OnSparePartClickListener listener) {
+    public SparePartAdapter() {}
+
+    public SparePartAdapter(OnPartClickListener listener) {
         this.listener = listener;
     }
 
-    public void setParts(List<SparePartItem> list) {
-        this.parts = list != null ? list : new ArrayList<>();
+    public void setParts(List<SparePartItem> parts) {
+        this.partList = parts != null ? parts : new ArrayList<>();
         notifyDataSetChanged();
     }
 
@@ -42,12 +44,12 @@ public class SparePartAdapter extends RecyclerView.Adapter<SparePartAdapter.Spar
 
     @Override
     public void onBindViewHolder(@NonNull SparePartViewHolder holder, int position) {
-        holder.bind(parts.get(position));
+        holder.bind(partList.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return parts.size();
+        return partList.size();
     }
 
     class SparePartViewHolder extends RecyclerView.ViewHolder {
@@ -60,14 +62,15 @@ public class SparePartAdapter extends RecyclerView.Adapter<SparePartAdapter.Spar
 
         public void bind(SparePartItem part) {
             binding.tvPartName.setText(part.getName());
-            binding.tvCategoryAndDevice.setText("Category: " + part.getCategory() + " • Compatible: " + part.getCompatibleDevice());
-            binding.tvStockQuantity.setText("Stock: " + part.getQuantity() + " units (Min: " + part.getMinStockThreshold() + ")");
-            binding.tvUnitPrice.setText(FormatUtils.formatCurrency(part.getUnitPriceLkr()));
+            binding.tvPartCategoryAndModel.setText(part.getCategory() + "  •  " + part.getCompatibleDevice());
+            binding.tvPartQuantity.setText("Stock: " + part.getQuantity() + " Units (Min: " + part.getMinStockThreshold() + ")");
+            binding.tvPartPrice.setText(FormatUtils.formatCurrency(part.getUnitPriceLkr()));
 
             String status = part.getAvailabilityStatus();
-            binding.tvAvailabilityBadge.setText(status.replace("_", " "));
-            binding.tvAvailabilityBadge.setBackgroundTintList(ColorStateList.valueOf(FormatUtils.getStatusBgColor(status)));
-            binding.tvAvailabilityBadge.setTextColor(FormatUtils.getStatusTextColor(status));
+            if (status == null) status = "AVAILABLE";
+            binding.tvStockStatusBadge.setText(status.replace("_", " "));
+            binding.tvStockStatusBadge.setBackgroundTintList(ColorStateList.valueOf(FormatUtils.getStatusBgColor(status)));
+            binding.tvStockStatusBadge.setTextColor(FormatUtils.getStatusTextColor(status));
 
             itemView.setOnClickListener(v -> {
                 if (listener != null) listener.onPartClick(part);

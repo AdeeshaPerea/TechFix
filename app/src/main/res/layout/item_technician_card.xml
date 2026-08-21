@@ -4,90 +4,69 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginHorizontal="12dp"
-    android:layout_marginVertical="6dp"
-    app:cardCornerRadius="16dp"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginVertical="8dp"
+    app:cardCornerRadius="20dp"
     app:cardElevation="2dp"
     app:strokeColor="#E2E8F0"
-    app:strokeWidth="1dp"
+    app:strokeWidth="1.2dp"
     app:cardBackgroundColor="#FFFFFF">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="16dp"
-        android:gravity="center_vertical">
+        android:orientation="vertical"
+        android:padding="20dp">
 
-        <ImageView
-            android:id="@+id/imgAvatar"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@android:drawable/ic_menu_myplaces"
-            app:tint="#2563EB"
-            android:background="#EFF6FF"
-            android:padding="10dp" />
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginStart="14dp"
-            android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
             <TextView
                 android:id="@+id/tvTechName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Alex Perera"
-                android:textSize="16sp"
+                android:layout_alignParentStart="true"
+                android:layout_toStartOf="@id/tvTechActiveJobsBadge"
+                android:layout_marginEnd="8dp"
+                android:text="Nuwan Silva"
+                android:textSize="18sp"
                 android:textStyle="bold"
                 android:textColor="#0F172A" />
 
             <TextView
-                android:id="@+id/tvSpecialization"
+                android:id="@+id/tvTechActiveJobsBadge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Mobile &amp; Logic Board Specialist"
-                android:textSize="12sp"
-                android:textColor="#64748B" />
-
-            <TextView
-                android:id="@+id/tvBranchAndHours"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:text="TechFix Colombo • 08:30 AM - 05:30 PM"
-                android:textSize="11sp"
-                android:textColor="#0284C7" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="end">
-
-            <TextView
-                android:id="@+id/tvActiveRepairsBadge"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="4 Active"
+                android:layout_alignParentEnd="true"
+                android:text="5 Active Jobs"
                 android:textSize="11sp"
                 android:textStyle="bold"
-                android:textColor="#1E40AF"
-                android:background="#DBEAFE"
-                android:paddingHorizontal="8dp"
-                android:paddingVertical="3dp" />
+                android:textColor="#065F46"
+                android:background="@drawable/bg_pill_badge"
+                android:backgroundTint="#D1FAE5"
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="5dp" />
+        </RelativeLayout>
 
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnEditTech"
-                style="@style/Widget.Material3.Button.TextButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Edit"
-                android:textSize="11sp" />
-        </LinearLayout>
+        <TextView
+            android:id="@+id/tvTechSpecialization"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Mobile &amp; Laptop Specialist"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="#2563EB" />
+
+        <TextView
+            android:id="@+id/tvTechBranchAndPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="TechFix Colombo  •  +94 77 123 4567"
+            android:textSize="13sp"
+            android:textColor="#64748B" />
 
     </LinearLayout>
 
