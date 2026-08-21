@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingVertical="4dp">
+
+    <!-- Timeline Column (Circle + Connector Line) -->
+    <LinearLayout
+        android:layout_width="40dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:id="@+id/tvStepNumber"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:background="@drawable/bg_white_pill"
+            android:backgroundTint="#2563EB"
+            android:gravity="center"
+            android:text="1"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <View
+            android:id="@+id/viewLineConnector"
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:layout_marginVertical="2dp"
+            android:background="#CBD5E1" />
+    </LinearLayout>
+
+    <!-- Status Details Card -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardStatusStep"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginStart="8dp"
+        android:layout_marginBottom="12dp"
+        app:cardCornerRadius="14dp"
+        app:cardElevation="1dp"
+        app:strokeColor="#E2E8F0"
+        app:strokeWidth="1dp"
+        app:cardBackgroundColor="#FFFFFF">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="14dp">
+
+            <TextView
+                android:id="@+id/tvStepTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="DIAGNOSING"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:textColor="#0F172A" />
+
+            <TextView
+                android:id="@+id/tvStepBadge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="CURRENT"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                android:textColor="#1E40AF"
+                android:background="#DBEAFE"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="3dp" />
+
+            <TextView
+                android:id="@+id/tvStepDesc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/tvStepTitle"
+                android:layout_marginTop="2dp"
+                android:text="Technician evaluating hardware faults and testing."
+                android:textSize="12sp"
+                android:textColor="#64748B" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSetStatus"
+                style="@style/Widget.Material3.Button.TonalButton"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_below="@id/tvStepDesc"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="8dp"
+                android:text="Move Here"
+                android:textSize="11sp"
+                android:paddingHorizontal="12dp" />
+        </RelativeLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</LinearLayout>

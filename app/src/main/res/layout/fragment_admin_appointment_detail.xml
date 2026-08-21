@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="#F8FAFC">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="16dp"
+            app:cardElevation="2dp"
+            app:cardBackgroundColor="#FFFFFF">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tvAptCode"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="APT-8821"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        android:textColor="#0284C7" />
+
+                    <TextView
+                        android:id="@+id/tvAptStatusBadge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:text="PENDING"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:textColor="#9A3412"
+                        android:background="#FFEDD5"
+                        android:paddingHorizontal="12dp"
+                        android:paddingVertical="4dp" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tvAptDevice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="MacBook Air M2"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="#0F172A" />
+
+                <TextView
+                    android:id="@+id/tvAptService"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="Service Requested: Screen Replacement"
+                    android:textSize="13sp"
+                    android:textColor="#64748B" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginVertical="12dp"
+                    android:background="#F1F5F9" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Customer Contact:"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:textColor="#64748B" />
+
+                <TextView
+                    android:id="@+id/tvAptCustomer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="Anura Kumara (+94 77 999 1111)"
+                    android:textSize="14sp"
+                    android:textColor="#0F172A" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Preferred Date &amp; Time:"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:textColor="#64748B" />
+
+                <TextView
+                    android:id="@+id/tvAptDateTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="2026-08-25 at 09:30 AM"
+                    android:textSize="14sp"
+                    android:textColor="#0F172A" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Assigned Branch &amp; Tech:"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:textColor="#64748B" />
+
+                <TextView
+                    android:id="@+id/tvAptBranchTech"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="TechFix Colombo • Alex Perera"
+                    android:textSize="14sp"
+                    android:textColor="#0284C7"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Problem Description:"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:textColor="#64748B" />
+
+                <TextView
+                    android:id="@+id/tvAptProblem"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="Display flickers when opening hinge past 90 degrees."
+                    android:textSize="14sp"
+                    android:textColor="#334155" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Admin Action Buttons -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Management Actions"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="#0F172A" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnAcceptApt"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="6dp"
+                android:text="Accept"
+                android:backgroundTint="#059669" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnRejectApt"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_weight="1"
+                android:layout_marginStart="6dp"
+                android:text="Reject"
+                android:textColor="#DC2626"
+                app:strokeColor="#FCA5A5" />
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnAssignTechnician"
+            style="@style/Widget.Material3.Button.TonalButton"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            android:text="Assign / Reassign Technician" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnChangeBranch"
+            style="@style/Widget.Material3.Button.TonalButton"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="8dp"
+            android:text="Change Assigned Branch" />
+
+    </LinearLayout>
+
+</ScrollView>

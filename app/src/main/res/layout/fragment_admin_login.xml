@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:background="#17253D">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="28dp"
+        android:gravity="center_horizontal">
+
+        <!-- Logo Container -->
+        <FrameLayout
+            android:layout_width="88dp"
+            android:layout_height="88dp"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/bg_squircle_amber">
+
+            <ImageView
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_wrench" />
+        </FrameLayout>
+
+        <!-- App Branding -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="TECHFIX"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.08"
+            android:textColor="#FFFFFF" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="Admin / Management Portal"
+            android:textSize="14sp"
+            android:textColor="#94A3B8" />
+
+        <!-- ADMIN ID Field -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="44dp"
+            android:text="ADMIN EMAIL / ID"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.1"
+            android:textColor="#94A3B8" />
+
+        <EditText
+            android:id="@+id/etEmail"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_white_pill"
+            android:gravity="center"
+            android:hint="admin@techfix.com"
+            android:text="admin@techfix.com"
+            android:textColor="#0F172A"
+            android:textColorHint="#94A3B8"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:paddingHorizontal="16dp"
+            android:inputType="textEmailAddress" />
+
+        <!-- PASSWORD Field -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="PASSWORD"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.1"
+            android:textColor="#94A3B8" />
+
+        <EditText
+            android:id="@+id/etPassword"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_white_pill"
+            android:gravity="center"
+            android:hint="••••••••"
+            android:text="123456"
+            android:textColor="#0F172A"
+            android:textColorHint="#94A3B8"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:paddingHorizontal="16dp"
+            android:inputType="textPassword" />
+
+        <TextView
+            android:id="@+id/tvForgotPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_gravity="end"
+            android:text="Forgot Password?"
+            android:textSize="12sp"
+            android:textColor="#34D399" />
+
+        <!-- LOG IN Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnLogin"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:layout_marginTop="24dp"
+            android:text="LOG IN"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:letterSpacing="0.08"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#F5A623"
+            app:cornerRadius="14dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="System Admin Access"
+            android:textSize="12sp"
+            android:textColor="#64748B" />
+
+        <TextView
+            android:id="@+id/tvSwitchRole"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:text="← Back to Role Selection"
+            android:textSize="13sp"
+            android:textColor="#94A3B8"
+            android:padding="8dp" />
+
+    </LinearLayout>
+
+</ScrollView>
