@@ -11,15 +11,71 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TechFix">
+
+        <!-- Role Selection Landing -->
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.main.RoleSelectActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Main Activity Container (Fallback) -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+
+        <!-- Technician Portal Activities -->
+        <activity
+            android:name=".ui.tech.TechLoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.tech.TechRepairsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.tech.TechRepairDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.tech.TechRepairNotesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.tech.TechRepairGalleryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.tech.TechProfileActivity"
+            android:exported="false" />
+
+        <!-- Admin Portal Activities -->
+        <activity
+            android:name=".ui.admin.AdminLoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.admin.AdminDashboardActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.admin.AdminAppointmentsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.admin.AdminAppointmentDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.admin.AdminBranchesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.admin.AdminTechniciansActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.admin.AdminSparePartsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.admin.AdminServicesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.admin.AdminProfileSettingsActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>
