@@ -1,128 +1,245 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView 
+<LinearLayout 
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
-    android:background="#F8FAFC">
+    android:orientation="vertical"
+    android:background="@color/bg_app">
 
-    <LinearLayout
+    <!-- Compact Header Bar -->
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="20dp">
+        android:background="@color/navy_header"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="18dp"
+        android:paddingBottom="14dp">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Admin Profile &amp; Settings"
-            android:textSize="22sp"
+            android:layout_centerInParent="true"
+            android:text="ADMIN SETTINGS"
+            android:textSize="16sp"
             android:textStyle="bold"
-            android:textColor="#0F172A" />
+            android:textColor="@color/white" />
+    </RelativeLayout>
 
-        <!-- Profile Card -->
-        <com.google.android.material.card.MaterialCardView
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="2dp"
-            app:cardBackgroundColor="#FFFFFF">
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:gravity="center_horizontal">
 
-            <LinearLayout
+            <!-- Profile Circle Avatar -->
+            <TextView
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:background="@drawable/bg_chip_active"
+                android:gravity="center"
+                android:text="MJ"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="Malinda Jayasekara"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/navy_header" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Branch Manager · Colombo 03"
+                android:textSize="12sp"
+                android:textColor="@color/text_secondary" />
+
+            <!-- ACCOUNT SECTION -->
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp">
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="4dp"
+                android:text="ACCOUNT"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_muted" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="1dp"
+                app:strokeColor="@color/divider_color"
+                app:strokeWidth="1dp"
+                app:cardBackgroundColor="@color/card_bg">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="14dp"
+                    android:paddingVertical="10dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Nimal Jayasinghe"
-                        android:textSize="18sp"
+                        android:text="Edit Profile"
+                        android:textSize="13sp"
                         android:textStyle="bold"
-                        android:textColor="#0F172A" />
+                        android:textColor="@color/text_primary" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
-                        android:text="SYSTEM ADMIN"
-                        android:textSize="11sp"
-                        android:textStyle="bold"
-                        android:textColor="#059669"
-                        android:background="#ECFDF5"
-                        android:paddingHorizontal="10dp"
-                        android:paddingVertical="4dp" />
+                        android:text="›"
+                        android:textSize="16sp"
+                        android:textColor="@color/text_muted" />
                 </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:text="admin@techfix.com • +94 71 987 6543"
-                    android:textSize="13sp"
-                    android:textColor="#64748B" />
-
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-        <!-- Settings Card -->
-        <com.google.android.material.card.MaterialCardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="2dp"
-            app:cardBackgroundColor="#FFFFFF">
-
-            <LinearLayout
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp">
+                android:layout_marginBottom="4dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="1dp"
+                app:strokeColor="@color/divider_color"
+                app:strokeWidth="1dp"
+                app:cardBackgroundColor="@color/card_bg">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="System Preferences"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    android:textColor="#0F172A" />
-
-                <com.google.android.material.materialswitch.MaterialSwitch
-                    android:id="@+id/switchNotifications"
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:checked="true"
-                    android:text="Email &amp; System Alert Notifications" />
+                    android:paddingHorizontal="14dp"
+                    android:paddingVertical="10dp">
 
-                <com.google.android.material.materialswitch.MaterialSwitch
-                    android:id="@+id/switchDarkMode"
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Change Password"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/text_primary" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:text="›"
+                        android:textSize="16sp"
+                        android:textColor="@color/text_muted" />
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- APP SETTINGS SECTION -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="4dp"
+                android:text="APP SETTINGS"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_muted" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="1dp"
+                app:strokeColor="@color/divider_color"
+                app:strokeWidth="1dp"
+                app:cardBackgroundColor="@color/card_bg">
+
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="Dark Mode Support (Beta)" />
+                    android:paddingHorizontal="14dp"
+                    android:paddingVertical="10dp">
 
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Manage Admin Users"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/text_primary" />
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnLogoutAdmin"
-            style="@style/Widget.Material3.Button.OutlinedButton"
-            android:layout_width="match_parent"
-            android:layout_height="52dp"
-            android:layout_marginTop="24dp"
-            android:text="Logout / Switch Role"
-            android:textColor="#DC2626"
-            app:strokeColor="#FCA5A5" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:text="›"
+                        android:textSize="16sp"
+                        android:textColor="@color/text_muted" />
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
 
-    </LinearLayout>
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="1dp"
+                app:strokeColor="@color/divider_color"
+                app:strokeWidth="1dp"
+                app:cardBackgroundColor="@color/card_bg">
 
-</ScrollView>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="14dp"
+                    android:paddingVertical="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Notification Preferences"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/text_primary" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:text="›"
+                        android:textSize="16sp"
+                        android:textColor="@color/text_muted" />
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- LOG OUT Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnLogoutAdmin"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="14dp"
+                android:layout_marginBottom="16dp"
+                android:text="LOG OUT"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="@color/accent_amber"
+                app:strokeColor="@color/accent_amber"
+                app:strokeWidth="1.5dp"
+                app:cornerRadius="10dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

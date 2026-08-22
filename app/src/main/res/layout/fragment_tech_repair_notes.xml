@@ -2,73 +2,211 @@
 <LinearLayout 
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#F8FAFC">
+    android:background="@color/bg_app">
 
-    <LinearLayout
+    <!-- Compact Header Bar -->
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="#FFFFFF"
-        android:padding="16dp"
-        android:elevation="2dp">
+        android:background="@color/navy_header"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="18dp"
+        android:paddingBottom="14dp">
 
-        <TextView
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_arrow_back"
+            app:tint="@color/white" />
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Repair Work Notes"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:textColor="#0F172A" />
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:text="Log work progress, observations and technical findings"
-            android:textSize="12sp"
-            android:textColor="#64748B" />
-    </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Repair Notes"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/white" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvNotesList"
+            <TextView
+                android:id="@+id/tvNotesSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="#TF-2026-00125"
+                android:textSize="11sp"
+                android:textColor="@color/navy_header_sub" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:padding="16dp" />
+        android:layout_weight="1">
 
-    <!-- Add Note Bar at Bottom -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="#FFFFFF"
-        android:padding="16dp"
-        android:elevation="4dp">
-
-        <com.google.android.material.textfield.TextInputLayout
-            style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Add technician note...">
+            android:orientation="vertical"
+            android:padding="16dp">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etNewNote"
+            <!-- DIAGNOSIS -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="DIAGNOSIS"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_muted" />
+
+            <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:inputType="textMultiLine"
-                android:maxLines="3" />
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_marginTop="4dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="1dp"
+                app:strokeColor="@color/divider_color"
+                app:strokeWidth="1dp"
+                app:cardBackgroundColor="@color/card_bg">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnAddNoteConfirm"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginTop="8dp"
-            android:text="Add Note"
-            android:backgroundTint="#2563EB" />
-    </LinearLayout>
+                <EditText
+                    android:id="@+id/etDiagnosisText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:padding="12dp"
+                    android:gravity="center_horizontal"
+                    android:text="Cracked OLED panel, digitizer unresponsive in lower half. No internal damage found."
+                    android:textSize="13sp"
+                    android:textColor="@color/navy_header"
+                    android:inputType="textMultiLine" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- WORK PERFORMED -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="12dp"
+                android:text="WORK PERFORMED"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_muted" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="1dp"
+                app:strokeColor="@color/divider_color"
+                app:strokeWidth="1dp"
+                app:cardBackgroundColor="@color/card_bg">
+
+                <EditText
+                    android:id="@+id/etNewNote"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:padding="12dp"
+                    android:gravity="center_horizontal"
+                    android:text="Replaced OLED screen assembly, tested touch response and Face ID."
+                    android:textSize="13sp"
+                    android:textColor="@color/navy_header"
+                    android:inputType="textMultiLine" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- SPARE PARTS USED -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="12dp"
+                android:text="SPARE PARTS USED"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_muted" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="1dp"
+                app:strokeColor="@color/divider_color"
+                app:strokeWidth="1dp"
+                app:cardBackgroundColor="@color/card_bg">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="OLED Panel — iPhone 13"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/navy_header" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:text="Qty: 1"
+                        android:textSize="12sp"
+                        android:textColor="@color/text_muted" />
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Link button: + Add another part -->
+            <TextView
+                android:id="@+id/btnAddAnotherPart"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="10dp"
+                android:text="+ Add another part"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="@color/badge_blue_text"
+                android:padding="4dp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvNotesList"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
+
+            <!-- SAVE NOTES Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnAddNoteConfirm"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="14dp"
+                android:text="SAVE NOTES"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/accent_amber"
+                app:cornerRadius="10dp" />
+
+        </LinearLayout>
+    </ScrollView>
 
 </LinearLayout>

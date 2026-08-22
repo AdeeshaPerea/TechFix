@@ -6,57 +6,58 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#F8FAFC">
+    android:background="@color/bg_app">
 
-    <!-- Top Navy Header Banner -->
-    <LinearLayout
+    <!-- Compact Header Bar -->
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="#17253D"
-        android:paddingHorizontal="20dp"
-        android:paddingTop="24dp"
-        android:paddingBottom="20dp">
+        android:background="@color/navy_header"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="18dp"
+        android:paddingBottom="14dp">
 
-        <TextView
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_arrow_back"
+            app:tint="@color/white" />
+
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Appointment Management"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            android:textColor="#FFFFFF" />
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:text="Review, Accept or Reassign Customer Service Bookings"
-            android:textSize="13sp"
-            android:textColor="#94A3B8" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Appointments"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/white" />
 
-        <!-- Search Input Bar -->
-        <EditText
-            android:id="@+id/etSearchAppointments"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/bg_white_pill"
-            android:hint="Search customer, appointment code, or device..."
-            android:textColor="#0F172A"
-            android:textColorHint="#94A3B8"
-            android:textSize="14sp"
-            android:paddingHorizontal="16dp"
-            android:drawableStart="@android:drawable/ic_menu_search"
-            android:drawablePadding="10dp"
-            android:inputType="text" />
-    </LinearLayout>
+            <TextView
+                android:id="@+id/tvAppointmentSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="7 awaiting review"
+                android:textSize="11sp"
+                android:textColor="@color/navy_header_sub" />
+        </LinearLayout>
+    </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvAppointmentsList"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:paddingVertical="8dp"
+        android:paddingVertical="4dp"
+        android:clipToPadding="false"
         tools:listitem="@layout/item_appointment_card"
         tools:itemCount="3" />
 
@@ -67,23 +68,16 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="center"
-        android:padding="32dp"
+        android:padding="24dp"
         android:visibility="gone">
-
-        <ImageView
-            android:layout_width="72dp"
-            android:layout_height="72dp"
-            android:src="@android:drawable/ic_menu_month"
-            app:tint="#CBD5E1" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:text="No Appointments Found"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:textStyle="bold"
-            android:textColor="#475569" />
+            android:textColor="@color/text_secondary" />
     </LinearLayout>
 
 </LinearLayout>

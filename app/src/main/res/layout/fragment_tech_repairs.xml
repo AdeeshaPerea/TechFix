@@ -6,121 +6,113 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#F8FAFC">
+    android:background="@color/bg_app">
 
-    <!-- Top Navy Header Banner -->
+    <!-- Compact Header Banner -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/navy_header"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="18dp"
+        android:paddingBottom="14dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_toStartOf="@id/layoutBellIcon"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvHeaderName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="👋 Nuwan Silva"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/tvHeaderSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Colombo 03 • Mobile &amp; Laptop Specialist"
+                android:textSize="11sp"
+                android:textColor="@color/navy_header_sub" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/layoutBellIcon"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/bg_white_pill"
+            android:backgroundTint="#233554">
+
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_bell"
+                app:tint="@color/navy_header_sub" />
+        </FrameLayout>
+    </RelativeLayout>
+
+    <!-- Filter Chips Row -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="#17253D"
-        android:paddingHorizontal="20dp"
-        android:paddingTop="24dp"
-        android:paddingBottom="20dp">
+        android:orientation="horizontal"
+        android:paddingHorizontal="12dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="2dp">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_toStartOf="@id/layoutBellIcon"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/tvHeaderName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="👋 Nuwan Silva"
-                    android:textSize="22sp"
-                    android:textStyle="bold"
-                    android:textColor="#FFFFFF" />
-
-                <TextView
-                    android:id="@+id/tvHeaderSubtitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:text="Colombo 03 • Mobile &amp; Laptop Specialist"
-                    android:textSize="13sp"
-                    android:textColor="#94A3B8" />
-            </LinearLayout>
-
-            <FrameLayout
-                android:id="@+id/layoutBellIcon"
-                android:layout_width="42dp"
-                android:layout_height="42dp"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:background="@drawable/bg_white_pill"
-                android:backgroundTint="#233554">
-
-                <ImageView
-                    android:layout_width="22dp"
-                    android:layout_height="22dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_bell" />
-            </FrameLayout>
-        </RelativeLayout>
-
-    </LinearLayout>
-
-    <!-- Filter Chips Header -->
-    <HorizontalScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingHorizontal="16dp"
-        android:paddingVertical="12dp"
-        android:scrollbars="none">
-
-        <com.google.android.material.chip.ChipGroup
-            android:id="@+id/chipGroupFilters"
+        <TextView
+            android:id="@+id/chipAll"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:singleSelection="true">
+            android:background="@drawable/bg_chip_active"
+            android:text="All (5)"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="6dp"
+            android:layout_marginEnd="6dp" />
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chipAll"
-                style="@style/Widget.Material3.Chip.Filter"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="All (5)"
-                app:chipBackgroundColor="#17253D"
-                android:textColor="#FFFFFF" />
+        <TextView
+            android:id="@+id/chipUrgent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_chip_inactive"
+            android:text="Urgent (2)"
+            android:textColor="@color/text_secondary"
+            android:textSize="12sp"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="6dp"
+            android:layout_marginEnd="6dp" />
 
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chipUrgent"
-                style="@style/Widget.Material3.Chip.Filter"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Urgent (2)" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chipToday"
-                style="@style/Widget.Material3.Chip.Filter"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Today" />
-
-            <com.google.android.material.chip.Chip
-                android:id="@+id/chipInProgress"
-                style="@style/Widget.Material3.Chip.Filter"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="In Progress" />
-        </com.google.android.material.chip.ChipGroup>
-    </HorizontalScrollView>
+        <TextView
+            android:id="@+id/chipToday"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_chip_inactive"
+            android:text="Today"
+            android:textColor="@color/text_secondary"
+            android:textSize="12sp"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="6dp" />
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvAssignedRepairs"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
+        android:paddingVertical="4dp"
         android:clipToPadding="false"
-        android:paddingBottom="16dp"
         tools:listitem="@layout/item_repair_card"
         tools:itemCount="3" />
 
@@ -131,23 +123,16 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:gravity="center"
-        android:padding="32dp"
+        android:padding="24dp"
         android:visibility="gone">
-
-        <ImageView
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:src="@android:drawable/ic_menu_search"
-            app:tint="#CBD5E1" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
             android:text="No Repairs Found"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:textStyle="bold"
-            android:textColor="#475569" />
+            android:textColor="@color/text_secondary" />
     </LinearLayout>
 
 </LinearLayout>

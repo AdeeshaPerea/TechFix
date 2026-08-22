@@ -4,21 +4,20 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginHorizontal="16dp"
-    android:layout_marginVertical="8dp"
-    app:cardCornerRadius="20dp"
-    app:cardElevation="2dp"
-    app:strokeColor="#E2E8F0"
-    app:strokeWidth="1.2dp"
-    app:cardBackgroundColor="#FFFFFF">
+    android:layout_marginHorizontal="12dp"
+    android:layout_marginVertical="4dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="1dp"
+    app:strokeColor="@color/divider_color"
+    app:strokeWidth="1dp"
+    app:cardBackgroundColor="@color/card_bg">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="20dp">
+        android:padding="12dp">
 
-        <!-- Top Title & Badge -->
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -29,11 +28,11 @@
                 android:layout_height="wrap_content"
                 android:layout_toStartOf="@id/tvStatusBadge"
                 android:layout_alignParentStart="true"
-                android:layout_marginEnd="8dp"
-                android:text="iPhone 13 • Screen Replacement"
-                android:textSize="16sp"
+                android:layout_marginEnd="4dp"
+                android:text="iPhone 13 · Screen Replacement"
+                android:textSize="14sp"
                 android:textStyle="bold"
-                android:textColor="#0F172A" />
+                android:textColor="@color/navy_header" />
 
             <TextView
                 android:id="@+id/tvStatusBadge"
@@ -41,33 +40,30 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:text="URGENT"
-                android:textSize="11sp"
+                android:textSize="10sp"
                 android:textStyle="bold"
-                android:textColor="#DC2626"
-                android:background="@drawable/bg_pill_badge"
-                android:backgroundTint="#FEE2E2"
-                android:paddingHorizontal="12dp"
-                android:paddingVertical="5dp" />
+                android:textColor="@color/badge_red_text"
+                android:background="@drawable/bg_badge_red"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="3dp" />
         </RelativeLayout>
 
-        <!-- Customer & Repair ID -->
         <TextView
             android:id="@+id/tvCustomerAndCode"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:text="Kasun Perera • #TF-2026-00125"
-            android:textSize="13sp"
-            android:textColor="#94A3B8" />
+            android:layout_marginTop="2dp"
+            android:text="Kasun Perera · #TF-2026-00125"
+            android:textSize="12sp"
+            android:textColor="@color/text_muted" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginTop="14dp"
-            android:layout_marginBottom="12dp"
-            android:background="#F1F5F9" />
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="6dp"
+            android:background="@color/divider_color" />
 
-        <!-- Footer Time & Location -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -75,18 +71,19 @@
             android:gravity="center">
 
             <ImageView
-                android:layout_width="14dp"
-                android:layout_height="14dp"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
                 android:src="@drawable/ic_pin"
-                android:layout_marginEnd="6dp" />
+                android:layout_marginEnd="4dp"
+                app:tint="@color/badge_red_text" />
 
             <TextView
                 android:id="@+id/tvDropOffAndTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Drop-off 9:00 AM • Est. 1.5 hrs"
-                android:textSize="13sp"
-                android:textColor="#64748B" />
+                android:text="Drop-off 9:00 AM · Est. 1.5 hrs"
+                android:textSize="12sp"
+                android:textColor="@color/text_secondary" />
         </LinearLayout>
 
     </LinearLayout>

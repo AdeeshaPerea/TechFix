@@ -4,19 +4,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginHorizontal="16dp"
-    android:layout_marginVertical="8dp"
-    app:cardCornerRadius="20dp"
-    app:cardElevation="2dp"
-    app:strokeColor="#E2E8F0"
-    app:strokeWidth="1.2dp"
-    app:cardBackgroundColor="#FFFFFF">
+    android:layout_marginHorizontal="12dp"
+    android:layout_marginVertical="4dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="1dp"
+    app:strokeColor="@color/divider_color"
+    app:strokeWidth="1dp"
+    app:cardBackgroundColor="@color/card_bg">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="20dp">
+        android:padding="12dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -27,45 +27,81 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
-                android:layout_toStartOf="@id/tvBranchStatsBadge"
-                android:layout_marginEnd="8dp"
-                android:text="TechFix Colombo"
-                android:textSize="18sp"
+                android:layout_toStartOf="@id/switchBranch"
+                android:layout_marginEnd="4dp"
+                android:text="TechFix — Colombo 03"
+                android:textSize="15sp"
                 android:textStyle="bold"
-                android:textColor="#0F172A" />
+                android:textColor="@color/navy_header" />
 
-            <TextView
-                android:id="@+id/tvBranchStatsBadge"
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/switchBranch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:text="8 Techs • 15 Repairs"
-                android:textSize="11sp"
-                android:textStyle="bold"
-                android:textColor="#1E40AF"
-                android:background="@drawable/bg_pill_badge"
-                android:backgroundTint="#DBEAFE"
-                android:paddingHorizontal="12dp"
-                android:paddingVertical="5dp" />
+                android:checked="true"
+                app:thumbTint="@color/badge_green_text"
+                app:trackTint="#A7F3D0" />
         </RelativeLayout>
 
         <TextView
             android:id="@+id/tvBranchAddress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
-            android:text="📍 142 Galle Road, Colombo 03"
-            android:textSize="13sp"
-            android:textColor="#64748B" />
+            android:layout_gravity="center_horizontal"
+            android:text="No. 62, Galle Road, Colombo 03"
+            android:textSize="12sp"
+            android:textColor="@color/text_secondary" />
 
         <TextView
             android:id="@+id/tvBranchContactAndHours"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="📞 +94 11 234 5678  •  🕒 08:00 AM - 07:00 PM"
-            android:textSize="12sp"
-            android:textColor="#94A3B8" />
+            android:layout_gravity="center_horizontal"
+            android:text="Open 9:00 AM – 7:00 PM"
+            android:textSize="11sp"
+            android:textColor="@color/text_secondary" />
+
+        <TextView
+            android:id="@+id/tvBranchStatsBadge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="📍 6.9147° N, 79.8560° E"
+            android:textSize="11sp"
+            android:textColor="@color/text_muted" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="@color/divider_color" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tvEditDetails"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:text="Edit Details"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="@color/badge_blue_text" />
+
+            <TextView
+                android:id="@+id/tvViewTechnicians"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="View Technicians (4)"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                android:textColor="@color/badge_blue_text" />
+        </RelativeLayout>
 
     </LinearLayout>
 

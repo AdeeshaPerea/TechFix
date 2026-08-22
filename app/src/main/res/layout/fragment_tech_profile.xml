@@ -1,221 +1,324 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView 
+<LinearLayout 
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fillViewport="true"
-    android:background="#F8FAFC">
+    android:orientation="vertical"
+    android:background="@color/bg_app">
 
-    <LinearLayout
+    <!-- Compact Header Bar -->
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="20dp"
-        android:gravity="center_horizontal">
-
-        <ImageView
-            android:id="@+id/imgProfilePhoto"
-            android:layout_width="90dp"
-            android:layout_height="90dp"
-            android:layout_marginTop="16dp"
-            android:src="@android:drawable/ic_menu_myplaces"
-            app:tint="#2563EB"
-            android:background="#EFF6FF"
-            android:padding="16dp" />
+        android:background="@color/navy_header"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="18dp"
+        android:paddingBottom="14dp">
 
         <TextView
-            android:id="@+id/tvProfileName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:text="Alex Perera"
-            android:textSize="22sp"
+            android:layout_centerInParent="true"
+            android:text="MY PROFILE"
+            android:textSize="16sp"
             android:textStyle="bold"
-            android:textColor="#0F172A" />
+            android:textColor="@color/white" />
+    </RelativeLayout>
 
-        <TextView
-            android:id="@+id/tvProfileRole"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:text="Senior Repair Technician"
-            android:textSize="14sp"
-            android:textColor="#64748B" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
-        <com.google.android.material.card.MaterialCardView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            app:cardCornerRadius="16dp"
-            app:cardElevation="2dp"
-            app:cardBackgroundColor="#FFFFFF">
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:gravity="center_horizontal">
+
+            <!-- Amber Avatar -->
+            <TextView
+                android:id="@+id/tvAvatarProfile"
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:background="@drawable/bg_avatar_amber"
+                android:gravity="center"
+                android:text="NS"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvProfileName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="Nuwan Silva"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:textColor="@color/navy_header" />
+
+            <TextView
+                android:id="@+id/tvProfileRole"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mobile Repair Specialist · Colombo 03"
+                android:textSize="12sp"
+                android:textColor="@color/text_secondary" />
+
+            <!-- Hidden Views for Binding Compatibility -->
+            <TextView android:id="@+id/tvProfileEmail" android:layout_width="wrap_content" android:layout_height="wrap_content" android:visibility="gone" />
+            <TextView android:id="@+id/tvProfilePhone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:visibility="gone" />
+            <TextView android:id="@+id/tvProfileSpec" android:layout_width="wrap_content" android:layout_height="wrap_content" android:visibility="gone" />
+            <TextView android:id="@+id/tvProfileBranch" android:layout_width="wrap_content" android:layout_height="wrap_content" android:visibility="gone" />
+            <TextView android:id="@+id/tvProfileHours" android:layout_width="wrap_content" android:layout_height="wrap_content" android:visibility="gone" />
+
+            <!-- Stat Summary Cards Row (3 Cards) -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="14dp">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="4dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="1dp"
+                    app:strokeColor="@color/divider_color"
+                    app:strokeWidth="1dp"
+                    app:cardBackgroundColor="@color/card_bg">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingVertical="10dp"
+                        android:gravity="center">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="128"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/navy_header" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Repairs Done"
+                            android:textSize="10sp"
+                            android:textColor="@color/text_muted" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginHorizontal="2dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="1dp"
+                    app:strokeColor="@color/divider_color"
+                    app:strokeWidth="1dp"
+                    app:cardBackgroundColor="@color/card_bg">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingVertical="10dp"
+                        android:gravity="center">
+
+                        <TextView
+                            android:id="@+id/tvProfileActiveRepairs"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="6"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/navy_header" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Active Jobs"
+                            android:textSize="10sp"
+                            android:textColor="@color/text_muted" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="4dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="1dp"
+                    app:strokeColor="@color/divider_color"
+                    app:strokeWidth="1dp"
+                    app:cardBackgroundColor="@color/card_bg">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:paddingVertical="10dp"
+                        android:gravity="center">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="4.9"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:textColor="@color/navy_header" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Avg Rating"
+                            android:textSize="10sp"
+                            android:textColor="@color/text_muted" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+
+            <!-- SKILLS & SPECIALIZATION Section -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:layout_marginBottom="6dp"
+                android:text="SKILLS &amp; SPECIALIZATION"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                android:textColor="@color/text_muted" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="16dp">
+                android:orientation="horizontal"
+                android:gravity="center">
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Email:"
-                        android:textSize="13sp"
-                        android:textColor="#64748B" />
-
-                    <TextView
-                        android:id="@+id/tvProfileEmail"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:text="technician@techfix.com"
-                        android:textSize="13sp"
-                        android:textStyle="bold"
-                        android:textColor="#0F172A" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp">
+                    android:background="@drawable/bg_badge_amber"
+                    android:text="Screen Repair"
+                    android:textColor="@color/badge_amber_text"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="4dp"
+                    android:layout_marginEnd="6dp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Phone:"
-                        android:textSize="13sp"
-                        android:textColor="#64748B" />
-
-                    <TextView
-                        android:id="@+id/tvProfilePhone"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:text="+94 77 123 4567"
-                        android:textSize="13sp"
-                        android:textStyle="bold"
-                        android:textColor="#0F172A" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Specialization:"
-                        android:textSize="13sp"
-                        android:textColor="#64748B" />
-
-                    <TextView
-                        android:id="@+id/tvProfileSpec"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:text="Mobile &amp; Logic Board"
-                        android:textSize="13sp"
-                        android:textStyle="bold"
-                        android:textColor="#0284C7" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Branch:"
-                        android:textSize="13sp"
-                        android:textColor="#64748B" />
-
-                    <TextView
-                        android:id="@+id/tvProfileBranch"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:text="TechFix Colombo"
-                        android:textSize="13sp"
-                        android:textStyle="bold"
-                        android:textColor="#0F172A" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Working Hours:"
-                        android:textSize="13sp"
-                        android:textColor="#64748B" />
-
-                    <TextView
-                        android:id="@+id/tvProfileHours"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:text="08:30 AM - 05:30 PM"
-                        android:textSize="13sp"
-                        android:textStyle="bold"
-                        android:textColor="#0F172A" />
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Active Repairs Assigned:"
-                        android:textSize="13sp"
-                        android:textColor="#64748B" />
-
-                    <TextView
-                        android:id="@+id/tvProfileActiveRepairs"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:text="4 Active"
-                        android:textSize="13sp"
-                        android:textStyle="bold"
-                        android:textColor="#16A34A" />
-                </RelativeLayout>
-
+                    android:background="@drawable/bg_badge_amber"
+                    android:text="Battery Service"
+                    android:textColor="@color/badge_amber_text"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="4dp" />
             </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnEditProfile"
-            style="@style/Widget.Material3.Button.TonalButton"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="16dp"
-            android:text="Edit Profile Details"
-            android:textSize="14sp" />
+            <!-- Menu Options Cards -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/btnEditProfile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:layout_marginBottom="4dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="1dp"
+                app:strokeColor="@color/divider_color"
+                app:strokeWidth="1dp"
+                app:cardBackgroundColor="@color/card_bg">
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnLogoutTech"
-            style="@style/Widget.Material3.Button.OutlinedButton"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="10dp"
-            android:text="Logout / Switch Role"
-            android:textColor="#DC2626"
-            app:strokeColor="#FCA5A5" />
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="14dp"
+                    android:paddingVertical="10dp">
 
-    </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Edit Profile"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/text_primary" />
 
-</ScrollView>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:text="›"
+                        android:textSize="16sp"
+                        android:textColor="@color/text_muted" />
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="1dp"
+                app:strokeColor="@color/divider_color"
+                app:strokeWidth="1dp"
+                app:cardBackgroundColor="@color/card_bg">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingHorizontal="14dp"
+                    android:paddingVertical="10dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Availability"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/text_primary" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:text="›"
+                        android:textSize="16sp"
+                        android:textColor="@color/text_muted" />
+                </RelativeLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- LOG OUT Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnLogoutTech"
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="16dp"
+                android:text="LOG OUT"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:textColor="@color/accent_amber"
+                app:strokeColor="@color/accent_amber"
+                app:strokeWidth="1.5dp"
+                app:cornerRadius="10dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
