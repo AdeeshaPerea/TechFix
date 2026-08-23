@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cus_home"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_app">
+    android:background="@color/bg_screen">
 
     <!-- Scrollable Content -->
     <ScrollView
@@ -34,10 +33,10 @@
                     android:layout_height="44dp"
                     android:layout_alignParentStart="true"
                     android:layout_centerVertical="true"
-                    android:background="@drawable/bg_white_pill"
+                    android:background="@drawable/bg_icon_button"
                     android:contentDescription="Back"
                     android:padding="10dp"
-                    android:src="@drawable/ic_arrow_back" />
+                    android:src="@drawable/ic_chevron_left" />
 
                 <ImageButton
                     android:id="@+id/btnNotification"
@@ -45,7 +44,7 @@
                     android:layout_height="44dp"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
-                    android:background="@drawable/bg_white_pill"
+                    android:background="@drawable/bg_icon_button"
                     android:contentDescription="Notifications"
                     android:padding="10dp"
                     android:src="@drawable/ic_bell" />
@@ -59,7 +58,7 @@
                 android:layout_marginTop="20dp"
                 android:letterSpacing="0.08"
                 android:text="GOOD AFTERNOON"
-                android:textColor="@color/accent_amber"
+                android:textColor="@color/accent_orange_dark"
                 android:textSize="12sp"
                 android:textStyle="bold" />
 
@@ -75,65 +74,35 @@
                 android:textSize="24sp"
                 android:textStyle="bold" />
 
-            <!-- Nearest Branch Header -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:text="NEAREST TECHFIX BRANCH"
-                android:textColor="@color/text_primary"
-                android:textSize="12sp"
-                android:textStyle="bold" />
-
-            <!-- Nearest Branch Card -->
-            <com.google.android.material.card.MaterialCardView
+            <!-- Nearest Branch Map -->
+            <LinearLayout
                 android:id="@+id/cardNearestBranch"
                 android:layout_width="match_parent"
-                android:layout_height="120dp"
+                android:layout_height="200dp"
                 android:layout_marginBottom="16dp"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="1dp"
-                app:strokeColor="@color/divider_color"
-                app:strokeWidth="1dp"
-                app:cardBackgroundColor="@color/navy_header">
+                android:background="@drawable/bg_branch_ticket_card"
+                android:orientation="vertical"
+                android:padding="4dp">
 
-                <LinearLayout
+                <org.maplibre.android.maps.MapView
+                    android:id="@+id/mapNearestBranch"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:gravity="center"
-                    android:padding="16dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="📍 TechFix Colombo 03"
-                        android:textColor="@color/white"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:text="No. 62, Galle Road, Colombo 03 · 1.2 km away"
-                        android:textColor="@color/navy_header_sub"
-                        android:textSize="12sp" />
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
+                    android:layout_height="match_parent" />
+            </LinearLayout>
 
             <!-- Action Button (+ NEW REPAIR REQUEST) -->
-            <com.google.android.material.button.MaterialButton
+            <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnNewRepairRequest"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
+                android:layout_height="52dp"
                 android:layout_marginBottom="24dp"
+                android:background="@drawable/bg_button_orange"
+                android:letterSpacing="0.04"
+                android:stateListAnimator="@null"
                 android:text="+   NEW REPAIR REQUEST"
-                android:textColor="@color/white"
+                android:textColor="@color/text_primary"
                 android:textSize="14sp"
-                android:textStyle="bold"
-                android:backgroundTint="@color/accent_amber"
-                app:cornerRadius="12dp" />
+                android:textStyle="bold" />
 
             <!-- QUICK ACTIONS Header -->
             <TextView
@@ -154,118 +123,118 @@
                 android:orientation="horizontal">
 
                 <!-- Track Repair -->
-                <com.google.android.material.card.MaterialCardView
+                <LinearLayout
                     android:id="@+id/cardTrackRepair"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="6dp"
                     android:layout_weight="1"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="1dp"
-                    app:strokeColor="@color/divider_color"
-                    app:strokeWidth="1dp"
-                    app:cardBackgroundColor="@color/card_bg">
+                    android:background="@drawable/bg_card_white"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:paddingVertical="14dp"
+                    android:paddingHorizontal="6dp">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
+                    <FrameLayout
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/bg_icon_teal">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center"
+                            android:contentDescription="Track Repair"
+                            android:src="@drawable/ic_phone_device" />
+                    </FrameLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:paddingVertical="14dp"
-                        android:paddingHorizontal="6dp">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="📱"
-                            android:textSize="20sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="6dp"
-                            android:text="Track Repair"
-                            android:textColor="@color/text_primary"
-                            android:textSize="11sp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
+                        android:layout_marginTop="8dp"
+                        android:text="Track Repair"
+                        android:textColor="@color/text_primary"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
 
                 <!-- My Bookings -->
-                <com.google.android.material.card.MaterialCardView
+                <LinearLayout
                     android:id="@+id/cardMyBookings"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="3dp"
                     android:layout_weight="1"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="1dp"
-                    app:strokeColor="@color/divider_color"
-                    app:strokeWidth="1dp"
-                    app:cardBackgroundColor="@color/card_bg">
+                    android:background="@drawable/bg_card_white"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:paddingVertical="14dp"
+                    android:paddingHorizontal="6dp">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
+                    <FrameLayout
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/bg_icon_orange">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center"
+                            android:contentDescription="My Bookings"
+                            android:src="@drawable/ic_calendar" />
+                    </FrameLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:paddingVertical="14dp"
-                        android:paddingHorizontal="6dp">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="📅"
-                            android:textSize="20sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="6dp"
-                            android:text="My Bookings"
-                            android:textColor="@color/text_primary"
-                            android:textSize="11sp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
+                        android:layout_marginTop="8dp"
+                        android:text="My Bookings"
+                        android:textColor="@color/text_primary"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
 
                 <!-- History -->
-                <com.google.android.material.card.MaterialCardView
+                <LinearLayout
                     android:id="@+id/cardHistory"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="6dp"
                     android:layout_weight="1"
-                    app:cardCornerRadius="12dp"
-                    app:cardElevation="1dp"
-                    app:strokeColor="@color/divider_color"
-                    app:strokeWidth="1dp"
-                    app:cardBackgroundColor="@color/card_bg">
+                    android:background="@drawable/bg_card_white"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:paddingVertical="14dp"
+                    android:paddingHorizontal="6dp">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
+                    <FrameLayout
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/bg_icon_purple">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center"
+                            android:contentDescription="History"
+                            android:src="@drawable/ic_history" />
+                    </FrameLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:paddingVertical="14dp"
-                        android:paddingHorizontal="6dp">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="📜"
-                            android:textSize="20sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="6dp"
-                            android:text="History"
-                            android:textColor="@color/text_primary"
-                            android:textSize="11sp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
+                        android:layout_marginTop="8dp"
+                        android:text="History"
+                        android:textColor="@color/text_primary"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
             </LinearLayout>
 
             <!-- ONGOING REPAIRS Section Header -->
@@ -291,120 +260,126 @@
                     android:layout_alignParentEnd="true"
                     android:letterSpacing="0.04"
                     android:text="SEE ALL"
-                    android:textColor="@color/accent_amber"
+                    android:textColor="@color/text_secondary"
                     android:textSize="11sp"
                     android:textStyle="bold" />
             </RelativeLayout>
 
             <!-- Ongoing Repair Card 1 (Screen Replacement) -->
-            <com.google.android.material.card.MaterialCardView
+            <LinearLayout
                 android:id="@+id/cardRepair1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="1dp"
-                app:strokeColor="@color/divider_color"
-                app:strokeWidth="1dp"
-                app:cardBackgroundColor="@color/card_bg">
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/bg_card_white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="14dp">
+
+                <FrameLayout
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:background="@drawable/bg_logo_container">
+
+                    <ImageView
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="Phone Screen"
+                        android:src="@drawable/ic_phone_device" />
+                </FrameLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:padding="14dp">
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Screen Replacement"
-                            android:textColor="@color/text_primary"
-                            android:textSize="14sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="2dp"
-                            android:text="iPhone 13 · Ticket #TF-2201"
-                            android:textColor="@color/text_secondary"
-                            android:textSize="11sp" />
-                    </LinearLayout>
+                    android:layout_marginStart="12dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/bg_badge_amber"
-                        android:text="IN PROGRESS"
-                        android:textColor="@color/badge_amber_text"
-                        android:textSize="10sp"
-                        android:textStyle="bold"
-                        android:paddingHorizontal="8dp"
-                        android:paddingVertical="3dp" />
+                        android:text="Screen Replacement"
+                        android:textColor="@color/text_primary"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="iPhone 13 · Ticket #TF-2201"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="11sp" />
                 </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_badge_in_progress"
+                    android:text="● IN PROGRESS"
+                    android:textColor="#B45309"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
 
             <!-- Ongoing Repair Card 2 (Battery Service) -->
-            <com.google.android.material.card.MaterialCardView
+            <LinearLayout
                 android:id="@+id/cardRepair2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="16dp"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="1dp"
-                app:strokeColor="@color/divider_color"
-                app:strokeWidth="1dp"
-                app:cardBackgroundColor="@color/card_bg">
+                android:background="@drawable/bg_card_white"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="14dp">
+
+                <FrameLayout
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:background="@drawable/bg_icon_purple">
+
+                    <ImageView
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="Laptop Battery"
+                        android:src="@drawable/ic_laptop" />
+                </FrameLayout>
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:padding="14dp">
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:orientation="vertical">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Battery Service"
-                            android:textColor="@color/text_primary"
-                            android:textSize="14sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="2dp"
-                            android:text="Dell Inspiron · Ticket #TF-2199"
-                            android:textColor="@color/text_secondary"
-                            android:textSize="11sp" />
-                    </LinearLayout>
+                    android:layout_marginStart="12dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/bg_badge_red"
-                        android:text="PENDING"
-                        android:textColor="@color/badge_red_text"
-                        android:textSize="10sp"
-                        android:textStyle="bold"
-                        android:paddingHorizontal="8dp"
-                        android:paddingVertical="3dp" />
+                        android:text="Battery Service"
+                        android:textColor="@color/text_primary"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="Dell Inspiron · Ticket #TF-2199"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="11sp" />
                 </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_badge_pending"
+                    android:text="● PENDING"
+                    android:textColor="#DC2626"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
 
         </LinearLayout>
     </ScrollView>
@@ -415,18 +390,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@color/card_bg"
+        android:background="@color/white"
         android:elevation="8dp"
         android:orientation="vertical"
         android:paddingTop="8dp"
         android:paddingBottom="6dp">
 
+        <!-- Nav Items -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:orientation="horizontal">
 
+            <!-- Home -->
             <LinearLayout
                 android:id="@+id/navHome"
                 android:layout_width="0dp"
@@ -435,15 +412,29 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:contentDescription="Home"
+                    android:src="@drawable/ic_home" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
                     android:text="Home"
-                    android:textColor="@color/accent_amber"
-                    android:textSize="11sp"
+                    android:textColor="@color/checkbox_dark"
+                    android:textSize="10sp"
                     android:textStyle="bold" />
+
+                <View
+                    android:layout_width="4dp"
+                    android:layout_height="4dp"
+                    android:layout_marginTop="2dp"
+                    android:background="@drawable/bg_icon_orange" />
             </LinearLayout>
 
+            <!-- Services -->
             <LinearLayout
                 android:id="@+id/navServices"
                 android:layout_width="0dp"
@@ -452,14 +443,23 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:contentDescription="Services"
+                    android:src="@drawable/ic_wrench"
+                    android:tint="@color/text_muted" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
                     android:text="Services"
                     android:textColor="@color/text_muted"
-                    android:textSize="11sp" />
+                    android:textSize="10sp" />
             </LinearLayout>
 
+            <!-- Bookings -->
             <LinearLayout
                 android:id="@+id/navBookings"
                 android:layout_width="0dp"
@@ -468,14 +468,23 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:contentDescription="Bookings"
+                    android:src="@drawable/ic_calendar"
+                    android:tint="@color/text_muted" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
                     android:text="Bookings"
                     android:textColor="@color/text_muted"
-                    android:textSize="11sp" />
+                    android:textSize="10sp" />
             </LinearLayout>
 
+            <!-- History -->
             <LinearLayout
                 android:id="@+id/navHistory"
                 android:layout_width="0dp"
@@ -484,14 +493,23 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:contentDescription="History"
+                    android:src="@drawable/ic_history"
+                    android:tint="@color/text_muted" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
                     android:text="History"
                     android:textColor="@color/text_muted"
-                    android:textSize="11sp" />
+                    android:textSize="10sp" />
             </LinearLayout>
 
+            <!-- Profile -->
             <LinearLayout
                 android:id="@+id/navProfile"
                 android:layout_width="0dp"
@@ -500,14 +518,34 @@
                 android:gravity="center"
                 android:orientation="vertical">
 
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:contentDescription="Profile"
+                    android:src="@drawable/ic_person"
+                    android:tint="@color/text_muted" />
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
                     android:text="Profile"
                     android:textColor="@color/text_muted"
-                    android:textSize="11sp" />
+                    android:textSize="10sp" />
             </LinearLayout>
         </LinearLayout>
+
+        <!-- Small Footer Branding -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="4dp"
+            android:letterSpacing="0.2"
+            android:text="TECHFIX"
+            android:textColor="@color/input_border"
+            android:textSize="9sp"
+            android:textStyle="bold" />
     </LinearLayout>
 
 </RelativeLayout>
