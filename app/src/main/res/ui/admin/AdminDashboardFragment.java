@@ -45,6 +45,11 @@ public class AdminDashboardFragment extends Fragment {
             });
         }
 
+        if (binding.cardTotalRepairs != null) binding.cardTotalRepairs.setOnClickListener(v -> Navigation.findNavController(v).navigate(R.id.adminAppointmentsFragment));
+        if (binding.cardPendingAppts != null) binding.cardPendingAppts.setOnClickListener(v -> Navigation.findNavController(v).navigate(R.id.adminAppointmentsFragment));
+        if (binding.cardActiveRepairs != null) binding.cardActiveRepairs.setOnClickListener(v -> Navigation.findNavController(v).navigate(R.id.adminAppointmentsFragment));
+        if (binding.cardCompletedRepairs != null) binding.cardCompletedRepairs.setOnClickListener(v -> Navigation.findNavController(v).navigate(R.id.adminAppointmentsFragment));
+
         viewModel.getAppointments().observe(getViewLifecycleOwner(), appointmentItems -> {
             if (appointmentItems != null) {
                 int totalRepairs = appointmentItems.size();
