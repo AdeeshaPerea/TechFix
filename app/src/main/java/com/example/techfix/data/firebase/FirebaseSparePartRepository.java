@@ -109,4 +109,25 @@ public class FirebaseSparePartRepository {
             if (callback != null) callback.onSuccess();
         }
     }
+
+    public void deleteSparePart(String id, Callback callback) {
+        if (firestore != null) {
+            firestore.collection(FirestoreConstants.COLLECTION_SPARE_PARTS)
+                    .document(id)
+                    .delete()
+                    .addOnSuccessListener(aVoid -> {
+                        if (callback != null) callback.onSuccess();
+                    })
+                    .addOnFailureListener(e -> {
+                        if (callback != null) callback.onFailure(e.getLocalizedMessage());
+                    });
+        } else {
+            List<SparePartItem> current = sparePartsLiveData.getValue();
+            if (current != null) {
+                current.removeIf(p -> p.getId().equals(id));
+                sparePartsLiveData.setValue(current);
+            }
+            if (callback != null) callback.onSuccess();
+        }
+    }
 }

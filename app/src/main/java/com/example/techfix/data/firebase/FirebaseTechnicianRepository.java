@@ -101,4 +101,29 @@ public class FirebaseTechnicianRepository {
             if (callback != null) callback.onSuccess();
         }
     }
+
+    public void updateTechnician(User technician, Callback callback) {
+        addTechnician(technician, callback);
+    }
+
+    public void deleteTechnician(String id, Callback callback) {
+        if (firestore != null) {
+            firestore.collection(FirestoreConstants.COLLECTION_TECHNICIANS)
+                    .document(id)
+                    .delete()
+                    .addOnSuccessListener(aVoid -> {
+                        if (callback != null) callback.onSuccess();
+                    })
+                    .addOnFailureListener(e -> {
+                        if (callback != null) callback.onFailure(e.getLocalizedMessage());
+                    });
+        } else {
+            List<User> current = techniciansLiveData.getValue();
+            if (current != null) {
+                current.removeIf(u -> u.getId().equals(id));
+                techniciansLiveData.setValue(current);
+            }
+            if (callback != null) callback.onSuccess();
+        }
+    }
 }

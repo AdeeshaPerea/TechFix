@@ -95,7 +95,36 @@ public class FirebaseServiceRepository {
         } else {
             List<RepairServiceItem> current = servicesLiveData.getValue();
             if (current != null) {
-                current.add(service);
+                boolean found = false;
+                for (int i = 0; i < current.size(); i++) {
+                    if (current.get(i).getId().equals(service.getId())) {
+                        current.set(i, service);
+                        found = true;
+                        break;
+                    }
+                }
+                if (!found) current.add(service);
+                servicesLiveData.setValue(current);
+            }
+            if (callback != null) callback.onSuccess();
+        }
+    }
+
+    public void deleteService(String id, Callback callback) {
+        if (firestore != null) {
+            firestore.collection(FirestoreConstants.COLLECTION_SERVICES)
+                    .document(id)
+                    .delete()
+                    .addOnSuccessListener(aVoid -> {
+                        if (callback != null) callback.onSuccess();
+                    })
+                    .addOnFailureListener(e -> {
+                        if (callback != null) callback.onFailure(e.getLocalizedMessage());
+                    });
+        } else {
+            List<RepairServiceItem> current = servicesLiveData.getValue();
+            if (current != null) {
+                current.removeIf(s -> s.getId().equals(id));
                 servicesLiveData.setValue(current);
             }
             if (callback != null) callback.onSuccess();

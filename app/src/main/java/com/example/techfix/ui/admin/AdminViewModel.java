@@ -52,14 +52,20 @@ public class AdminViewModel extends ViewModel {
     public void changeAppointmentBranch(String aptId, String branchId, String branchName) { appointmentRepository.assignTechnician(aptId, "", branchName, null); }
 
     public void addBranch(BranchItem branch) { branchRepository.addBranch(branch, null); }
+    public void updateBranch(BranchItem branch) { branchRepository.updateBranch(branch, null); }
+    public void deleteBranch(String id) { branchRepository.deleteBranch(id, null); }
 
     public void addTechnician(User tech) { technicianRepository.addTechnician(tech, null); }
+    public void updateTechnician(User tech) { technicianRepository.updateTechnician(tech, null); }
+    public void deleteTechnician(String id) { technicianRepository.deleteTechnician(id, null); }
 
     public void addSparePart(SparePartItem part) { sparePartRepository.addOrUpdatePart(part, null); }
     public void updateSparePart(SparePartItem part) { sparePartRepository.addOrUpdatePart(part, null); }
+    public void deleteSparePart(String id) { sparePartRepository.deleteSparePart(id, null); }
 
     public void addService(RepairServiceItem service) { serviceRepository.addOrUpdateService(service, null); }
     public void updateService(RepairServiceItem service) { serviceRepository.addOrUpdateService(service, null); }
+    public void deleteService(String id) { serviceRepository.deleteService(id, null); }
 
     public void addGalleryItem(GalleryItem item) { galleryRepository.addGalleryItem(item); }
     public void deleteGalleryItem(String id) { galleryRepository.deleteGalleryItem(id); }

@@ -14,7 +14,18 @@ import java.util.List;
 
 public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.GalleryViewHolder> {
 
+    public interface OnGalleryClickListener {
+        void onGalleryClick(GalleryItem item);
+    }
+
     private List<GalleryItem> galleryItems = new ArrayList<>();
+    private OnGalleryClickListener listener;
+
+    public GalleryAdapter() {}
+
+    public GalleryAdapter(OnGalleryClickListener listener) {
+        this.listener = listener;
+    }
 
     public void setGalleryItems(List<GalleryItem> list) {
         this.galleryItems = list != null ? list : new ArrayList<>();
@@ -40,7 +51,7 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.GalleryV
         return galleryItems.size();
     }
 
-    static class GalleryViewHolder extends RecyclerView.ViewHolder {
+    class GalleryViewHolder extends RecyclerView.ViewHolder {
         private final ItemGalleryCardBinding binding;
 
         public GalleryViewHolder(ItemGalleryCardBinding binding) {
@@ -53,6 +64,10 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.GalleryV
             binding.tvGalleryDesc.setText(item.getDescription());
             binding.tvBeforeTag.setText(item.getBeforeTag());
             binding.tvAfterTag.setText(item.getAfterTag());
+
+            itemView.setOnClickListener(v -> {
+                if (listener != null) listener.onGalleryClick(item);
+            });
         }
     }
 }

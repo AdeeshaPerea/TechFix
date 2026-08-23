@@ -101,4 +101,29 @@ public class FirebaseBranchRepository {
             if (callback != null) callback.onSuccess();
         }
     }
+
+    public void updateBranch(BranchItem branch, Callback callback) {
+        addBranch(branch, callback);
+    }
+
+    public void deleteBranch(String id, Callback callback) {
+        if (firestore != null) {
+            firestore.collection(FirestoreConstants.COLLECTION_BRANCHES)
+                    .document(id)
+                    .delete()
+                    .addOnSuccessListener(aVoid -> {
+                        if (callback != null) callback.onSuccess();
+                    })
+                    .addOnFailureListener(e -> {
+                        if (callback != null) callback.onFailure(e.getLocalizedMessage());
+                    });
+        } else {
+            List<BranchItem> current = branchesLiveData.getValue();
+            if (current != null) {
+                current.removeIf(b -> b.getId().equals(id));
+                branchesLiveData.setValue(current);
+            }
+            if (callback != null) callback.onSuccess();
+        }
+    }
 }
