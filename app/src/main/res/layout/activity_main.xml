@@ -6,17 +6,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#F8FAFC">
+    android:background="@color/techfix_bg">
 
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/topAppToolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
-        android:background="#17253D"
+        android:background="@color/techfix_navy"
         app:title="TechFix"
-        app:titleTextColor="#FFFFFF"
+        app:titleTextColor="@color/techfix_white"
         app:navigationIcon="@drawable/ic_arrow_back"
-        app:navigationIconTint="#FFFFFF"
+        app:navigationIconTint="@color/techfix_white"
         android:visibility="gone" />
 
     <androidx.fragment.app.FragmentContainerView
@@ -28,29 +28,43 @@
         app:defaultNavHost="true"
         app:navGraph="@navigation/nav_graph" />
 
+    <!-- Top Divider Line above Bottom Navigation -->
+    <View
+        android:id="@+id/navDivider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/techfix_light_gray"
+        android:visibility="gone" />
+
+    <!-- Technician Bottom Navigation -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavTech"
         android:layout_width="match_parent"
-        android:layout_height="64dp"
-        android:background="#FFFFFF"
-        android:elevation="12dp"
+        android:layout_height="68dp"
+        android:background="@color/techfix_white"
+        android:elevation="8dp"
         android:visibility="gone"
+        app:itemIconSize="22dp"
         app:itemIconTint="@color/nav_item_color"
         app:itemTextColor="@color/nav_item_color"
-        app:itemRippleColor="#FEF3C7"
+        app:itemRippleColor="#FFE0B2"
+        app:itemActiveIndicatorStyle="@null"
         app:labelVisibilityMode="labeled"
         app:menu="@menu/menu_tech_bottom" />
 
+    <!-- Admin Bottom Navigation -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavAdmin"
         android:layout_width="match_parent"
-        android:layout_height="64dp"
-        android:background="#FFFFFF"
-        android:elevation="12dp"
+        android:layout_height="68dp"
+        android:background="@color/techfix_white"
+        android:elevation="8dp"
         android:visibility="gone"
+        app:itemIconSize="22dp"
         app:itemIconTint="@color/nav_item_color"
         app:itemTextColor="@color/nav_item_color"
-        app:itemRippleColor="#FEF3C7"
+        app:itemRippleColor="#FFE0B2"
+        app:itemActiveIndicatorStyle="@null"
         app:labelVisibilityMode="labeled"
         app:menu="@menu/menu_admin_bottom" />
 

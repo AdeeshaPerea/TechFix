@@ -46,7 +46,6 @@ public class FirebaseAppointmentRepository {
         if (firestore == null) return;
 
         firestore.collection(FirestoreConstants.COLLECTION_APPOINTMENTS)
-                .orderBy("createdAt", Query.Direction.DESCENDING)
                 .addSnapshotListener((snapshots, e) -> {
                     if (e != null || snapshots == null) {
                         if (appointmentsLiveData.getValue() == null || appointmentsLiveData.getValue().isEmpty()) {
@@ -67,6 +66,8 @@ public class FirebaseAppointmentRepository {
                     if (list.isEmpty()) {
                         list = MockDataGenerator.getMockAppointments();
                         seedInitialAppointments(list);
+                    } else {
+                        list.sort((a, b) -> b.getId().compareTo(a.getId()));
                     }
                     appointmentsLiveData.setValue(list);
                 });

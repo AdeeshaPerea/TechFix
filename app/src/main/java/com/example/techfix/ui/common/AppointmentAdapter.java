@@ -1,13 +1,14 @@
 package com.example.techfix.ui.common;
 
-import android.content.res.ColorStateList;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.techfix.R;
 import com.example.techfix.databinding.ItemAppointmentCardBinding;
 import com.example.techfix.model.AppointmentItem;
 
@@ -62,31 +63,65 @@ public class AppointmentAdapter extends RecyclerView.Adapter<AppointmentAdapter.
         }
 
         public void bind(AppointmentItem item) {
-            binding.tvCustomerNameAndCode.setText(item.getCustomerName() + " • #" + item.getAppointmentCode());
-            binding.tvDeviceAndService.setText(item.getDeviceModel() + " • " + item.getServiceRequested());
-            binding.tvBranchAndTime.setText(item.getBranchName() + " • " + item.getPreferredDate() + " (" + item.getPreferredTime() + ")");
-
-
-            String status = item.getStatus();
-            binding.tvAppointmentStatus.setText(status);
-            binding.tvAppointmentStatus.setBackgroundTintList(ColorStateList.valueOf(FormatUtils.getStatusBgColor(status)));
-            binding.tvAppointmentStatus.setTextColor(FormatUtils.getStatusTextColor(status));
-
-            if ("PENDING".equalsIgnoreCase(status)) {
-                binding.btnAccept.setVisibility(View.VISIBLE);
-                binding.btnReject.setVisibility(View.VISIBLE);
-            } else {
-                binding.btnAccept.setVisibility(View.GONE);
-                binding.btnReject.setVisibility(View.GONE);
+            if (binding.tvAppointmentCode != null) {
+                binding.tvAppointmentCode.setText("#" + (item.getAppointmentCode() != null ? item.getAppointmentCode() : "RF-1024"));
             }
 
-            binding.btnAccept.setOnClickListener(v -> {
-                if (listener != null) listener.onAcceptClick(item);
-            });
+            if (binding.tvDeviceModel != null) {
+                binding.tvDeviceModel.setText(item.getDeviceModel() != null ? item.getDeviceModel() : "Device");
+            }
 
-            binding.btnReject.setOnClickListener(v -> {
-                if (listener != null) listener.onRejectClick(item);
-            });
+            if (binding.tvDeviceAndService != null) {
+                binding.tvDeviceAndService.setText(item.getServiceRequested() != null ? item.getServiceRequested() : "Repair Service");
+            }
+
+            if (binding.tvCustomerNameAndCode != null) {
+                binding.tvCustomerNameAndCode.setText("👤 Customer: " + (item.getCustomerName() != null ? item.getCustomerName() : "Customer"));
+            }
+
+            if (binding.tvTechnicianName != null) {
+                binding.tvTechnicianName.setText("👨‍🔧 Branch: " + (item.getBranchName() != null ? item.getBranchName() : "Colombo Branch"));
+            }
+
+            if (binding.tvBranchAndTime != null) {
+                binding.tvBranchAndTime.setText(item.getPreferredDate() != null ? item.getPreferredDate() : "Aug 24, 2026");
+            }
+
+            String status = item.getStatus() != null ? item.getStatus() : "PENDING";
+            String statusUpper = status.toUpperCase();
+
+            if (binding.tvAppointmentStatus != null) {
+                binding.tvAppointmentStatus.setText(status);
+                if (statusUpper.contains("CONFIRMED") || statusUpper.contains("COMPLETED")) {
+                    binding.tvAppointmentStatus.setBackgroundResource(R.drawable.bg_pill_green_solid);
+                } else if (statusUpper.contains("PROGRESS") || statusUpper.contains("ASSIGNED") || statusUpper.contains("ACTIVE")) {
+                    binding.tvAppointmentStatus.setBackgroundResource(R.drawable.bg_pill_blue_solid);
+                } else if (statusUpper.contains("REJECT") || statusUpper.contains("CANCEL")) {
+                    binding.tvAppointmentStatus.setBackgroundResource(R.drawable.bg_pill_red_solid);
+                } else {
+                    binding.tvAppointmentStatus.setBackgroundResource(R.drawable.bg_pill_orange_solid);
+                }
+            }
+
+            if (binding.layoutActionButtons != null) {
+                if ("PENDING".equalsIgnoreCase(status) || statusUpper.contains("NEW")) {
+                    binding.layoutActionButtons.setVisibility(View.VISIBLE);
+                } else {
+                    binding.layoutActionButtons.setVisibility(View.GONE);
+                }
+            }
+
+            if (binding.btnAccept != null) {
+                binding.btnAccept.setOnClickListener(v -> {
+                    if (listener != null) listener.onAcceptClick(item);
+                });
+            }
+
+            if (binding.btnReject != null) {
+                binding.btnReject.setOnClickListener(v -> {
+                    if (listener != null) listener.onRejectClick(item);
+                });
+            }
 
             itemView.setOnClickListener(v -> {
                 if (listener != null) listener.onAppointmentClick(item);

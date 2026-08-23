@@ -99,13 +99,20 @@ public class CustomerHomeActivity extends AppCompatActivity {
         tvSeeAllRepairs = findViewById(R.id.tvSeeAllRepairs);
         mapNearestBranch = findViewById(R.id.mapNearestBranch);
         if (mapNearestBranch != null) {
-            mapNearestBranch.onCreate(savedInstanceState);
-            mapNearestBranch.getMapAsync(map -> {
-                this.mapLibreMap = map;
-                map.setStyle(new Style.Builder().fromUri("https://demotiles.maplibre.org/style.json"), style -> {
-                    enableLocationComponent(style);
+            try {
+                MapLibre.getInstance(this);
+            } catch (Exception ignored) {}
+            try {
+                mapNearestBranch.onCreate(savedInstanceState);
+                mapNearestBranch.getMapAsync(map -> {
+                    this.mapLibreMap = map;
+                    map.setStyle(new Style.Builder().fromUri("https://demotiles.maplibre.org/style.json"), style -> {
+                        enableLocationComponent(style);
+                    });
                 });
-            });
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
 
         navHome = findViewById(R.id.navHome);
@@ -163,9 +170,11 @@ public class CustomerHomeActivity extends AppCompatActivity {
         }
 
         if (cardTrackRepair != null) {
-            cardTrackRepair.setOnClickListener(v ->
-                    Toast.makeText(CustomerHomeActivity.this, "Track Repair: iPhone 13 (#TF-2201)", Toast.LENGTH_SHORT).show()
-            );
+            cardTrackRepair.setOnClickListener(v -> {
+                Intent intentPhotos = new Intent(CustomerHomeActivity.this, CustomerRepairPhotosActivity.class);
+                intentPhotos.putExtra("REPAIR_ID", "REP_001");
+                startActivity(intentPhotos);
+            });
         }
 
         if (cardMyBookings != null) {
@@ -180,10 +189,28 @@ public class CustomerHomeActivity extends AppCompatActivity {
             );
         }
 
+        if (cardRepair1 != null) {
+            cardRepair1.setOnClickListener(v -> {
+                Intent intentPhotos = new Intent(CustomerHomeActivity.this, CustomerRepairPhotosActivity.class);
+                intentPhotos.putExtra("REPAIR_ID", "REP_001");
+                startActivity(intentPhotos);
+            });
+        }
+
+        if (cardRepair2 != null) {
+            cardRepair2.setOnClickListener(v -> {
+                Intent intentPhotos = new Intent(CustomerHomeActivity.this, CustomerRepairPhotosActivity.class);
+                intentPhotos.putExtra("REPAIR_ID", "REP_002");
+                startActivity(intentPhotos);
+            });
+        }
+
         if (tvSeeAllRepairs != null) {
-            tvSeeAllRepairs.setOnClickListener(v ->
-                    Toast.makeText(CustomerHomeActivity.this, "All Ongoing Repairs", Toast.LENGTH_SHORT).show()
-            );
+            tvSeeAllRepairs.setOnClickListener(v -> {
+                Intent intentPhotos = new Intent(CustomerHomeActivity.this, CustomerRepairPhotosActivity.class);
+                intentPhotos.putExtra("REPAIR_ID", "REP_001");
+                startActivity(intentPhotos);
+            });
         }
 
         // Bottom navigation listeners

@@ -14,6 +14,11 @@ public class FirestoreConstants {
     public static final String COLLECTION_REPAIR_NOTES = "repairNotes";
     public static final String COLLECTION_REPAIR_PARTS = "repairParts";
     public static final String COLLECTION_GALLERY = "gallery";
+    public static final String COLLECTION_REPAIR_PHOTOS = "repairPhotos";
+
+    // Photo Types
+    public static final String PHOTO_TYPE_BEFORE = "BEFORE_REPAIR";
+    public static final String PHOTO_TYPE_AFTER = "AFTER_REPAIR";
 
     // User Roles
     public static final String ROLE_ADMIN = "ADMIN";

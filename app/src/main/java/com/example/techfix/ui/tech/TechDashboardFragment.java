@@ -43,8 +43,10 @@ public class TechDashboardFragment extends Fragment {
             Navigation.findNavController(requireView()).navigate(R.id.action_techDashboard_to_techRepairDetail, bundle);
         });
 
-        binding.rvRecentRepairs.setLayoutManager(new LinearLayoutManager(requireContext()));
-        binding.rvRecentRepairs.setAdapter(adapter);
+        if (binding.rvRecentRepairs != null) {
+            binding.rvRecentRepairs.setLayoutManager(new LinearLayoutManager(requireContext()));
+            binding.rvRecentRepairs.setAdapter(adapter);
+        }
 
         viewModel.getRepairs().observe(getViewLifecycleOwner(), repairItems -> {
             if (repairItems != null) {
@@ -53,28 +55,32 @@ public class TechDashboardFragment extends Fragment {
             }
         });
 
-        binding.tvViewAll.setOnClickListener(v -> {
-            Navigation.findNavController(v).navigate(R.id.action_techDashboard_to_techRepairs);
-        });
+        if (binding.tvViewAll != null) {
+            binding.tvViewAll.setOnClickListener(v -> {
+                Navigation.findNavController(v).navigate(R.id.action_techDashboard_to_techRepairs);
+            });
+        }
     }
 
     private void updateMetrics(List<RepairItem> items) {
         int today = items.size();
-        int diagnosing = 0;
         int inProgress = 0;
         int completed = 0;
 
         for (RepairItem item : items) {
-            String status = item.getStatus();
-            if ("DIAGNOSING".equalsIgnoreCase(status)) diagnosing++;
-            else if ("REPAIRING".equalsIgnoreCase(status) || "WAITING FOR PARTS".equalsIgnoreCase(status) || "QUALITY CHECK".equalsIgnoreCase(status)) inProgress++;
-            else if ("COMPLETED".equalsIgnoreCase(status)) completed++;
+            String status = item.getStatus() != null ? item.getStatus().toUpperCase() : "";
+            if (status.contains("COMPLETED") || status.contains("DONE")) {
+                completed++;
+            } else if (status.contains("PROGRESS") || status.contains("ACTIVE") || status.contains("ASSIGNED") || status.contains("DIAGNOSING")) {
+                inProgress++;
+            } else {
+                inProgress++;
+            }
         }
 
-        binding.tvTodayCount.setText(String.valueOf(today));
-        binding.tvDiagnosingCount.setText(String.valueOf(diagnosing));
-        binding.tvInProgressCount.setText(String.valueOf(inProgress));
-        binding.tvCompletedCount.setText(String.valueOf(completed));
+        if (binding.tvTodayCount != null) binding.tvTodayCount.setText(String.valueOf(today));
+        if (binding.tvInProgressCount != null) binding.tvInProgressCount.setText(String.valueOf(inProgress));
+        if (binding.tvCompletedCount != null) binding.tvCompletedCount.setText(String.valueOf(completed));
     }
 
     @Override

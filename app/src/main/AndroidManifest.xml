@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
+
     <application
+        android:name=".TechFixApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -10,6 +18,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TechFix">
+
+        <!-- FileProvider for camera output URIs -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
 
         <!-- Main Activity Container (Jetpack Navigation) -->
         <activity
@@ -30,6 +49,18 @@
             android:exported="false" />
         <activity
             android:name=".customer.NewRepairRequestActivity"
+            android:exported="false" />
+        <activity
+            android:name=".customer.PaymentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".customer.ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".customer.ReceiptActivity"
+            android:exported="false" />
+        <activity
+            android:name=".customer.CustomerRepairPhotosActivity"
             android:exported="false" />
 
     </application>

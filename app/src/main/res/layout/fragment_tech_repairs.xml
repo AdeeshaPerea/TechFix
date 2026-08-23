@@ -1,25 +1,211 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:background="#F2F3F5">
-<!--  Header  -->
-<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:background="#122040" android:padding="20dp" android:gravity="center_vertical">
-<LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
-<TextView android:id="@+id/txtGreeting" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="👋 Nuwan Silva" android:textColor="#FFFFFF" android:textSize="22sp" android:textStyle="bold"/>
-<TextView android:id="@+id/txtRoleBranch" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Colombo 03 · Mobile &amp; Laptop Specialist" android:textColor="#AEB6C4" android:textSize="14sp"/>
-</LinearLayout>
-<ImageButton android:id="@+id/btnNotifications" android:layout_width="44dp" android:layout_height="44dp" android:background="@drawable/bg_icon_circle" android:src="@drawable/ic_bell" android:contentDescription="Notifications"/>
-</LinearLayout>
-<!--  Filter Chips  -->
-<com.google.android.material.chip.ChipGroup android:id="@+id/chipGroupFilters" android:layout_width="match_parent" android:layout_height="wrap_content" android:padding="16dp" app:singleSelection="true">
-<com.google.android.material.chip.Chip android:id="@+id/chipAll" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="All" android:checked="true"/>
-<com.google.android.material.chip.Chip android:id="@+id/chipUrgent" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Urgent"/>
-<com.google.android.material.chip.Chip android:id="@+id/chipToday" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Today"/>
-<com.google.android.material.chip.Chip android:id="@+id/chipInProgress" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="In Progress"/>
-</com.google.android.material.chip.ChipGroup>
-<!--  Empty State  -->
-<LinearLayout android:id="@+id/layoutEmptyState" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="center" android:visibility="gone" android:padding="32dp">
-<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="No repairs found" android:textColor="#8A93A8" android:textSize="16sp"/>
-</LinearLayout>
-<!--  Repair job list  -->
-<androidx.recyclerview.widget.RecyclerView android:id="@+id/rvAssignedRepairs" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:paddingStart="16dp" android:paddingEnd="16dp" android:clipToPadding="false" tools:listitem="@layout/item_repair_card"/>
-<!--  Bottom nav  -->
-<include layout="@layout/bottom_nav_bar"/>
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android" 
+    xmlns:app="http://schemas.android.com/apk/res-auto" 
+    xmlns:tools="http://schemas.android.com/tools" 
+    android:layout_width="match_parent" 
+    android:layout_height="match_parent" 
+    android:orientation="vertical" 
+    android:background="@color/techfix_bg">
+
+    <!-- Header -->
+    <LinearLayout 
+        android:layout_width="match_parent" 
+        android:layout_height="wrap_content" 
+        android:orientation="vertical" 
+        android:background="@color/techfix_navy" 
+        android:paddingStart="20dp" 
+        android:paddingEnd="20dp" 
+        android:paddingTop="24dp" 
+        android:paddingBottom="20dp">
+
+        <RelativeLayout 
+            android:layout_width="match_parent" 
+            android:layout_height="wrap_content">
+
+            <LinearLayout 
+                android:layout_width="wrap_content" 
+                android:layout_height="wrap_content" 
+                android:orientation="vertical" 
+                android:layout_alignParentStart="true">
+
+                <TextView 
+                    android:id="@+id/txtGreeting" 
+                    android:layout_width="wrap_content" 
+                    android:layout_height="wrap_content" 
+                    android:text="My Repair Work" 
+                    android:textColor="@color/techfix_white" 
+                    android:textSize="22sp" 
+                    android:textStyle="bold"/>
+
+                <TextView 
+                    android:id="@+id/txtRoleBranch" 
+                    android:layout_width="wrap_content" 
+                    android:layout_height="wrap_content" 
+                    android:layout_marginTop="2dp"
+                    android:text="Colombo Branch • Assigned Jobs" 
+                    android:textColor="#C9CFDA" 
+                    android:textSize="13sp"/>
+            </LinearLayout>
+
+            <ImageButton 
+                android:id="@+id/btnNotifications" 
+                android:layout_width="40dp" 
+                android:layout_height="40dp" 
+                android:layout_alignParentEnd="true" 
+                android:layout_centerVertical="true" 
+                android:background="@drawable/bg_icon_button_navy" 
+                android:src="@drawable/ic_bell" 
+                android:contentDescription="Notifications"
+                app:tint="@color/techfix_white"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <!-- Search & Filter Area -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="8dp">
+
+        <!-- Search input box -->
+        <EditText
+            android:id="@+id/etSearchRepairs"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/bg_input_field_modern"
+            android:drawableStart="@drawable/ic_search_input"
+            android:drawablePadding="12dp"
+            android:hint="Search assigned repairs..."
+            android:textColorHint="@color/techfix_gray_text"
+            android:textColor="@color/techfix_dark_text"
+            android:textSize="14sp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:inputType="text"/>
+
+        <!-- Filter Chips Row -->
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/chipAll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/bg_pill_orange_solid"
+                    android:gravity="center"
+                    android:paddingStart="18dp"
+                    android:paddingEnd="18dp"
+                    android:text="All Jobs"
+                    android:textColor="@color/techfix_white"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:clickable="true"
+                    android:focusable="true"/>
+
+                <TextView
+                    android:id="@+id/chipUrgent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/bg_white_pill"
+                    android:gravity="center"
+                    android:paddingStart="18dp"
+                    android:paddingEnd="18dp"
+                    android:text="Pending"
+                    android:textColor="@color/techfix_navy"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:clickable="true"
+                    android:focusable="true"/>
+
+                <TextView
+                    android:id="@+id/chipInProgress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/bg_white_pill"
+                    android:gravity="center"
+                    android:paddingStart="18dp"
+                    android:paddingEnd="18dp"
+                    android:text="In Progress"
+                    android:textColor="@color/techfix_navy"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:clickable="true"
+                    android:focusable="true"/>
+
+                <TextView
+                    android:id="@+id/chipToday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:background="@drawable/bg_white_pill"
+                    android:gravity="center"
+                    android:paddingStart="18dp"
+                    android:paddingEnd="18dp"
+                    android:text="Completed"
+                    android:textColor="@color/techfix_navy"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:clickable="true"
+                    android:focusable="true"/>
+            </LinearLayout>
+        </HorizontalScrollView>
+    </LinearLayout>
+
+    <!-- Empty State -->
+    <LinearLayout 
+        android:id="@+id/layoutEmptyState" 
+        android:layout_width="match_parent" 
+        android:layout_height="wrap_content" 
+        android:orientation="vertical" 
+        android:gravity="center" 
+        android:visibility="gone" 
+        android:padding="32dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🔧"
+            android:textSize="36sp" />
+
+        <TextView 
+            android:layout_width="wrap_content" 
+            android:layout_height="wrap_content" 
+            android:layout_marginTop="8dp"
+            android:text="No assigned repairs found" 
+            android:textColor="@color/techfix_navy" 
+            android:textSize="16sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="You're all caught up on your repair queue."
+            android:textColor="@color/techfix_gray_text"
+            android:textSize="13sp" />
+    </LinearLayout>
+
+    <!-- Repair job list -->
+    <androidx.recyclerview.widget.RecyclerView 
+        android:id="@+id/rvAssignedRepairs" 
+        android:layout_width="match_parent" 
+        android:layout_height="0dp" 
+        android:layout_weight="1" 
+        android:clipToPadding="false" 
+        android:paddingBottom="16dp"
+        tools:listitem="@layout/item_repair_card"/>
 </LinearLayout>

@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/nav_tech_repairs"
-        android:icon="@android:drawable/ic_menu_today"
-        android:title="Jobs" />
-    <item
         android:id="@+id/nav_tech_dashboard"
-        android:icon="@android:drawable/ic_menu_agenda"
-        android:title="Schedule" />
+        android:icon="@drawable/ic_home"
+        android:title="Dashboard" />
+    <item
+        android:id="@+id/nav_tech_repairs"
+        android:icon="@drawable/ic_jobs"
+        android:title="My Jobs" />
     <item
         android:id="@+id/nav_tech_notifications"
-        android:icon="@android:drawable/ic_menu_manage"
-        android:title="Parts" />
+        android:icon="@drawable/ic_parts"
+        android:title="Inventory" />
     <item
         android:id="@+id/nav_tech_profile"
-        android:icon="@android:drawable/ic_menu_myplaces"
+        android:icon="@drawable/ic_settings"
         android:title="Profile" />
 </menu>

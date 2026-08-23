@@ -43,77 +43,93 @@ public class MainActivity extends AppCompatActivity {
                 binding.topAppToolbar.setVisibility(View.GONE);
                 binding.bottomNavTech.setVisibility(View.GONE);
                 binding.bottomNavAdmin.setVisibility(View.GONE);
-            } else if (destId == R.id.techRepairsFragment || destId == R.id.techDashboardFragment || 
-                       destId == R.id.adminDashboardFragment || destId == R.id.adminAppointmentsFragment || 
-                       destId == R.id.adminBranchesFragment || destId == R.id.adminTechniciansFragment || 
-                       destId == R.id.adminSparePartsFragment || destId == R.id.adminServicesFragment) {
-                // Top Level Dashboard Screens (Show bottom nav, hide top toolbar)
-                binding.topAppToolbar.setVisibility(View.GONE);
-                if (destId == R.id.techRepairsFragment || destId == R.id.techDashboardFragment) {
-                    binding.bottomNavTech.setVisibility(View.VISIBLE);
-                    binding.bottomNavAdmin.setVisibility(View.GONE);
-                } else {
-                    binding.bottomNavTech.setVisibility(View.GONE);
-                    binding.bottomNavAdmin.setVisibility(View.VISIBLE);
-                }
-            } else {
-                // Detail & Inner Sub-screens (Show Top Toolbar with Back Arrow, hide bottom nav or keep as secondary)
-                binding.topAppToolbar.setVisibility(View.VISIBLE);
-                binding.topAppToolbar.setTitle(destination.getLabel() != null ? destination.getLabel() : "TechFix");
+                if (binding.navDivider != null) binding.navDivider.setVisibility(View.GONE);
+                return;
+            }
 
-                if (destId == R.id.techRepairDetailFragment || destId == R.id.techDiagnosisFragment || 
-                    destId == R.id.techRepairStatusFragment || destId == R.id.techRepairNotesFragment || 
-                    destId == R.id.techSparePartsUsedFragment || destId == R.id.techRepairGalleryFragment || 
-                    destId == R.id.techProfileFragment || destId == R.id.techNotificationsFragment) {
-                    binding.bottomNavTech.setVisibility(View.VISIBLE);
-                    binding.bottomNavAdmin.setVisibility(View.GONE);
-                } else {
-                    binding.bottomNavTech.setVisibility(View.GONE);
-                    binding.bottomNavAdmin.setVisibility(View.VISIBLE);
-                }
+            boolean isTechDestination = (destId == R.id.techRepairsFragment || destId == R.id.techDashboardFragment ||
+                    destId == R.id.techRepairDetailFragment || destId == R.id.techDiagnosisFragment ||
+                    destId == R.id.techRepairStatusFragment || destId == R.id.techRepairNotesFragment ||
+                    destId == R.id.techSparePartsUsedFragment || destId == R.id.techRepairGalleryFragment ||
+                    destId == R.id.techProfileFragment || destId == R.id.techNotificationsFragment);
+
+            binding.topAppToolbar.setVisibility(View.GONE);
+
+            if (isTechDestination) {
+                binding.bottomNavTech.setVisibility(View.VISIBLE);
+                binding.bottomNavAdmin.setVisibility(View.GONE);
+                if (binding.navDivider != null) binding.navDivider.setVisibility(View.VISIBLE);
+
+                // Update tech active item
+                if (destId == R.id.techDashboardFragment) binding.bottomNavTech.getMenu().findItem(R.id.nav_tech_dashboard).setChecked(true);
+                else if (destId == R.id.techRepairsFragment) binding.bottomNavTech.getMenu().findItem(R.id.nav_tech_repairs).setChecked(true);
+                else if (destId == R.id.techNotificationsFragment) binding.bottomNavTech.getMenu().findItem(R.id.nav_tech_notifications).setChecked(true);
+                else if (destId == R.id.techProfileFragment) binding.bottomNavTech.getMenu().findItem(R.id.nav_tech_profile).setChecked(true);
+            } else {
+                binding.bottomNavTech.setVisibility(View.GONE);
+                binding.bottomNavAdmin.setVisibility(View.VISIBLE);
+                if (binding.navDivider != null) binding.navDivider.setVisibility(View.VISIBLE);
+
+                // Update admin active item
+                if (destId == R.id.adminDashboardFragment) binding.bottomNavAdmin.getMenu().findItem(R.id.nav_admin_dashboard).setChecked(true);
+                else if (destId == R.id.adminAppointmentsFragment) binding.bottomNavAdmin.getMenu().findItem(R.id.nav_admin_appointments).setChecked(true);
+                else if (destId == R.id.adminTechniciansFragment) binding.bottomNavAdmin.getMenu().findItem(R.id.nav_admin_techs).setChecked(true);
+                else if (destId == R.id.adminSparePartsFragment) binding.bottomNavAdmin.getMenu().findItem(R.id.nav_admin_inventory).setChecked(true);
+                else if (destId == R.id.adminProfileSettingsFragment) binding.bottomNavAdmin.getMenu().findItem(R.id.nav_admin_profile).setChecked(true);
             }
         });
 
         binding.bottomNavTech.setOnItemSelectedListener(item -> {
             int itemId = item.getItemId();
-            if (itemId == R.id.nav_tech_repairs) {
-                navController.navigate(R.id.techRepairsFragment);
-                return true;
-            } else if (itemId == R.id.nav_tech_dashboard) {
-                navController.navigate(R.id.techDashboardFragment);
-                return true;
-            } else if (itemId == R.id.nav_tech_notifications) {
-                navController.navigate(R.id.techNotificationsFragment);
-                return true;
-            } else if (itemId == R.id.nav_tech_profile) {
-                navController.navigate(R.id.techProfileFragment);
-                return true;
+            if (navController != null && navController.getCurrentDestination() != null) {
+                int currentId = navController.getCurrentDestination().getId();
+                try {
+                    if (itemId == R.id.nav_tech_dashboard) {
+                        if (currentId != R.id.techDashboardFragment) navController.navigate(R.id.techDashboardFragment);
+                        return true;
+                    } else if (itemId == R.id.nav_tech_repairs) {
+                        if (currentId != R.id.techRepairsFragment) navController.navigate(R.id.techRepairsFragment);
+                        return true;
+                    } else if (itemId == R.id.nav_tech_notifications) {
+                        if (currentId != R.id.techNotificationsFragment) navController.navigate(R.id.techNotificationsFragment);
+                        return true;
+                    } else if (itemId == R.id.nav_tech_profile) {
+                        if (currentId != R.id.techProfileFragment) navController.navigate(R.id.techProfileFragment);
+                        return true;
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
-            return false;
+            return true;
         });
 
         binding.bottomNavAdmin.setOnItemSelectedListener(item -> {
             int itemId = item.getItemId();
-            if (itemId == R.id.nav_admin_dashboard) {
-                navController.navigate(R.id.adminDashboardFragment);
-                return true;
-            } else if (itemId == R.id.nav_admin_appointments) {
-                navController.navigate(R.id.adminAppointmentsFragment);
-                return true;
-            } else if (itemId == R.id.nav_admin_techs) {
-                navController.navigate(R.id.adminTechniciansFragment);
-                return true;
-            } else if (itemId == R.id.nav_admin_branches) {
-                navController.navigate(R.id.adminBranchesFragment);
-                return true;
-            } else if (itemId == R.id.nav_admin_inventory) {
-                navController.navigate(R.id.adminSparePartsFragment);
-                return true;
-            } else if (itemId == R.id.nav_admin_profile) {
-                navController.navigate(R.id.adminProfileSettingsFragment);
-                return true;
+            if (navController != null && navController.getCurrentDestination() != null) {
+                int currentId = navController.getCurrentDestination().getId();
+                try {
+                    if (itemId == R.id.nav_admin_dashboard) {
+                        if (currentId != R.id.adminDashboardFragment) navController.navigate(R.id.adminDashboardFragment);
+                        return true;
+                    } else if (itemId == R.id.nav_admin_appointments) {
+                        if (currentId != R.id.adminAppointmentsFragment) navController.navigate(R.id.adminAppointmentsFragment);
+                        return true;
+                    } else if (itemId == R.id.nav_admin_techs) {
+                        if (currentId != R.id.adminTechniciansFragment) navController.navigate(R.id.adminTechniciansFragment);
+                        return true;
+                    } else if (itemId == R.id.nav_admin_inventory) {
+                        if (currentId != R.id.adminSparePartsFragment) navController.navigate(R.id.adminSparePartsFragment);
+                        return true;
+                    } else if (itemId == R.id.nav_admin_profile) {
+                        if (currentId != R.id.adminProfileSettingsFragment) navController.navigate(R.id.adminProfileSettingsFragment);
+                        return true;
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
-            return false;
+            return true;
         });
     }
 }

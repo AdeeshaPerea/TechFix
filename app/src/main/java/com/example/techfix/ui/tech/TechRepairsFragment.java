@@ -1,12 +1,15 @@
 package com.example.techfix.ui.tech;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
@@ -28,6 +31,7 @@ public class TechRepairsFragment extends Fragment {
 
     private List<RepairItem> allRepairs = new ArrayList<>();
     private String selectedFilter = "ALL";
+    private String searchQuery = "";
 
     @Nullable
     @Override
@@ -50,43 +54,90 @@ public class TechRepairsFragment extends Fragment {
         binding.rvAssignedRepairs.setLayoutManager(new LinearLayoutManager(requireContext()));
         binding.rvAssignedRepairs.setAdapter(adapter);
 
+        // Search text watcher
+        if (binding.etSearchRepairs != null) {
+            binding.etSearchRepairs.addTextChangedListener(new TextWatcher() {
+                @Override
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+                @Override
+                public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    searchQuery = s.toString().trim().toLowerCase();
+                    filterAndRender();
+                }
+
+                @Override
+                public void afterTextChanged(Editable s) {}
+            });
+        }
+
+        // Chip Filters
+        if (binding.chipAll != null) binding.chipAll.setOnClickListener(v -> setFilter("ALL"));
+        if (binding.chipUrgent != null) binding.chipUrgent.setOnClickListener(v -> setFilter("PENDING"));
+        if (binding.chipInProgress != null) binding.chipInProgress.setOnClickListener(v -> setFilter("IN PROGRESS"));
+        if (binding.chipToday != null) binding.chipToday.setOnClickListener(v -> setFilter("COMPLETED"));
+
         viewModel.getRepairs().observe(getViewLifecycleOwner(), repairItems -> {
             if (repairItems != null) {
                 allRepairs = repairItems;
                 filterAndRender();
             }
         });
+    }
 
-        binding.chipGroupFilters.setOnCheckedStateChangeListener((group, checkedIds) -> {
-            if (checkedIds.isEmpty() || checkedIds.contains(R.id.chipAll)) {
-                selectedFilter = "ALL";
-            } else if (checkedIds.contains(R.id.chipUrgent)) {
-                selectedFilter = "URGENT";
-            } else if (checkedIds.contains(R.id.chipToday)) {
-                selectedFilter = "TODAY";
-            } else if (checkedIds.contains(R.id.chipInProgress)) {
-                selectedFilter = "IN PROGRESS";
-            }
-            filterAndRender();
-        });
+    private void setFilter(String filter) {
+        selectedFilter = filter;
+
+        int activeBg = R.drawable.bg_pill_orange_solid;
+        int inactiveBg = R.drawable.bg_white_pill;
+        int activeText = ContextCompat.getColor(requireContext(), R.color.techfix_white);
+        int inactiveText = ContextCompat.getColor(requireContext(), R.color.techfix_navy);
+
+        if (binding.chipAll != null) {
+            binding.chipAll.setBackgroundResource("ALL".equals(filter) ? activeBg : inactiveBg);
+            binding.chipAll.setTextColor("ALL".equals(filter) ? activeText : inactiveText);
+        }
+        if (binding.chipUrgent != null) {
+            binding.chipUrgent.setBackgroundResource("PENDING".equals(filter) ? activeBg : inactiveBg);
+            binding.chipUrgent.setTextColor("PENDING".equals(filter) ? activeText : inactiveText);
+        }
+        if (binding.chipInProgress != null) {
+            binding.chipInProgress.setBackgroundResource("IN PROGRESS".equals(filter) ? activeBg : inactiveBg);
+            binding.chipInProgress.setTextColor("IN PROGRESS".equals(filter) ? activeText : inactiveText);
+        }
+        if (binding.chipToday != null) {
+            binding.chipToday.setBackgroundResource("COMPLETED".equals(filter) ? activeBg : inactiveBg);
+            binding.chipToday.setTextColor("COMPLETED".equals(filter) ? activeText : inactiveText);
+        }
+
+        filterAndRender();
     }
 
     private void filterAndRender() {
         List<RepairItem> filtered = new ArrayList<>();
         for (RepairItem item : allRepairs) {
-            boolean matches = false;
-            if ("ALL".equalsIgnoreCase(selectedFilter)) {
-                matches = true;
-            } else if ("URGENT".equalsIgnoreCase(selectedFilter)) {
-                matches = "URGENT".equalsIgnoreCase(item.getStatus()) || "High".equalsIgnoreCase(item.getPriority());
-            } else if ("TODAY".equalsIgnoreCase(selectedFilter)) {
-                matches = item.getAppointmentDate() != null && item.getAppointmentDate().contains("2026-08-22");
+            String status = item.getStatus() != null ? item.getStatus().toUpperCase() : "";
+            boolean matchesFilter = true;
+
+            if ("PENDING".equalsIgnoreCase(selectedFilter)) {
+                matchesFilter = status.contains("PENDING") || status.contains("NEW");
             } else if ("IN PROGRESS".equalsIgnoreCase(selectedFilter)) {
-                matches = "IN PROGRESS".equalsIgnoreCase(item.getStatus()) || "REPAIRING".equalsIgnoreCase(item.getStatus());
+                matchesFilter = status.contains("PROGRESS") || status.contains("ACTIVE") || status.contains("REPAIRING");
+            } else if ("COMPLETED".equalsIgnoreCase(selectedFilter)) {
+                matchesFilter = status.contains("COMPLETED") || status.contains("DONE");
             }
 
-            if (matches) {
-                filtered.add(item);
+            if (matchesFilter) {
+                if (!searchQuery.isEmpty()) {
+                    String customer = item.getCustomerName() != null ? item.getCustomerName().toLowerCase() : "";
+                    String device = item.getDeviceName() != null ? item.getDeviceName().toLowerCase() : "";
+                    String code = item.getRepairCode() != null ? item.getRepairCode().toLowerCase() : "";
+                    if (customer.contains(searchQuery) || device.contains(searchQuery) || code.contains(searchQuery)) {
+                        filtered.add(item);
+                    }
+                } else {
+                    filtered.add(item);
+                }
             }
         }
 

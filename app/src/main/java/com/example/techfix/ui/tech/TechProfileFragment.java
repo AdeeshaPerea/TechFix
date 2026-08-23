@@ -31,19 +31,39 @@ public class TechProfileFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        User tech = MockDataGenerator.getMockTechnician();
-        if (binding.txtTechName != null) binding.txtTechName.setText(tech.getName());
-        if (binding.txtTechRole != null) binding.txtTechRole.setText(tech.getSpecialization() + " · " + tech.getBranchName());
+        try {
+            User tech = MockDataGenerator.getMockTechnician();
+            if (tech != null) {
+                if (binding.txtTechName != null && tech.getName() != null) {
+                    binding.txtTechName.setText(tech.getName());
+                }
+                if (binding.txtTechRole != null) {
+                    String spec = tech.getSpecialization() != null ? tech.getSpecialization() : "Technician";
+                    String branch = tech.getBranchName() != null ? tech.getBranchName() : "TechFix";
+                    binding.txtTechRole.setText(spec + " · " + branch);
+                }
+            }
 
-        if (binding.menuEditProfile != null) {
-            binding.menuEditProfile.setOnClickListener(v -> {
-                Toast.makeText(requireContext(), "Edit Profile Dialog Opened (Mock)", Toast.LENGTH_SHORT).show();
-            });
+            if (binding.menuEditProfile != null) {
+                binding.menuEditProfile.setOnClickListener(v -> {
+                    Toast.makeText(requireContext(), "Edit Profile Dialog Opened (Mock)", Toast.LENGTH_SHORT).show();
+                });
+            }
+
+            if (binding.btnLogoutTech != null) {
+                binding.btnLogoutTech.setOnClickListener(v -> {
+                    try {
+                        Navigation.findNavController(v).navigate(R.id.action_global_login);
+                    } catch (Exception e) {
+                        try {
+                            Navigation.findNavController(v).popBackStack(R.id.loginFragment, false);
+                        } catch (Exception ignored) {}
+                    }
+                });
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-
-        binding.btnLogoutTech.setOnClickListener(v -> {
-            Navigation.findNavController(v).navigate(R.id.loginFragment);
-        });
     }
 
     @Override

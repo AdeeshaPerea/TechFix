@@ -40,6 +40,4 @@
 <Button android:id="@+id/btnLogoutTech" android:layout_width="match_parent" android:layout_height="56dp" android:layout_marginTop="16dp" android:background="@drawable/bg_button_outline_orange" android:text="LOG OUT" android:textColor="#F5A623" android:textStyle="bold"/>
 </LinearLayout>
 </ScrollView>
-<!--  Bottom nav  -->
-<include layout="@layout/bottom_nav_bar"/>
 </LinearLayout>

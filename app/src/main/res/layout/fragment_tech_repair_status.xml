@@ -33,6 +33,4 @@
 <Button android:id="@+id/btnUpdatePriority" android:layout_width="match_parent" android:layout_height="56dp" android:layout_marginTop="12dp" android:background="@drawable/bg_button_white" android:text="Update Priority" android:textColor="#122040" android:textStyle="bold"/>
 </LinearLayout>
 </ScrollView>
-<!--  Bottom nav  -->
-<include layout="@layout/bottom_nav_bar"/>
 </LinearLayout>

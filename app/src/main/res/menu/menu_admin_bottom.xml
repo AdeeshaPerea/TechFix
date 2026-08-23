@@ -2,26 +2,22 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/nav_admin_dashboard"
-        android:icon="@android:drawable/ic_menu_compass"
+        android:icon="@drawable/ic_home"
         android:title="Overview" />
     <item
         android:id="@+id/nav_admin_appointments"
-        android:icon="@android:drawable/ic_menu_month"
+        android:icon="@drawable/ic_calendar"
         android:title="Appointments" />
     <item
         android:id="@+id/nav_admin_techs"
-        android:icon="@android:drawable/ic_menu_myplaces"
+        android:icon="@drawable/ic_jobs"
         android:title="Technicians" />
     <item
-        android:id="@+id/nav_admin_branches"
-        android:icon="@android:drawable/ic_menu_mapmode"
-        android:title="Branches" />
-    <item
         android:id="@+id/nav_admin_inventory"
-        android:icon="@android:drawable/ic_menu_manage"
+        android:icon="@drawable/ic_parts"
         android:title="Inventory" />
     <item
         android:id="@+id/nav_admin_profile"
-        android:icon="@android:drawable/ic_menu_preferences"
+        android:icon="@drawable/ic_settings"
         android:title="Settings" />
 </menu>

@@ -1,66 +1,413 @@
-<!--  Screen: Admin Dashboard (Home tab)  -->
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent" android:layout_height="match_parent" android:background="@color/techfix_bg">
-<!--  ===== Header =====  -->
-<LinearLayout android:id="@+id/header" android:layout_width="0dp" android:layout_height="wrap_content" android:background="@color/techfix_navy" android:orientation="vertical" android:paddingStart="20dp" android:paddingEnd="20dp" android:paddingTop="28dp" android:paddingBottom="24dp" app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent">
-<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
-<TextView android:id="@+id/tvDashboardTitle" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="📊 Admin Dashboard" android:textColor="@color/techfix_white" android:textSize="22sp" android:textStyle="bold"/>
-<ImageButton android:id="@+id/btnSettings" android:layout_width="44dp" android:layout_height="44dp" android:background="@drawable/bg_icon_button_navy" android:contentDescription="Settings" android:src="@android:drawable/ic_menu_manage" app:tint="@color/techfix_white"/>
-</LinearLayout>
-<TextView android:id="@+id/tvDashboardSubtitle" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Colombo &amp; Galle · Today, 27 Jul" android:textColor="#C9CFDA" android:textSize="15sp"/>
-</LinearLayout>
-<!--  ===== Scrollable content =====  -->
-<androidx.core.widget.NestedScrollView android:layout_width="0dp" android:layout_height="0dp" app:layout_constraintTop_toBottomOf="@id/header" app:layout_constraintBottom_toTopOf="@id/bottomNav" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent">
-<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
-<!--  Stat cards: 2x2 grid  -->
-<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
-<androidx.cardview.widget.CardView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginEnd="8dp" app:cardBackgroundColor="@color/techfix_navy" app:cardCornerRadius="16dp" app:cardElevation="0dp">
-<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="center" android:padding="20dp">
-<TextView android:id="@+id/tvTotalRepairs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="42" android:textColor="@color/techfix_white" android:textSize="24sp" android:textStyle="bold"/>
-<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Total Repairs" android:textColor="#C9CFDA" android:textSize="13sp"/>
-</LinearLayout>
-</androidx.cardview.widget.CardView>
-<androidx.cardview.widget.CardView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="8dp" app:cardBackgroundColor="@color/techfix_white" app:cardCornerRadius="16dp" app:cardElevation="0dp" app:strokeColor="@color/techfix_light_gray">
-<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="center" android:padding="20dp">
-<TextView android:id="@+id/tvPendingAppointments" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="7" android:textColor="@color/techfix_navy" android:textSize="24sp" android:textStyle="bold"/>
-<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Pending Appts." android:textColor="@color/techfix_gray_text" android:textSize="13sp"/>
-</LinearLayout>
-</androidx.cardview.widget.CardView>
-</LinearLayout>
-<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="16dp" android:orientation="horizontal">
-<androidx.cardview.widget.CardView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginEnd="8dp" app:cardBackgroundColor="@color/techfix_white" app:cardCornerRadius="16dp" app:cardElevation="0dp">
-<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="center" android:padding="20dp">
-<TextView android:id="@+id/tvActiveRepairs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="12" android:textColor="@color/techfix_navy" android:textSize="24sp" android:textStyle="bold"/>
-<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Active Repairs" android:textColor="@color/techfix_gray_text" android:textSize="13sp"/>
-</LinearLayout>
-</androidx.cardview.widget.CardView>
-<androidx.cardview.widget.CardView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="8dp" app:cardBackgroundColor="@color/techfix_white" app:cardCornerRadius="16dp" app:cardElevation="0dp">
-<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:gravity="center" android:padding="20dp">
-<TextView android:id="@+id/tvCompletedRepairs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="23" android:textColor="@color/techfix_navy" android:textSize="24sp" android:textStyle="bold"/>
-<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Completed Repairs" android:textColor="@color/techfix_gray_text" android:textSize="13sp"/>
-</LinearLayout>
-</androidx.cardview.widget.CardView>
-</LinearLayout>
-<!--  Low Stock Alerts  -->
-<TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="28dp" android:layout_marginBottom="12dp" android:gravity="center" android:text="Low Stock Alerts" android:textColor="@color/techfix_navy" android:textSize="18sp" android:textStyle="bold"/>
-<!--  NOTE: replace this LinearLayout of static cards with a
-                 RecyclerView (id: rvLowStock) bound to a LowStockAdapter
-                 once wired up to Firestore/SQLite spare-parts data.  -->
-<LinearLayout android:id="@+id/lowStockContainer" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
-<androidx.cardview.widget.CardView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="10dp" app:cardBackgroundColor="@color/techfix_white" app:cardCornerRadius="16dp" app:cardElevation="0dp">
-<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:padding="18dp">
-<TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="OLED Panel — iPhone 12" android:textColor="@color/techfix_navy" android:textSize="16sp" android:textStyle="bold"/>
-<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="@drawable/bg_pill_red" android:paddingStart="14dp" android:paddingEnd="14dp" android:paddingTop="6dp" android:paddingBottom="6dp" android:text="2 LEFT" android:textColor="@color/techfix_red" android:textSize="12sp" android:textStyle="bold"/>
-</LinearLayout>
-</androidx.cardview.widget.CardView>
-<androidx.cardview.widget.CardView android:layout_width="match_parent" android:layout_height="wrap_content" app:cardBackgroundColor="@color/techfix_white" app:cardCornerRadius="16dp" app:cardElevation="0dp">
-<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical" android:padding="18dp">
-<TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Battery — Galaxy A54" android:textColor="@color/techfix_navy" android:textSize="16sp" android:textStyle="bold"/>
-<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="@drawable/bg_pill_red" android:paddingStart="14dp" android:paddingEnd="14dp" android:paddingTop="6dp" android:paddingBottom="6dp" android:text="3 LEFT" android:textColor="@color/techfix_red" android:textSize="12sp" android:textStyle="bold"/>
-</LinearLayout>
-</androidx.cardview.widget.CardView>
-</LinearLayout>
-</LinearLayout>
-</androidx.core.widget.NestedScrollView>
-<!--  ===== Bottom navigation =====  -->
-<com.google.android.material.bottomnavigation.BottomNavigationView android:id="@+id/bottomNav" android:layout_width="0dp" android:layout_height="wrap_content" android:background="@color/techfix_white" app:itemIconTint="@color/nav_item_color_selector" app:itemTextColor="@color/nav_item_color_selector" app:menu="@menu/menu_admin_bottom_nav" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"/>
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/techfix_bg">
+
+    <!-- ============ HEADER ============ -->
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/techfix_navy"
+        android:orientation="vertical"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:paddingTop="28dp"
+        android:paddingBottom="24dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvDashboardTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="📊 Admin Dashboard"
+                android:textColor="@color/techfix_white"
+                android:textSize="22sp"
+                android:textStyle="bold"/>
+
+            <ImageButton
+                android:id="@+id/btnNotifications"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/bg_icon_button_navy"
+                android:contentDescription="Notifications"
+                android:src="@android:drawable/ic_popup_reminder"
+                app:tint="@color/techfix_white"/>
+
+            <ImageButton
+                android:id="@+id/btnSettings"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:background="@drawable/bg_icon_button_navy"
+                android:contentDescription="Settings"
+                android:src="@android:drawable/ic_menu_manage"
+                app:tint="@color/techfix_white"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvDashboardSubtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="TechFix System Operations · Live Sync"
+            android:textColor="#C9CFDA"
+            android:textSize="14sp"/>
+    </LinearLayout>
+
+    <!-- ============ SCROLLABLE CONTENT ============ -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        app:layout_constraintTop_toBottomOf="@id/header"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:paddingBottom="32dp">
+
+            <!-- Stat Cards Row 1 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!-- Total Repairs -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardTotalRepairs"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="8dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    app:cardBackgroundColor="@color/techfix_navy"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="0dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="18dp">
+
+                        <TextView
+                            android:id="@+id/tvTotalRepairs"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textColor="@color/techfix_white"
+                            android:textSize="26sp"
+                            android:textStyle="bold"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="Total Repairs"
+                            android:textColor="#C9CFDA"
+                            android:textSize="13sp"
+                            android:textStyle="bold"/>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- Pending Appointments -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardPendingAppts"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    app:cardBackgroundColor="@color/techfix_white"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="2dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="18dp">
+
+                        <TextView
+                            android:id="@+id/tvPendingAppointments"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textColor="@color/techfix_orange"
+                            android:textSize="26sp"
+                            android:textStyle="bold"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="Pending Appts."
+                            android:textColor="@color/techfix_gray_text"
+                            android:textSize="13sp"
+                            android:textStyle="bold"/>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+            <!-- Stat Cards Row 2 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <!-- Active Repairs -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardActiveRepairs"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="8dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    app:cardBackgroundColor="@color/techfix_white"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="2dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="18dp">
+
+                        <TextView
+                            android:id="@+id/tvActiveRepairs"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textColor="@color/techfix_navy"
+                            android:textSize="26sp"
+                            android:textStyle="bold"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="Active In-Progress"
+                            android:textColor="@color/techfix_gray_text"
+                            android:textSize="13sp"
+                            android:textStyle="bold"/>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <!-- Completed Repairs -->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardCompletedRepairs"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?android:attr/selectableItemBackground"
+                    app:cardBackgroundColor="@color/techfix_white"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="2dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="18dp">
+
+                        <TextView
+                            android:id="@+id/tvCompletedRepairs"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="0"
+                            android:textColor="#059669"
+                            android:textSize="26sp"
+                            android:textStyle="bold"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="Completed Jobs"
+                            android:textColor="@color/techfix_gray_text"
+                            android:textSize="13sp"
+                            android:textStyle="bold"/>
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
+
+            <!-- Quick Operations -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="12dp"
+                android:letterSpacing="0.05"
+                android:text="QUICK OPERATIONS"
+                android:textColor="@color/techfix_gray_text"
+                android:textSize="13sp"
+                android:textStyle="bold"/>
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btnQuickAppointments"
+                        android:layout_width="88dp"
+                        android:layout_height="48dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/bg_button_navy"
+                        android:text="📅 Appts"
+                        android:textColor="@color/techfix_white"
+                        android:textSize="12sp"
+                        android:textStyle="bold"/>
+
+                    <Button
+                        android:id="@+id/btnQuickTechnicians"
+                        android:layout_width="88dp"
+                        android:layout_height="48dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/bg_button_white_card"
+                        android:text="👨‍🔧 Techs"
+                        android:textColor="@color/techfix_navy"
+                        android:textSize="12sp"
+                        android:textStyle="bold"/>
+
+                    <Button
+                        android:id="@+id/btnQuickBranches"
+                        android:layout_width="88dp"
+                        android:layout_height="48dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/bg_button_white_card"
+                        android:text="📍 Branches"
+                        android:textColor="@color/techfix_navy"
+                        android:textSize="12sp"
+                        android:textStyle="bold"/>
+
+                    <Button
+                        android:id="@+id/btnQuickInventory"
+                        android:layout_width="88dp"
+                        android:layout_height="48dp"
+                        android:background="@drawable/bg_button_white_card"
+                        android:text="📦 Parts"
+                        android:textColor="@color/techfix_navy"
+                        android:textSize="12sp"
+                        android:textStyle="bold"/>
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <!-- Recent Activity -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="12dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:text="Recent Repair Requests"
+                    android:textColor="@color/techfix_navy"
+                    android:textSize="18sp"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/btnViewAllAppts"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:padding="4dp"
+                    android:text="View All ›"
+                    android:textColor="@color/techfix_orange"
+                    android:textSize="14sp"
+                    android:textStyle="bold"/>
+            </RelativeLayout>
+
+            <LinearLayout
+                android:id="@+id/recentActivityContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"/>
+
+            <!-- Empty-state placeholder, hidden once data loads -->
+            <TextView
+                android:id="@+id/tvRecentActivityEmpty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:gravity="center"
+                android:padding="20dp"
+                android:text="No recent repair requests"
+                android:textColor="@color/techfix_gray_text"
+                android:textSize="13sp"
+                android:visibility="gone"/>
+
+            <!-- Low Stock Alerts -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="12dp"
+                android:text="Low Stock Inventory Warning"
+                android:textColor="@color/techfix_navy"
+                android:textSize="18sp"
+                android:textStyle="bold"/>
+
+            <LinearLayout
+                android:id="@+id/lowStockContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"/>
+
+            <TextView
+                android:id="@+id/tvLowStockEmpty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:gravity="center"
+                android:padding="20dp"
+                android:text="All parts are well stocked"
+                android:textColor="@color/techfix_gray_text"
+                android:textSize="13sp"
+                android:visibility="gone"/>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,10 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    
+    // Enable read/write access for all storage image files across TechFix app
+    match /{allPaths=**} {
+      allow read, write: if true;
+    }
+  }
+}
