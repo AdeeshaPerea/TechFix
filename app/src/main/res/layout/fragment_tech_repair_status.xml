@@ -1,48 +1,38 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout 
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#F8FAFC">
-
-    <!-- Top Navy Banner -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="#17253D"
-        android:padding="20dp">
-
-        <TextView
-            android:id="@+id/tvTimelineCode"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="TF-2026-00125"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:textColor="#FFFFFF" />
-
-        <TextView
-            android:id="@+id/tvTimelineCurrentStatus"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:text="Current Status: REPAIRING"
-            android:textSize="13sp"
-            android:textColor="#38BDF8"
-            android:textStyle="bold" />
-    </LinearLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvStatusTimeline"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:padding="16dp"
-        tools:listitem="@layout/item_status_step"
-        tools:itemCount="5" />
-
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:background="#F2F3F5">
+<!--  Header  -->
+<RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:background="#122040" android:padding="20dp">
+<ImageButton android:id="@+id/btnBack" android:layout_width="32dp" android:layout_height="32dp" android:layout_alignParentStart="true" android:layout_centerVertical="true" android:background="@android:color/transparent" android:src="@drawable/ic_arrow_back" android:contentDescription="Back"/>
+<LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" android:orientation="vertical" android:gravity="center_horizontal">
+<TextView android:id="@+id/txtRepairId" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Repair #TF-00125" android:textColor="#FFFFFF" android:textSize="22sp" android:textStyle="bold"/>
+<TextView android:id="@+id/txtRepairTitle" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="iPhone 13 · Screen Replacement" android:textColor="#AEB6C4" android:textSize="14sp"/>
+</LinearLayout>
+</RelativeLayout>
+<ScrollView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1">
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+<!--  Customer & Device card  -->
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:background="@drawable/bg_card_rounded" android:padding="20dp" android:gravity="center_horizontal">
+<TextView android:id="@+id/txtCardTitle" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Customer & Device" android:textColor="#122040" android:textSize="18sp" android:textStyle="bold"/>
+<TextView android:id="@+id/txtCustomerInfo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="Kasun Perera · +94 77 987 6543" android:textColor="#5A6478" android:textSize="14sp"/>
+<TextView android:id="@+id/txtDeviceInfo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="iPhone 13 · Blue · IMEI on file" android:textColor="#5A6478" android:textSize="14sp"/>
+</LinearLayout>
+<!--  Current status label  -->
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20dp" android:layout_gravity="center_horizontal" android:text="CURRENT STATUS" android:textColor="#8A93A8" android:textStyle="bold" android:textSize="12sp"/>
+<!--  Status card with chips + progress  -->
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:background="@drawable/bg_card_rounded" android:padding="16dp" android:layout_marginTop="8dp">
+<LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:orientation="horizontal">
+<TextView android:id="@+id/chipReceived" style="@style/StatusChipDone" android:text="RECEIVED"/>
+<TextView android:id="@+id/chipDiagnosing" style="@style/StatusChipDone" android:layout_marginStart="8dp" android:text="DIAGNOSING"/>
+<TextView android:id="@+id/chipRepairing" style="@style/StatusChipActive" android:layout_marginStart="8dp" android:text="REPAIRING"/>
+</LinearLayout>
+<TextView android:id="@+id/chipQualityCheck" style="@style/StatusChipPending" android:layout_marginTop="8dp" android:text="QUALITY CHECK"/>
+<ProgressBar android:id="@+id/progressStatus" style="?android:attr/progressBarStyleHorizontal" android:layout_width="match_parent" android:layout_height="6dp" android:layout_marginTop="16dp" android:max="100" android:progress="60" android:progressDrawable="@drawable/progress_orange"/>
+</LinearLayout>
+<!--  Move to next stage  -->
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="24dp" android:layout_gravity="center_horizontal" android:text="MOVE TO NEXT STAGE" android:textColor="#8A93A8" android:textStyle="bold" android:textSize="12sp"/>
+<Button android:id="@+id/btnMarkNextStage" android:layout_width="match_parent" android:layout_height="56dp" android:layout_marginTop="8dp" android:background="@drawable/bg_button_orange" android:text="MARK AS: QUALITY CHECK" android:textColor="#FFFFFF" android:textStyle="bold"/>
+<Button android:id="@+id/btnUpdatePriority" android:layout_width="match_parent" android:layout_height="56dp" android:layout_marginTop="12dp" android:background="@drawable/bg_button_white" android:text="Update Priority" android:textColor="#122040" android:textStyle="bold"/>
+</LinearLayout>
+</ScrollView>
+<!--  Bottom nav  -->
+<include layout="@layout/bottom_nav_bar"/>
 </LinearLayout>

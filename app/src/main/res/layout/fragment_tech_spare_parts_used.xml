@@ -1,42 +1,27 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout 
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="#F8FAFC">
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="#FFFFFF"
-        android:padding="16dp"
-        android:elevation="2dp">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Spare Parts Used"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:textColor="#0F172A" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
-            android:text="Select inventory parts used in this repair"
-            android:textSize="12sp"
-            android:textColor="#64748B" />
-    </LinearLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvPartsCatalog"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:paddingVertical="8dp" />
-
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:background="#F2F3F5">
+<!--  Header  -->
+<RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:background="#122040" android:padding="20dp">
+<ImageButton android:id="@+id/btnBack" android:layout_width="32dp" android:layout_height="32dp" android:layout_alignParentStart="true" android:layout_centerVertical="true" android:background="@android:color/transparent" android:src="@drawable/ic_arrow_back" android:contentDescription="Back"/>
+<LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" android:orientation="vertical" android:gravity="center_horizontal">
+<TextView android:id="@+id/txtScreenTitle" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Repair Notes" android:textColor="#FFFFFF" android:textSize="22sp" android:textStyle="bold"/>
+<TextView android:id="@+id/txtRepairId" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="#TF-2026-00125" android:textColor="#AEB6C4" android:textSize="14sp"/>
+</LinearLayout>
+</RelativeLayout>
+<ScrollView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1">
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="center_horizontal" android:text="DIAGNOSIS" android:textColor="#8A93A8" android:textStyle="bold" android:textSize="12sp"/>
+<EditText android:id="@+id/edtDiagnosis" android:layout_width="match_parent" android:layout_height="wrap_content" android:minLines="2" android:layout_marginTop="8dp" android:background="@drawable/bg_card_rounded" android:padding="16dp" android:gravity="center" android:text="Cracked OLED panel, digitizer unresponsive in lower half. No internal damage found." android:textColor="#122040" android:textSize="14sp"/>
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="center_horizontal" android:layout_marginTop="20dp" android:text="WORK PERFORMED" android:textColor="#8A93A8" android:textStyle="bold" android:textSize="12sp"/>
+<EditText android:id="@+id/edtWorkPerformed" android:layout_width="match_parent" android:layout_height="wrap_content" android:minLines="2" android:layout_marginTop="8dp" android:background="@drawable/bg_card_rounded" android:padding="16dp" android:gravity="center" android:text="Replaced OLED screen assembly, tested touch response and Face ID." android:textColor="#122040" android:textSize="14sp"/>
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="center_horizontal" android:layout_marginTop="20dp" android:text="SPARE PARTS USED" android:textColor="#8A93A8" android:textStyle="bold" android:textSize="12sp"/>
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:background="@drawable/bg_card_rounded" android:padding="16dp" android:layout_marginTop="8dp" android:gravity="center_vertical">
+<TextView android:id="@+id/txtPartName" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="OLED Panel — iPhone 13" android:textColor="#122040" android:textStyle="bold" android:textSize="15sp"/>
+<TextView android:id="@+id/txtPartQty" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Qty: 1" android:textColor="#8A93A8" android:textSize="14sp"/>
+</LinearLayout>
+<TextView android:id="@+id/btnAddPart" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="center_horizontal" android:layout_marginTop="16dp" android:text="+ Add another part" android:textColor="#3B5BDB" android:textStyle="bold" android:textSize="15sp" android:clickable="true" android:focusable="true"/>
+<Button android:id="@+id/btnSaveNotes" android:layout_width="match_parent" android:layout_height="56dp" android:layout_marginTop="24dp" android:background="@drawable/bg_button_orange" android:text="SAVE NOTES" android:textColor="#FFFFFF" android:textStyle="bold"/>
+</LinearLayout>
+</ScrollView>
+<!--  Bottom nav  -->
+<include layout="@layout/bottom_nav_bar"/>
 </LinearLayout>

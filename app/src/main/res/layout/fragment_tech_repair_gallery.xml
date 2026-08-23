@@ -1,238 +1,36 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout 
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/bg_app">
-
-    <!-- Compact Header Bar -->
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/navy_header"
-        android:paddingHorizontal="16dp"
-        android:paddingTop="18dp"
-        android:paddingBottom="14dp">
-
-        <ImageView
-            android:id="@+id/btnBack"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
-            android:src="@drawable/ic_arrow_back"
-            app:tint="@color/white" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Repair Photos"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="@color/white" />
-
-            <TextView
-                android:id="@+id/tvGallerySubtitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="#TF-2026-00125"
-                android:textSize="11sp"
-                android:textColor="@color/navy_header_sub" />
-        </LinearLayout>
-    </RelativeLayout>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
-
-            <!-- BEFORE REPAIR -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:text="BEFORE REPAIR"
-                android:textSize="10sp"
-                android:textStyle="bold"
-                android:textColor="@color/text_muted" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="6dp"
-                android:gravity="center_horizontal">
-
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="88dp"
-                    android:layout_height="56dp"
-                    android:layout_marginEnd="6dp"
-                    app:cardCornerRadius="10dp"
-                    app:cardElevation="0dp"
-                    app:strokeWidth="0dp"
-                    app:cardBackgroundColor="#E2E8F0">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="IMG_1"
-                        android:textSize="11sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/navy_header" />
-                </com.google.android.material.card.MaterialCardView>
-
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="88dp"
-                    android:layout_height="56dp"
-                    android:layout_marginEnd="6dp"
-                    app:cardCornerRadius="10dp"
-                    app:cardElevation="0dp"
-                    app:strokeWidth="0dp"
-                    app:cardBackgroundColor="#E2E8F0">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="IMG_2"
-                        android:textSize="11sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/navy_header" />
-                </com.google.android.material.card.MaterialCardView>
-
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/btnAddBeforePhoto"
-                    android:layout_width="88dp"
-                    android:layout_height="56dp"
-                    app:cardCornerRadius="10dp"
-                    app:cardElevation="0dp"
-                    app:strokeColor="@color/navy_header_sub"
-                    app:strokeWidth="1dp"
-                    app:cardBackgroundColor="@color/bg_app">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="📷 Add"
-                        android:textSize="11sp"
-                        android:textColor="@color/text_secondary" />
-                </com.google.android.material.card.MaterialCardView>
-            </LinearLayout>
-
-            <TextView android:id="@+id/tvBeforePhotosList" android:layout_width="match_parent" android:layout_height="wrap_content" android:visibility="gone" />
-
-            <!-- AFTER REPAIR -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="16dp"
-                android:text="AFTER REPAIR"
-                android:textSize="10sp"
-                android:textStyle="bold"
-                android:textColor="@color/text_muted" />
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="6dp"
-                android:gravity="center_horizontal">
-
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="88dp"
-                    android:layout_height="56dp"
-                    android:layout_marginEnd="6dp"
-                    app:cardCornerRadius="10dp"
-                    app:cardElevation="0dp"
-                    app:strokeWidth="0dp"
-                    app:cardBackgroundColor="#E2E8F0">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="IMG_3"
-                        android:textSize="11sp"
-                        android:textStyle="bold"
-                        android:textColor="@color/navy_header" />
-                </com.google.android.material.card.MaterialCardView>
-
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/btnAddAfterPhoto"
-                    android:layout_width="88dp"
-                    android:layout_height="56dp"
-                    android:layout_marginEnd="6dp"
-                    app:cardCornerRadius="10dp"
-                    app:cardElevation="0dp"
-                    app:strokeColor="@color/navy_header_sub"
-                    app:strokeWidth="1dp"
-                    app:cardBackgroundColor="@color/bg_app">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:text="📷 Add"
-                        android:textSize="11sp"
-                        android:textColor="@color/text_secondary" />
-                </com.google.android.material.card.MaterialCardView>
-            </LinearLayout>
-
-            <TextView android:id="@+id/tvAfterPhotosList" android:layout_width="match_parent" android:layout_height="wrap_content" android:visibility="gone" />
-
-            <!-- Camera Info Card -->
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                app:cardCornerRadius="10dp"
-                app:cardElevation="1dp"
-                app:strokeColor="@color/divider_color"
-                app:strokeWidth="1dp"
-                app:cardBackgroundColor="@color/card_bg">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="12dp"
-                    android:gravity="center"
-                    android:text="📸 Tap &quot;Add&quot; to open camera. Photos upload automatically."
-                    android:textSize="12sp"
-                    android:textColor="@color/text_secondary" />
-            </com.google.android.material.card.MaterialCardView>
-
-            <!-- MARK REPAIR COMPLETED -->
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnMarkCompleted"
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginTop="14dp"
-                android:text="MARK REPAIR COMPLETED"
-                android:textSize="13sp"
-                android:textStyle="bold"
-                android:textColor="@color/white"
-                android:backgroundTint="@color/accent_amber"
-                app:cornerRadius="10dp" />
-
-        </LinearLayout>
-    </ScrollView>
-
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:background="#F2F3F5">
+<!--  Header  -->
+<RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:background="#122040" android:padding="20dp">
+<ImageButton android:id="@+id/btnBack" android:layout_width="32dp" android:layout_height="32dp" android:layout_alignParentStart="true" android:layout_centerVertical="true" android:background="@android:color/transparent" android:src="@drawable/ic_arrow_back" android:contentDescription="Back"/>
+<LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" android:orientation="vertical" android:gravity="center_horizontal">
+<TextView android:id="@+id/txtScreenTitle" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Repair Photos" android:textColor="#FFFFFF" android:textSize="22sp" android:textStyle="bold"/>
+<TextView android:id="@+id/txtRepairId" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="#TF-2026-00125" android:textColor="#AEB6C4" android:textSize="14sp"/>
+</LinearLayout>
+</RelativeLayout>
+<ScrollView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1">
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="center_horizontal" android:text="BEFORE REPAIR" android:textColor="#8A93A8" android:textStyle="bold" android:textSize="12sp"/>
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="8dp" android:weightSum="3">
+<ImageView android:id="@+id/imgBefore1" android:layout_width="0dp" android:layout_height="100dp" android:layout_weight="1" android:layout_marginEnd="6dp" android:background="@drawable/bg_thumb_filled" android:contentDescription="Before photo 1" android:scaleType="centerCrop"/>
+<ImageView android:id="@+id/imgBefore2" android:layout_width="0dp" android:layout_height="100dp" android:layout_weight="1" android:layout_marginStart="6dp" android:layout_marginEnd="6dp" android:background="@drawable/bg_thumb_filled" android:contentDescription="Before photo 2" android:scaleType="centerCrop"/>
+<FrameLayout android:id="@+id/btnAddBefore" android:layout_width="0dp" android:layout_height="100dp" android:layout_weight="1" android:layout_marginStart="6dp" android:background="@drawable/bg_thumb_dashed" android:clickable="true" android:focusable="true">
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="center" android:text="📷 Add" android:textColor="#8A93A8"/>
+</FrameLayout>
+</LinearLayout>
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="center_horizontal" android:layout_marginTop="20dp" android:text="AFTER REPAIR" android:textColor="#8A93A8" android:textStyle="bold" android:textSize="12sp"/>
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="8dp" android:weightSum="3">
+<ImageView android:id="@+id/imgAfter1" android:layout_width="0dp" android:layout_height="100dp" android:layout_weight="1" android:layout_marginEnd="6dp" android:background="@drawable/bg_thumb_filled" android:contentDescription="After photo 1" android:scaleType="centerCrop"/>
+<FrameLayout android:id="@+id/btnAddAfter1" android:layout_width="0dp" android:layout_height="100dp" android:layout_weight="1" android:layout_marginStart="6dp" android:layout_marginEnd="6dp" android:background="@drawable/bg_thumb_dashed" android:clickable="true" android:focusable="true">
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="center" android:text="📷 Add" android:textColor="#8A93A8"/>
+</FrameLayout>
+<FrameLayout android:id="@+id/btnAddAfter2" android:layout_width="0dp" android:layout_height="100dp" android:layout_weight="1" android:layout_marginStart="6dp" android:background="@drawable/bg_thumb_dashed" android:clickable="true" android:focusable="true">
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="center" android:text="📷 Add" android:textColor="#8A93A8"/>
+</FrameLayout>
+</LinearLayout>
+<TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="20dp" android:background="@drawable/bg_card_rounded" android:padding="16dp" android:gravity="center" android:text="📸 Tap "Add" to open camera. Photos are uploaded to the repair record automatically." android:textColor="#5A6478" android:textSize="13sp"/>
+<Button android:id="@+id/btnMarkCompleted" android:layout_width="match_parent" android:layout_height="56dp" android:layout_marginTop="20dp" android:background="@drawable/bg_button_orange" android:text="MARK REPAIR COMPLETED" android:textColor="#FFFFFF" android:textStyle="bold"/>
+</LinearLayout>
+</ScrollView>
+<!--  Bottom nav  -->
+<include layout="@layout/bottom_nav_bar"/>
 </LinearLayout>

@@ -1,109 +1,57 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout 
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@color/bg_app">
-
-    <!-- Compact Header Bar -->
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/navy_header"
-        android:paddingHorizontal="16dp"
-        android:paddingTop="18dp"
-        android:paddingBottom="14dp">
-
-        <ImageView
-            android:id="@+id/btnBack"
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:layout_alignParentStart="true"
-            android:layout_centerVertical="true"
-            android:src="@drawable/ic_arrow_back"
-            app:tint="@color/white" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Spare Parts"
-                android:textSize="18sp"
-                android:textStyle="bold"
-                android:textColor="@color/white" />
-
-            <TextView
-                android:id="@+id/tvPartsSubtitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="86 parts tracked"
-                android:textSize="11sp"
-                android:textColor="@color/navy_header_sub" />
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/btnAddSparePart"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:text="+"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            android:paddingHorizontal="4dp" />
-    </RelativeLayout>
-
-    <!-- Filter Chips Row -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingHorizontal="12dp"
-        android:paddingTop="8dp"
-        android:paddingBottom="2dp">
-
-        <TextView
-            android:id="@+id/chipAll"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_chip_active"
-            android:text="All"
-            android:textColor="@color/white"
-            android:textSize="12sp"
-            android:textStyle="bold"
-            android:paddingHorizontal="12dp"
-            android:paddingVertical="6dp"
-            android:layout_marginEnd="6dp" />
-
-        <TextView
-            android:id="@+id/chipLowStock"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/bg_chip_inactive"
-            android:text="Low Stock (4)"
-            android:textColor="@color/text_secondary"
-            android:textSize="12sp"
-            android:paddingHorizontal="12dp"
-            android:paddingVertical="6dp" />
-    </LinearLayout>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvSparePartsList"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:paddingVertical="4dp"
-        android:clipToPadding="false"
-        tools:listitem="@layout/item_spare_part_card" />
-
+<!--  Screen: Spare Parts Management (More > Spare Parts)  -->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent" android:layout_height="match_parent" android:background="@color/techfix_bg">
+<!--  ===== Header =====  -->
+<LinearLayout android:id="@+id/header" android:layout_width="0dp" android:layout_height="wrap_content" android:background="@color/techfix_navy" android:orientation="vertical" android:paddingStart="12dp" android:paddingEnd="12dp" android:paddingTop="20dp" android:paddingBottom="24dp" app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent">
+<RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content">
+<TextView android:id="@+id/btnBack" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentStart="true" android:layout_centerVertical="true" android:padding="8dp" android:text="←" android:textColor="@color/techfix_white" android:textSize="22sp"/>
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerInParent="true" android:text="Spare Parts" android:textColor="@color/techfix_white" android:textSize="22sp" android:textStyle="bold"/>
+<TextView android:id="@+id/btnAddPart" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_alignParentEnd="true" android:layout_centerVertical="true" android:padding="8dp" android:text="+" android:textColor="@color/techfix_white" android:textSize="26sp"/>
+</RelativeLayout>
+<TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:gravity="center" android:text="86 parts tracked" android:textColor="#C9CFDA" android:textSize="15sp"/>
 </LinearLayout>
+<!--  ===== Scrollable content =====  -->
+<androidx.core.widget.NestedScrollView android:layout_width="0dp" android:layout_height="0dp" app:layout_constraintTop_toBottomOf="@id/header" app:layout_constraintBottom_toTopOf="@id/bottomNav" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent">
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+<!--  Filter chips  -->
+<LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="16dp" android:orientation="horizontal">
+<TextView android:id="@+id/chipAllParts" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginEnd="10dp" android:background="@drawable/bg_chip_selected" android:paddingStart="22dp" android:paddingEnd="22dp" android:paddingTop="12dp" android:paddingBottom="12dp" android:text="All" android:textColor="@color/techfix_white" android:textSize="15sp" android:textStyle="bold"/>
+<TextView android:id="@+id/chipLowStock" android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="@drawable/bg_chip_unselected" android:paddingStart="22dp" android:paddingEnd="22dp" android:paddingTop="12dp" android:paddingBottom="12dp" android:text="Low Stock (4)" android:textColor="@color/techfix_gray_text" android:textSize="15sp"/>
+</LinearLayout>
+<!--  NOTE: replace this LinearLayout with a RecyclerView
+                 (id: rvSpareParts) bound to a SparePartAdapter reading from
+                 the `spareParts` Firestore collection, filtered by the
+                 chip selected above (All / Low Stock).  -->
+<LinearLayout android:id="@+id/sparePartsListContainer" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+<androidx.cardview.widget.CardView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="12dp" app:cardBackgroundColor="@color/techfix_white" app:cardCornerRadius="16dp" app:cardElevation="0dp">
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal" android:padding="18dp">
+<LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="OLED Panel — iPhone 12" android:textColor="@color/techfix_navy" android:textSize="17sp" android:textStyle="bold"/>
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Qty: 2 · Rs. 18,500 each" android:textColor="@color/techfix_gray_text" android:textSize="14sp"/>
+</LinearLayout>
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="@drawable/bg_pill_red" android:paddingStart="14dp" android:paddingEnd="14dp" android:paddingTop="8dp" android:paddingBottom="8dp" android:text="LOW STOCK" android:textColor="@color/techfix_red" android:textSize="12sp" android:textStyle="bold"/>
+</LinearLayout>
+</androidx.cardview.widget.CardView>
+<androidx.cardview.widget.CardView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="12dp" app:cardBackgroundColor="@color/techfix_white" app:cardCornerRadius="16dp" app:cardElevation="0dp">
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal" android:padding="18dp">
+<LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Battery — Galaxy A54" android:textColor="@color/techfix_navy" android:textSize="17sp" android:textStyle="bold"/>
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Qty: 3 · Rs. 4,200 each" android:textColor="@color/techfix_gray_text" android:textSize="14sp"/>
+</LinearLayout>
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="@drawable/bg_pill_red" android:paddingStart="14dp" android:paddingEnd="14dp" android:paddingTop="8dp" android:paddingBottom="8dp" android:text="LOW STOCK" android:textColor="@color/techfix_red" android:textSize="12sp" android:textStyle="bold"/>
+</LinearLayout>
+</androidx.cardview.widget.CardView>
+<androidx.cardview.widget.CardView android:layout_width="match_parent" android:layout_height="wrap_content" app:cardBackgroundColor="@color/techfix_white" app:cardCornerRadius="16dp" app:cardElevation="0dp">
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal" android:padding="18dp">
+<LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Charging Port — USB-C" android:textColor="@color/techfix_navy" android:textSize="17sp" android:textStyle="bold"/>
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Qty: 24 · Rs. 1,100 each" android:textColor="@color/techfix_gray_text" android:textSize="14sp"/>
+</LinearLayout>
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="@drawable/bg_pill_green" android:paddingStart="14dp" android:paddingEnd="14dp" android:paddingTop="8dp" android:paddingBottom="8dp" android:text="IN STOCK" android:textColor="@color/techfix_green" android:textSize="12sp" android:textStyle="bold"/>
+</LinearLayout>
+</androidx.cardview.widget.CardView>
+</LinearLayout>
+</LinearLayout>
+</androidx.core.widget.NestedScrollView>
+<!--  ===== Bottom navigation =====  -->
+<com.google.android.material.bottomnavigation.BottomNavigationView android:id="@+id/bottomNav" android:layout_width="0dp" android:layout_height="wrap_content" android:background="@color/techfix_white" app:itemIconTint="@color/nav_item_color_selector" app:itemTextColor="@color/nav_item_color_selector" app:menu="@menu/menu_admin_bottom_nav" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>
