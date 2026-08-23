@@ -30,7 +30,7 @@ public class AdminProfileSettingsFragment extends Fragment {
 
         if (binding.btnLogOut != null) {
             binding.btnLogOut.setOnClickListener(v -> {
-                Navigation.findNavController(v).navigate(R.id.roleSelectFragment);
+                Navigation.findNavController(v).navigate(R.id.loginFragment);
             });
         }
     }

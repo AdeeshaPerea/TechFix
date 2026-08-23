@@ -42,7 +42,7 @@ public class TechProfileFragment extends Fragment {
         }
 
         binding.btnLogoutTech.setOnClickListener(v -> {
-            Navigation.findNavController(v).navigate(R.id.roleSelectFragment);
+            Navigation.findNavController(v).navigate(R.id.loginFragment);
         });
     }
 

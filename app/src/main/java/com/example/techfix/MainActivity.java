@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
             int destId = destination.getId();
 
-            if (destId == R.id.roleSelectFragment || destId == R.id.techLoginFragment || destId == R.id.adminLoginFragment) {
+            if (destId == R.id.loginFragment) {
                 binding.topAppToolbar.setVisibility(View.GONE);
                 binding.bottomNavTech.setVisibility(View.GONE);
                 binding.bottomNavAdmin.setVisibility(View.GONE);

@@ -3,34 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/roleSelectFragment">
+    app:startDestination="@id/loginFragment">
 
-    <!-- Role Selection Landing -->
+    <!-- Unified Login -->
     <fragment
-        android:id="@+id/roleSelectFragment"
-        android:name="com.example.techfix.ui.main.RoleSelectFragment"
-        android:label="TechFix Portal Selection"
-        tools:layout="@layout/fragment_role_select">
+        android:id="@+id/loginFragment"
+        android:name="com.example.techfix.ui.main.LoginFragment"
+        android:label="TechFix Login"
+        tools:layout="@layout/login">
         <action
-            android:id="@+id/action_roleSelect_to_techLogin"
-            app:destination="@id/techLoginFragment" />
+            android:id="@+id/action_login_to_adminDashboard"
+            app:destination="@id/adminDashboardFragment" />
         <action
-            android:id="@+id/action_roleSelect_to_adminLogin"
-            app:destination="@id/adminLoginFragment" />
+            android:id="@+id/action_login_to_techDashboard"
+            app:destination="@id/techDashboardFragment" />
     </fragment>
 
-    <!-- Technician Login -->
-    <fragment
-        android:id="@+id/techLoginFragment"
-        android:name="com.example.techfix.ui.tech.TechLoginFragment"
-        android:label="Technician Login"
-        tools:layout="@layout/fragment_tech_login">
-        <action
-            android:id="@+id/action_techLogin_to_techDashboard"
-            app:destination="@id/techDashboardFragment"
-            app:popUpTo="@id/nav_graph"
-            app:popUpToInclusive="true" />
-    </fragment>
 
     <!-- Technician Dashboard -->
     <fragment
@@ -129,18 +117,6 @@
         android:label="Notifications"
         tools:layout="@layout/fragment_tech_notifications" />
 
-    <!-- Admin Login -->
-    <fragment
-        android:id="@+id/adminLoginFragment"
-        android:name="com.example.techfix.ui.admin.AdminLoginFragment"
-        android:label="Admin Login"
-        tools:layout="@layout/fragment_admin_login">
-        <action
-            android:id="@+id/action_adminLogin_to_adminDashboard"
-            app:destination="@id/adminDashboardFragment"
-            app:popUpTo="@id/nav_graph"
-            app:popUpToInclusive="true" />
-    </fragment>
 
     <!-- Admin Dashboard -->
     <fragment
