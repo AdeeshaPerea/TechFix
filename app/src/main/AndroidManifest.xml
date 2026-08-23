@@ -22,6 +22,17 @@
             </intent-filter>
         </activity>
 
+        <!-- Customer Portal Activities -->
+        <activity
+            android:name=".customer.CustomerHomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".customer.SignUpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".customer.NewRepairRequestActivity"
+            android:exported="false" />
+
         <!-- Main Activity Container (Fallback) -->
         <activity
             android:name=".MainActivity"
