@@ -6,6 +6,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.techfix.R;
+import com.example.techfix.data.firebase.FirebaseBranchRepository;
 import com.example.techfix.databinding.ItemBranchCardBinding;
 import com.example.techfix.model.BranchItem;
 
@@ -60,10 +62,37 @@ public class BranchAdapter extends RecyclerView.Adapter<BranchAdapter.BranchView
         }
 
         public void bind(BranchItem branch) {
-            binding.tvBranchName.setText(branch.getName());
+            if (branch == null) return;
+
+            boolean isOpen = branch.isActive();
+            String nameText = branch.getName() + (isOpen ? "" : " (CLOSED)");
+            binding.tvBranchName.setText(nameText);
+
+            if (!isOpen) {
+                binding.tvBranchName.setTextColor(0xFFEF4444); // Red for Closed
+            } else {
+                binding.tvBranchName.setTextColor(itemView.getContext().getColor(R.color.navy_header));
+            }
+
             binding.tvBranchStatsBadge.setText(branch.getTechnicianCount() + " Techs • " + branch.getActiveRepairsCount() + " Repairs");
             binding.tvBranchAddress.setText("📍 " + branch.getAddress());
-            binding.tvBranchContactAndHours.setText("📞 " + branch.getPhone() + "  •  🕒 " + branch.getOpeningHours());
+            binding.tvBranchContactAndHours.setText("📞 " + branch.getPhone() + "  •  🕒 " + (isOpen ? branch.getOpeningHours() : "CLOSED"));
+
+            // Clear listener before setChecked to prevent recursive invocation
+            binding.switchBranch.setOnCheckedChangeListener(null);
+            binding.switchBranch.setChecked(isOpen);
+
+            // Handle Admin switch toggle
+            binding.switchBranch.setOnCheckedChangeListener((buttonView, isChecked) -> {
+                branch.setActive(isChecked);
+                binding.tvBranchName.setText(branch.getName() + (isChecked ? "" : " (CLOSED)"));
+                binding.tvBranchName.setTextColor(isChecked ?
+                        itemView.getContext().getColor(R.color.navy_header) :
+                        0xFFEF4444);
+                binding.tvBranchContactAndHours.setText("📞 " + branch.getPhone() + "  •  🕒 " + (isChecked ? branch.getOpeningHours() : "CLOSED"));
+
+                FirebaseBranchRepository.getInstance().updateBranch(branch, null);
+            });
 
             itemView.setOnClickListener(v -> {
                 if (listener != null) listener.onBranchClick(branch);

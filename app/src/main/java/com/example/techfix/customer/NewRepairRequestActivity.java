@@ -16,6 +16,8 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.techfix.R;
+import com.example.techfix.data.firebase.FirebaseBranchRepository;
+import com.example.techfix.model.BranchItem;
 import com.example.techfix.models.*;
 import com.example.techfix.utils.SessionManager;
 
@@ -310,15 +312,39 @@ public class NewRepairRequestActivity extends AppCompatActivity {
     }
 
     private void showBranchDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setTitle("Select Branch");
-        builder.setItems(branchNames, (dialog, which) -> {
-            selectedBranchId = branchIds[which];
-            if (tvSelectedBranch != null) {
-                tvSelectedBranch.setText(branchNames[which]);
+        List<BranchItem> liveBranches = FirebaseBranchRepository.getInstance().getBranchesLiveData().getValue();
+        if (liveBranches != null && !liveBranches.isEmpty()) {
+            String[] displayNames = new String[liveBranches.size()];
+            for (int i = 0; i < liveBranches.size(); i++) {
+                BranchItem b = liveBranches.get(i);
+                displayNames[i] = b.getName() + (b.isActive() ? " (Open)" : " ❌ [CLOSED]");
             }
-        });
-        builder.show();
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Select Branch");
+            builder.setItems(displayNames, (dialog, which) -> {
+                BranchItem selected = liveBranches.get(which);
+                if (!selected.isActive()) {
+                    Toast.makeText(this, "⚠️ " + selected.getName() + " is currently CLOSED. Please choose an active branch.", Toast.LENGTH_LONG).show();
+                } else {
+                    selectedBranchId = selected.getId();
+                    if (tvSelectedBranch != null) {
+                        tvSelectedBranch.setText(selected.getName());
+                    }
+                }
+            });
+            builder.show();
+        } else {
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Select Branch");
+            builder.setItems(branchNames, (dialog, which) -> {
+                selectedBranchId = branchIds[which];
+                if (tvSelectedBranch != null) {
+                    tvSelectedBranch.setText(branchNames[which]);
+                }
+            });
+            builder.show();
+        }
     }
 
     private void selectTimeSlot(String timeSlot, Button selectedBtn, Button other1, Button other2) {

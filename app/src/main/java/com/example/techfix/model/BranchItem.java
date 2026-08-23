@@ -10,10 +10,15 @@ public class BranchItem {
     private double longitude;
     private int technicianCount;
     private int activeRepairsCount;
+    private boolean active = true;
 
     public BranchItem() {}
 
     public BranchItem(String id, String name, String address, String phone, String openingHours, double latitude, double longitude, int technicianCount, int activeRepairsCount) {
+        this(id, name, address, phone, openingHours, latitude, longitude, technicianCount, activeRepairsCount, true);
+    }
+
+    public BranchItem(String id, String name, String address, String phone, String openingHours, double latitude, double longitude, int technicianCount, int activeRepairsCount, boolean active) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -23,6 +28,7 @@ public class BranchItem {
         this.longitude = longitude;
         this.technicianCount = technicianCount;
         this.activeRepairsCount = activeRepairsCount;
+        this.active = active;
     }
 
     public String getId() { return id; }
@@ -51,4 +57,7 @@ public class BranchItem {
 
     public int getActiveRepairsCount() { return activeRepairsCount; }
     public void setActiveRepairsCount(int activeRepairsCount) { this.activeRepairsCount = activeRepairsCount; }
+
+    public boolean isActive() { return active; }
+    public void setActive(boolean active) { this.active = active; }
 }

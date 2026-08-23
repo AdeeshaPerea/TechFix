@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.example.techfix.R;
 import com.example.techfix.databinding.FragmentAdminAppointmentDetailBinding;
 import com.example.techfix.model.AppointmentItem;
 import com.example.techfix.model.BranchItem;
@@ -84,6 +85,14 @@ public class AdminAppointmentDetailFragment extends Fragment {
         binding.btnAssignTechnician.setOnClickListener(v -> showAssignTechnicianDialog());
 
         binding.btnChangeBranch.setOnClickListener(v -> showChangeBranchDialog());
+
+        if (binding.btnViewRepairPhotos != null) {
+            binding.btnViewRepairPhotos.setOnClickListener(v -> {
+                Bundle bundle = new Bundle();
+                bundle.putString("repairId", appointmentId != null ? appointmentId : "REP_001");
+                androidx.navigation.Navigation.findNavController(v).navigate(R.id.action_adminAppointmentDetail_to_adminGallery, bundle);
+            });
+        }
     }
 
     private void showAssignTechnicianDialog() {

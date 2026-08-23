@@ -1,6 +1,7 @@
 package com.example.techfix.data.firebase;
 
 import android.net.Uri;
+import android.util.Log;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -59,9 +60,9 @@ public class FirebaseRepairRepository {
         if (firestore == null) return;
 
         firestore.collection(FirestoreConstants.COLLECTION_REPAIRS)
-                .orderBy("createdAt", Query.Direction.DESCENDING)
                 .addSnapshotListener((queryDocumentSnapshots, e) -> {
                     if (e != null || queryDocumentSnapshots == null) {
+                        Log.e("FirebaseRepairRepo", "Firestore error: " + (e != null ? e.getMessage() : "null"));
                         if (repairsLiveData.getValue() == null || repairsLiveData.getValue().isEmpty()) {
                             repairsLiveData.setValue(MockDataGenerator.getMockRepairs());
                         }
@@ -80,6 +81,9 @@ public class FirebaseRepairRepository {
                     if (list.isEmpty()) {
                         list = MockDataGenerator.getMockRepairs();
                         seedInitialRepairs(list);
+                    } else {
+                        // Sort in-memory by ID or status
+                        list.sort((a, b) -> b.getId().compareTo(a.getId()));
                     }
                     repairsLiveData.setValue(list);
                 });

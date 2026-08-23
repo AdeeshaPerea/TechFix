@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="148dp"
+    android:layout_height="148dp"
+    android:layout_margin="6dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    app:cardBackgroundColor="@color/techfix_white"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="0dp">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/imgThumbnail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:background="#E2E8F0"
+            android:contentDescription="Repair Photo Thumbnail" />
+
+        <TextView
+            android:id="@+id/txtBadgeType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_margin="8dp"
+            android:text="BEFORE"
+            android:textSize="9sp"
+            android:textStyle="bold"
+            android:textColor="@color/techfix_white"
+            android:background="@drawable/bg_pill_blue_solid"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="4dp" />
+
+        <ImageButton
+            android:id="@+id/btnRemove"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_margin="6dp"
+            android:background="@drawable/bg_icon_button_navy"
+            android:src="@android:drawable/ic_menu_close_clear_cancel"
+            android:contentDescription="Remove Photo"
+            app:tint="@color/techfix_white" />
+
+        <ProgressBar
+            android:id="@+id/progressUpload"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_centerInParent="true"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

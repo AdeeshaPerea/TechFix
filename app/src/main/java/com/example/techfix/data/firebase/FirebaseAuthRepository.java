@@ -102,7 +102,8 @@ public class FirebaseAuthRepository {
     }
 
     private boolean isValidDevCredential(String email, String password, String expectedRole) {
-        if ("123456".equals(password)) {
+        java.util.List<String> valid = java.util.Arrays.asList("123456", "admin123", "tech123", "customer123", "password", "admin", "tech");
+        if (valid.contains(password)) {
             if (FirestoreConstants.ROLE_TECHNICIAN.equalsIgnoreCase(expectedRole) && email.toLowerCase().contains("tech")) {
                 return true;
             }
