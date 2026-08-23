@@ -17,7 +17,7 @@
 <!--  NOTE: replace this LinearLayout with a RecyclerView
                  (id: rvTechnicians) bound to a TechnicianAdapter reading
                  from the `technicians` Firestore collection.  -->
-<LinearLayout android:id="@+id/technicianListContainer" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+<androidx.recyclerview.widget.RecyclerView android:id="@+id/rvTechniciansList" android:layout_width="match_parent" android:layout_height="wrap_content">
 <!--  Technician item: Nuwan Silva  -->
 <androidx.cardview.widget.CardView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="14dp" app:cardBackgroundColor="@color/techfix_white" app:cardCornerRadius="18dp" app:cardElevation="0dp">
 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
@@ -25,7 +25,7 @@
 <TextView android:layout_width="56dp" android:layout_height="56dp" android:background="@drawable/bg_pill_orange_solid" android:gravity="center" android:text="NS" android:textColor="@color/techfix_white" android:textSize="16sp" android:textStyle="bold"/>
 <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="14dp" android:gravity="center" android:orientation="vertical">
 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Nuwan Silva" android:textColor="@color/techfix_navy" android:textSize="17sp" android:textStyle="bold"/>
-<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Mobile & Laptop · Colombo 03" android:textColor="@color/techfix_gray_text" android:textSize="14sp"/>
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Mobile &amp; Laptop · Colombo 03" android:textColor="@color/techfix_gray_text" android:textSize="14sp"/>
 </LinearLayout>
 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="@drawable/bg_pill_green" android:paddingStart="14dp" android:paddingEnd="14dp" android:paddingTop="6dp" android:paddingBottom="6dp" android:text="AVAILABLE" android:textColor="@color/techfix_green" android:textSize="11sp" android:textStyle="bold"/>
 </LinearLayout>
@@ -40,7 +40,7 @@
 <TextView android:layout_width="56dp" android:layout_height="56dp" android:background="@drawable/bg_pill_orange_solid" android:gravity="center" android:text="RK" android:textColor="@color/techfix_white" android:textSize="16sp" android:textStyle="bold"/>
 <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:layout_marginStart="14dp" android:gravity="center" android:orientation="vertical">
 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Ruwan Kumara" android:textColor="@color/techfix_navy" android:textSize="17sp" android:textStyle="bold"/>
-<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Desktop & Software · Galle" android:textColor="@color/techfix_gray_text" android:textSize="14sp"/>
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Desktop &amp; Software · Galle" android:textColor="@color/techfix_gray_text" android:textSize="14sp"/>
 </LinearLayout>
 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="@drawable/bg_pill_blue" android:paddingStart="14dp" android:paddingEnd="14dp" android:paddingTop="6dp" android:paddingBottom="6dp" android:text="BUSY" android:textColor="#3B6FE0" android:textSize="11sp" android:textStyle="bold"/>
 </LinearLayout>
@@ -48,7 +48,7 @@
 <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" android:text="5 active jobs · 4.7★ rating" android:textColor="@color/techfix_gray_text" android:textSize="15sp"/>
 </LinearLayout>
 </androidx.cardview.widget.CardView>
-</LinearLayout>
+</androidx.recyclerview.widget.RecyclerView>
 </LinearLayout>
 </androidx.core.widget.NestedScrollView>
 <!--  ===== Bottom navigation =====  -->

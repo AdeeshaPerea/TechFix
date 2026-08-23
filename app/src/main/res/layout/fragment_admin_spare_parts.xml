@@ -21,7 +21,7 @@
                  (id: rvSpareParts) bound to a SparePartAdapter reading from
                  the `spareParts` Firestore collection, filtered by the
                  chip selected above (All / Low Stock).  -->
-<LinearLayout android:id="@+id/sparePartsListContainer" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical">
+<androidx.recyclerview.widget.RecyclerView android:id="@+id/rvSparePartsList" android:layout_width="match_parent" android:layout_height="wrap_content">
 <androidx.cardview.widget.CardView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="12dp" app:cardBackgroundColor="@color/techfix_white" app:cardCornerRadius="16dp" app:cardElevation="0dp">
 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal" android:padding="18dp">
 <LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
@@ -49,7 +49,7 @@
 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="@drawable/bg_pill_green" android:paddingStart="14dp" android:paddingEnd="14dp" android:paddingTop="8dp" android:paddingBottom="8dp" android:text="IN STOCK" android:textColor="@color/techfix_green" android:textSize="12sp" android:textStyle="bold"/>
 </LinearLayout>
 </androidx.cardview.widget.CardView>
-</LinearLayout>
+</androidx.recyclerview.widget.RecyclerView>
 </LinearLayout>
 </androidx.core.widget.NestedScrollView>
 <!--  ===== Bottom navigation =====  -->

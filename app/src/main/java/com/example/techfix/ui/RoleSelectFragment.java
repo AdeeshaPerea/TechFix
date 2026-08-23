@@ -28,6 +28,13 @@ public class RoleSelectFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        if (binding.cardCustomer != null) {
+            binding.cardCustomer.setOnClickListener(v -> {
+                android.content.Intent intent = new android.content.Intent(requireContext(), com.example.techfix.customer.CustomerHomeActivity.class);
+                startActivity(intent);
+            });
+        }
+
         binding.cardTechnician.setOnClickListener(v -> {
             Navigation.findNavController(v).navigate(R.id.action_roleSelect_to_techLogin);
         });

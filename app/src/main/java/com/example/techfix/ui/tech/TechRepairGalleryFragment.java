@@ -38,32 +38,25 @@ public class TechRepairGalleryFragment extends Fragment {
             repairId = "REP_001";
         }
 
-        viewModel.getRepairs().observe(getViewLifecycleOwner(), repairItems -> {
-            RepairItem item = viewModel.getRepairById(repairId);
-            if (item != null) {
-                StringBuilder beforeSb = new StringBuilder();
-                for (String img : item.getBeforeImages()) {
-                    beforeSb.append("• ").append(img).append("\n");
-                }
-                if (beforeSb.length() > 0) binding.tvBeforePhotosList.setText(beforeSb.toString().trim());
+        if (binding.btnAddBefore != null) {
+            binding.btnAddBefore.setOnClickListener(v -> {
+                viewModel.addBeforePhoto(repairId, "New Before Photo (Captured at " + System.currentTimeMillis() % 10000 + ")");
+                Toast.makeText(requireContext(), "Mock Before Photo Added!", Toast.LENGTH_SHORT).show();
+            });
+        }
 
-                StringBuilder afterSb = new StringBuilder();
-                for (String img : item.getAfterImages()) {
-                    afterSb.append("• ").append(img).append("\n");
-                }
-                if (afterSb.length() > 0) binding.tvAfterPhotosList.setText(afterSb.toString().trim());
-            }
-        });
+        if (binding.btnAddAfter1 != null) {
+            binding.btnAddAfter1.setOnClickListener(v -> {
+                viewModel.addAfterPhoto(repairId, "New After Photo (Captured at " + System.currentTimeMillis() % 10000 + ")");
+                Toast.makeText(requireContext(), "Mock After Photo Added!", Toast.LENGTH_SHORT).show();
+            });
+        }
 
-        binding.btnAddBeforePhoto.setOnClickListener(v -> {
-            viewModel.addBeforePhoto(repairId, "New Before Photo (Captured at " + System.currentTimeMillis() % 10000 + ")");
-            Toast.makeText(requireContext(), "Mock Before Photo Added!", Toast.LENGTH_SHORT).show();
-        });
-
-        binding.btnAddAfterPhoto.setOnClickListener(v -> {
-            viewModel.addAfterPhoto(repairId, "New After Photo (Captured at " + System.currentTimeMillis() % 10000 + ")");
-            Toast.makeText(requireContext(), "Mock After Photo Added!", Toast.LENGTH_SHORT).show();
-        });
+        if (binding.btnMarkCompleted != null) {
+            binding.btnMarkCompleted.setOnClickListener(v -> {
+                Toast.makeText(requireContext(), "Repair marked as completed!", Toast.LENGTH_SHORT).show();
+            });
+        }
     }
 
     @Override

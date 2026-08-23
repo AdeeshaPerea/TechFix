@@ -14,7 +14,7 @@
 <!--  NOTE: replace this LinearLayout with a RecyclerView (id: rvBranches)
              bound to a BranchAdapter reading from the `branches` Firestore
              collection once wired up. Each branch card below is one item layout.  -->
-<LinearLayout android:id="@+id/branchListContainer" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+<androidx.recyclerview.widget.RecyclerView android:id="@+id/rvBranchesList" android:layout_width="match_parent" android:layout_height="wrap_content">
 <!--  Branch item: Colombo 03  -->
 <androidx.cardview.widget.CardView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="14dp" app:cardBackgroundColor="@color/techfix_white" app:cardCornerRadius="18dp" app:cardElevation="0dp">
 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="18dp">
@@ -49,7 +49,7 @@
 </LinearLayout>
 </LinearLayout>
 </androidx.cardview.widget.CardView>
-</LinearLayout>
+</androidx.recyclerview.widget.RecyclerView>
 </androidx.core.widget.NestedScrollView>
 <!--  ===== Bottom navigation =====  -->
 <com.google.android.material.bottomnavigation.BottomNavigationView android:id="@+id/bottomNav" android:layout_width="0dp" android:layout_height="wrap_content" android:background="@color/techfix_white" app:itemIconTint="@color/nav_item_color_selector" app:itemTextColor="@color/nav_item_color_selector" app:menu="@menu/menu_admin_bottom_nav" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent"/>

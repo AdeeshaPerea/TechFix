@@ -1,0 +1,30 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:background="#F2F3F5">
+<!--  Header  -->
+<RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:background="#122040" android:padding="20dp">
+<ImageButton android:id="@+id/btnBack" android:layout_width="32dp" android:layout_height="32dp" android:layout_alignParentStart="true" android:layout_centerVertical="true" android:background="@android:color/transparent" android:src="@drawable/ic_arrow_back" android:contentDescription="Back"/>
+<LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" android:orientation="vertical" android:gravity="center_horizontal">
+<TextView android:id="@+id/tvAptCode" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="APT-2026-001" android:textColor="#FFFFFF" android:textSize="22sp" android:textStyle="bold"/>
+<TextView android:id="@+id/tvAptStatusBadge" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="PENDING" android:textColor="#F5A623" android:textSize="14sp" android:textStyle="bold"/>
+</LinearLayout>
+</RelativeLayout>
+<ScrollView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1">
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+<!--  Appointment Details Card  -->
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:background="@drawable/bg_card_rounded" android:padding="20dp">
+<TextView android:id="@+id/tvAptDevice" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="iPhone 13 Pro" android:textColor="#122040" android:textSize="18sp" android:textStyle="bold"/>
+<TextView android:id="@+id/tvAptService" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Service Requested: Screen Repair" android:textColor="#5A6478" android:textSize="14sp"/>
+<TextView android:id="@+id/tvAptCustomer" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Kasun Perera (0771234567)" android:textColor="#5A6478" android:textSize="14sp"/>
+<TextView android:id="@+id/tvAptDateTime" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="2026-08-25 at 10:00 AM" android:textColor="#5A6478" android:textSize="14sp"/>
+<TextView android:id="@+id/tvAptBranchTech" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="TechFix Colombo • Unassigned" android:textColor="#5A6478" android:textSize="14sp"/>
+<TextView android:id="@+id/tvAptProblem" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="Display flicker and touch unresponsive." android:textColor="#122040" android:textSize="14sp"/>
+</LinearLayout>
+<!--  Action Buttons  -->
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="20dp">
+<Button android:id="@+id/btnAcceptApt" android:layout_width="0dp" android:layout_height="56dp" android:layout_weight="1" android:layout_marginEnd="8dp" android:background="@drawable/bg_button_orange" android:text="ACCEPT" android:textColor="#FFFFFF" android:textStyle="bold"/>
+<Button android:id="@+id/btnRejectApt" android:layout_width="0dp" android:layout_height="56dp" android:layout_weight="1" android:background="@drawable/bg_button_outline_orange" android:text="REJECT" android:textColor="#F5A623" android:textStyle="bold"/>
+</LinearLayout>
+<Button android:id="@+id/btnAssignTechnician" android:layout_width="match_parent" android:layout_height="56dp" android:layout_marginTop="12dp" android:background="@drawable/bg_button_orange" android:text="ASSIGN TECHNICIAN" android:textColor="#FFFFFF" android:textStyle="bold"/>
+<Button android:id="@+id/btnChangeBranch" android:layout_width="match_parent" android:layout_height="56dp" android:layout_marginTop="12dp" android:background="@drawable/bg_button_outline_orange" android:text="CHANGE BRANCH" android:textColor="#F5A623" android:textStyle="bold"/>
+</LinearLayout>
+</ScrollView>
+</LinearLayout>

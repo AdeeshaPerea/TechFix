@@ -25,19 +25,19 @@
 </LinearLayout>
 </LinearLayout>
 <!--  Skills  -->
-<TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="24dp" android:text="SKILLS & SPECIALIZATION" android:textColor="#8A93A8" android:textStyle="bold" android:textSize="12sp"/>
-<com.google.android.flexbox.FlexboxLayout xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" app:flexWrap="wrap">
+<TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="24dp" android:text="SKILLS &amp; SPECIALIZATION" android:textColor="#8A93A8" android:textStyle="bold" android:textSize="12sp"/>
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:orientation="horizontal">
 <TextView style="@style/SkillChip" android:text="Screen Repair"/>
 <TextView style="@style/SkillChip" android:text="Battery Service"/>
 <TextView style="@style/SkillChip" android:text="Motherboard"/>
 <TextView style="@style/SkillChip" android:text="Water Damage"/>
-</com.google.android.flexbox.FlexboxLayout>
+</LinearLayout>
 <!--  Menu options  -->
 <TextView android:id="@+id/menuEditProfile" style="@style/ProfileMenuRow" android:text="Edit Profile" android:layout_marginTop="20dp"/>
 <TextView android:id="@+id/menuAvailability" style="@style/ProfileMenuRow" android:text="Availability"/>
 <TextView android:id="@+id/menuNotifications" style="@style/ProfileMenuRow" android:text="Notification Settings"/>
 <TextView android:id="@+id/menuChangePassword" style="@style/ProfileMenuRow" android:text="Change Password"/>
-<Button android:id="@+id/btnLogout" android:layout_width="match_parent" android:layout_height="56dp" android:layout_marginTop="16dp" android:background="@drawable/bg_button_outline_orange" android:text="LOG OUT" android:textColor="#F5A623" android:textStyle="bold"/>
+<Button android:id="@+id/btnLogoutTech" android:layout_width="match_parent" android:layout_height="56dp" android:layout_marginTop="16dp" android:background="@drawable/bg_button_outline_orange" android:text="LOG OUT" android:textColor="#F5A623" android:textStyle="bold"/>
 </LinearLayout>
 </ScrollView>
 <!--  Bottom nav  -->

@@ -6,7 +6,7 @@
 <TextView android:id="@+id/tvDashboardTitle" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="📊 Admin Dashboard" android:textColor="@color/techfix_white" android:textSize="22sp" android:textStyle="bold"/>
 <ImageButton android:id="@+id/btnSettings" android:layout_width="44dp" android:layout_height="44dp" android:background="@drawable/bg_icon_button_navy" android:contentDescription="Settings" android:src="@android:drawable/ic_menu_manage" app:tint="@color/techfix_white"/>
 </LinearLayout>
-<TextView android:id="@+id/tvDashboardSubtitle" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Colombo & Galle · Today, 27 Jul" android:textColor="#C9CFDA" android:textSize="15sp"/>
+<TextView android:id="@+id/tvDashboardSubtitle" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Colombo &amp; Galle · Today, 27 Jul" android:textColor="#C9CFDA" android:textSize="15sp"/>
 </LinearLayout>
 <!--  ===== Scrollable content =====  -->
 <androidx.core.widget.NestedScrollView android:layout_width="0dp" android:layout_height="0dp" app:layout_constraintTop_toBottomOf="@id/header" app:layout_constraintBottom_toTopOf="@id/bottomNav" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent">

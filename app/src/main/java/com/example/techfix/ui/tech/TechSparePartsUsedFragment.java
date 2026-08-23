@@ -10,17 +10,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.techfix.databinding.FragmentTechSparePartsUsedBinding;
-import com.example.techfix.ui.common.FormatUtils;
-import com.example.techfix.ui.common.SparePartAdapter;
 
 public class TechSparePartsUsedFragment extends Fragment {
 
     private FragmentTechSparePartsUsedBinding binding;
     private TechViewModel viewModel;
-    private SparePartAdapter adapter;
     private String repairId;
 
     @Nullable
@@ -41,19 +37,21 @@ public class TechSparePartsUsedFragment extends Fragment {
             repairId = "REP_001";
         }
 
-        adapter = new SparePartAdapter(part -> {
-            viewModel.addSparePartUsed(repairId, part.getId(), part.getName(), 1, part.getUnitPriceLkr());
-            Toast.makeText(requireContext(), "Added 1x " + part.getName() + " (" + FormatUtils.formatCurrency(part.getUnitPriceLkr()) + ") to Repair", Toast.LENGTH_LONG).show();
-        });
+        if (binding.btnBack != null) {
+            binding.btnBack.setOnClickListener(v -> requireActivity().onBackPressed());
+        }
 
-        binding.rvPartsCatalog.setLayoutManager(new LinearLayoutManager(requireContext()));
-        binding.rvPartsCatalog.setAdapter(adapter);
+        if (binding.btnAddPart != null) {
+            binding.btnAddPart.setOnClickListener(v -> {
+                Toast.makeText(requireContext(), "Add Part dialog opened", Toast.LENGTH_SHORT).show();
+            });
+        }
 
-        viewModel.getSparePartsCatalog().observe(getViewLifecycleOwner(), parts -> {
-            if (parts != null) {
-                adapter.setParts(parts);
-            }
-        });
+        if (binding.btnSaveNotes != null) {
+            binding.btnSaveNotes.setOnClickListener(v -> {
+                Toast.makeText(requireContext(), "Spare Parts saved!", Toast.LENGTH_SHORT).show();
+            });
+        }
     }
 
     @Override

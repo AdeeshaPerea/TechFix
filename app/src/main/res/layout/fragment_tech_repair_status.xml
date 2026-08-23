@@ -11,7 +11,7 @@
 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
 <!--  Customer & Device card  -->
 <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:background="@drawable/bg_card_rounded" android:padding="20dp" android:gravity="center_horizontal">
-<TextView android:id="@+id/txtCardTitle" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Customer & Device" android:textColor="#122040" android:textSize="18sp" android:textStyle="bold"/>
+<TextView android:id="@+id/txtCardTitle" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Customer &amp; Device" android:textColor="#122040" android:textSize="18sp" android:textStyle="bold"/>
 <TextView android:id="@+id/txtCustomerInfo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8dp" android:text="Kasun Perera · +94 77 987 6543" android:textColor="#5A6478" android:textSize="14sp"/>
 <TextView android:id="@+id/txtDeviceInfo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="iPhone 13 · Blue · IMEI on file" android:textColor="#5A6478" android:textSize="14sp"/>
 </LinearLayout>

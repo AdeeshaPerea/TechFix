@@ -28,9 +28,11 @@ public class AdminProfileSettingsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        binding.btnLogoutAdmin.setOnClickListener(v -> {
-            Navigation.findNavController(v).navigate(R.id.roleSelectFragment);
-        });
+        if (binding.btnLogOut != null) {
+            binding.btnLogOut.setOnClickListener(v -> {
+                Navigation.findNavController(v).navigate(R.id.roleSelectFragment);
+            });
+        }
     }
 
     @Override

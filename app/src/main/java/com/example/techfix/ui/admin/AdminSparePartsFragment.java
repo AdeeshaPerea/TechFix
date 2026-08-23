@@ -50,19 +50,21 @@ public class AdminSparePartsFragment extends Fragment {
             }
         });
 
-        binding.btnAddSparePart.setOnClickListener(v -> {
-            SparePartItem newPart = new SparePartItem(
-                    "PART_007",
-                    "iPhone 15 Pro OLED Display",
-                    "Mobile Display",
-                    "iPhone 15 Pro",
-                    6,
-                    45000.0,
-                    2
-            );
-            viewModel.addSparePart(newPart);
-            Toast.makeText(requireContext(), "Added iPhone 15 Pro OLED Display!", Toast.LENGTH_SHORT).show();
-        });
+        if (binding.btnAddPart != null) {
+            binding.btnAddPart.setOnClickListener(v -> {
+                SparePartItem newPart = new SparePartItem(
+                        "PART_007",
+                        "iPhone 15 Pro OLED Display",
+                        "Mobile Display",
+                        "iPhone 15 Pro",
+                        6,
+                        45000.0,
+                        2
+                );
+                viewModel.addSparePart(newPart);
+                Toast.makeText(requireContext(), "Added iPhone 15 Pro OLED Display!", Toast.LENGTH_SHORT).show();
+            });
+        }
     }
 
     @Override

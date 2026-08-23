@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="technician_options">
+        <item>Select available technician</item>
+        <item>Nuwan Silva — Available</item>
+        <item>Ruwan Kumara — Busy</item>
+    </string-array>
+
+    <string-array name="branch_options">
+        <item>Colombo 03 (nearest)</item>
+        <item>Galle Fort</item>
+    </string-array>
+</resources>

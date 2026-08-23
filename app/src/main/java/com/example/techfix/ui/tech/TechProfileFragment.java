@@ -32,17 +32,14 @@ public class TechProfileFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         User tech = MockDataGenerator.getMockTechnician();
-        binding.tvProfileName.setText(tech.getName());
-        binding.tvProfileEmail.setText(tech.getEmail());
-        binding.tvProfilePhone.setText(tech.getPhone());
-        binding.tvProfileSpec.setText(tech.getSpecialization());
-        binding.tvProfileBranch.setText(tech.getBranchName());
-        binding.tvProfileHours.setText(tech.getWorkingHours());
-        binding.tvProfileActiveRepairs.setText(tech.getActiveRepairsCount() + " Active");
+        if (binding.txtTechName != null) binding.txtTechName.setText(tech.getName());
+        if (binding.txtTechRole != null) binding.txtTechRole.setText(tech.getSpecialization() + " · " + tech.getBranchName());
 
-        binding.btnEditProfile.setOnClickListener(v -> {
-            Toast.makeText(requireContext(), "Edit Profile Dialog Opened (Mock)", Toast.LENGTH_SHORT).show();
-        });
+        if (binding.menuEditProfile != null) {
+            binding.menuEditProfile.setOnClickListener(v -> {
+                Toast.makeText(requireContext(), "Edit Profile Dialog Opened (Mock)", Toast.LENGTH_SHORT).show();
+            });
+        }
 
         binding.btnLogoutTech.setOnClickListener(v -> {
             Navigation.findNavController(v).navigate(R.id.roleSelectFragment);

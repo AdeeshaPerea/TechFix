@@ -10,17 +10,14 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.techfix.databinding.FragmentTechRepairStatusBinding;
 import com.example.techfix.model.RepairItem;
-import com.example.techfix.ui.common.StatusTimelineAdapter;
 
 public class TechRepairStatusFragment extends Fragment {
 
     private FragmentTechRepairStatusBinding binding;
     private TechViewModel viewModel;
-    private StatusTimelineAdapter adapter;
     private String repairId;
 
     @Nullable
@@ -45,19 +42,13 @@ public class TechRepairStatusFragment extends Fragment {
         String currentStatus = item != null ? item.getStatus() : "DIAGNOSING";
 
         if (item != null) {
-            binding.tvTimelineCode.setText(item.getRepairCode() + " • " + item.getDeviceName());
-            binding.tvTimelineCurrentStatus.setText("Current Status: " + currentStatus);
+            if (binding.txtRepairId != null) binding.txtRepairId.setText(item.getRepairCode());
+            if (binding.txtRepairTitle != null) binding.txtRepairTitle.setText(item.getDeviceName() + " · " + currentStatus);
         }
 
-        adapter = new StatusTimelineAdapter(currentStatus, newStatus -> {
-            viewModel.updateStatus(repairId, newStatus);
-            adapter.setCurrentStatus(newStatus);
-            binding.tvTimelineCurrentStatus.setText("Current Status: " + newStatus);
-            Toast.makeText(requireContext(), "Status updated to " + newStatus, Toast.LENGTH_SHORT).show();
-        });
-
-        binding.rvStatusTimeline.setLayoutManager(new LinearLayoutManager(requireContext()));
-        binding.rvStatusTimeline.setAdapter(adapter);
+        if (binding.btnBack != null) {
+            binding.btnBack.setOnClickListener(v -> requireActivity().onBackPressed());
+        }
     }
 
     @Override
