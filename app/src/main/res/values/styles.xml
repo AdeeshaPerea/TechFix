@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="PartCard">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">12dp</item>
+    </style>
+
+    <style name="PartName">
+        <item name="android:textColor">#122040</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="PartCompat">
+        <item name="android:textColor">#64748B</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="PartPrice">
+        <item name="android:textColor">#0F172A</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="StockBadgeLow">
+        <item name="android:background">@drawable/bg_pill_red</item>
+        <item name="android:textColor">#DC2626</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingStart">12dp</item>
+        <item name="android:paddingEnd">12dp</item>
+        <item name="android:paddingTop">6dp</item>
+        <item name="android:paddingBottom">6dp</item>
+    </style>
+
+    <style name="StockBadgeOk">
+        <item name="android:background">@drawable/bg_pill_green</item>
+        <item name="android:textColor">#16A34A</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingStart">12dp</item>
+        <item name="android:paddingEnd">12dp</item>
+        <item name="android:paddingTop">6dp</item>
+        <item name="android:paddingBottom">6dp</item>
+    </style>
+
+    <style name="StatCard">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+    </style>
+
+    <style name="StatNumber">
+        <item name="android:textColor">#122040</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="StatLabel">
+        <item name="android:textColor">#64748B</item>
+        <item name="android:textSize">13sp</item>
+    </style>
+
+    <style name="SkillChip">
+        <item name="android:background">@drawable/bg_chip_selected</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:paddingStart">12dp</item>
+        <item name="android:paddingEnd">12dp</item>
+        <item name="android:paddingTop">6dp</item>
+        <item name="android:paddingBottom">6dp</item>
+        <item name="android:layout_marginEnd">6dp</item>
+        <item name="android:layout_marginBottom">6dp</item>
+    </style>
+
+    <style name="ProfileMenuRow">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">16dp</item>
+    </style>
+
+    <style name="StatusChipDone">
+        <item name="android:background">@drawable/bg_pill_green</item>
+        <item name="android:textColor">#16A34A</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="StatusChipActive">
+        <item name="android:background">@drawable/bg_pill_blue</item>
+        <item name="android:textColor">#0284C7</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="StatusChipPending">
+        <item name="android:background">@drawable/bg_pill_amber</item>
+        <item name="android:textColor">#D97706</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="DayCellUnselected">
+        <item name="android:background">@drawable/bg_chip_unselected</item>
+        <item name="android:padding">12dp</item>
+    </style>
+
+    <style name="DayLabel">
+        <item name="android:textColor">#64748B</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="DayNumber">
+        <item name="android:textColor">#0F172A</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="DayCellSelected">
+        <item name="android:background">@drawable/bg_chip_selected</item>
+        <item name="android:padding">12dp</item>
+    </style>
+
+    <style name="DayLabelSelected">
+        <item name="android:textColor">#94A3B8</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="DayNumberSelected">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="ScheduleCard">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginBottom">12dp</item>
+    </style>
+
+    <style name="ScheduleTime">
+        <item name="android:textColor">#64748B</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="ScheduleJobTitle">
+        <item name="android:textColor">#122040</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="ScheduleJobSubtitle">
+        <item name="android:textColor">#64748B</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="StatusBadgeInProgress">
+        <item name="android:background">@drawable/bg_pill_blue</item>
+        <item name="android:textColor">#0284C7</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="StatusBadgePending">
+        <item name="android:background">@drawable/bg_pill_amber</item>
+        <item name="android:textColor">#D97706</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="StatusBadgeScheduled">
+        <item name="android:background">@drawable/bg_pill_green</item>
+        <item name="android:textColor">#16A34A</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+</resources>

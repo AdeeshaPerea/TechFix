@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="12dp"
+    android:layout_marginVertical="4dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="1dp"
+    app:strokeColor="@color/divider_color"
+    app:strokeWidth="1dp"
+    app:cardBackgroundColor="@color/card_bg">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="10dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_toStartOf="@id/tvStockStatusBadge"
+            android:layout_marginEnd="4dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvPartName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="OLED Panel — iPhone 12"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@color/navy_header" />
+
+            <TextView
+                android:id="@+id/tvPartQuantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Qty: 2 · Rs. 18,500 each"
+                android:textSize="12sp"
+                android:textColor="@color/text_secondary" />
+
+            <TextView android:id="@+id/tvPartCategoryAndModel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:visibility="gone" />
+            <TextView android:id="@+id/tvPartPrice" android:layout_width="wrap_content" android:layout_height="wrap_content" android:visibility="gone" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvStockStatusBadge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:text="LOW STOCK"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            android:textColor="@color/badge_red_text"
+            android:background="@drawable/bg_badge_red"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="3dp" />
+    </RelativeLayout>
+
+</com.google.android.material.card.MaterialCardView>

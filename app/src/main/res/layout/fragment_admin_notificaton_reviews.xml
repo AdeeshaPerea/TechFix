@@ -1,0 +1,76 @@
+<!--  Screen: Notifications & Reviews (moderation, Reviews tab shown selected)  -->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" android:layout_width="match_parent" android:layout_height="match_parent" android:background="@color/techfix_bg">
+<!--  ===== Header =====  -->
+<LinearLayout android:id="@+id/header" android:layout_width="0dp" android:layout_height="wrap_content" android:background="@color/techfix_navy" android:orientation="vertical" android:paddingTop="24dp" android:paddingBottom="24dp" app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent">
+<TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center" android:text="NOTIFICATIONS &amp; REVIEWS" android:textColor="@color/techfix_white" android:textSize="21sp" android:textStyle="bold" android:letterSpacing="0.02"/>
+</LinearLayout>
+<!--  ===== Tabs =====  -->
+<LinearLayout android:id="@+id/tabs" android:layout_width="0dp" android:layout_height="wrap_content" android:background="@color/techfix_bg" android:orientation="horizontal" android:paddingTop="18dp" android:paddingBottom="14dp" app:layout_constraintTop_toBottomOf="@id/header" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent">
+<TextView android:id="@+id/tabNotifications" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="Notifications" android:textColor="@color/techfix_gray_text" android:textSize="16sp"/>
+<TextView android:id="@+id/tabReviews" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:gravity="center" android:text="Reviews" android:textColor="@color/techfix_orange" android:textSize="16sp" android:textStyle="bold"/>
+</LinearLayout>
+<!--  Tab underline: two equal-width segments so the orange bar sits
+         under the currently-selected "Reviews" tab only. Swap which
+         segment is orange when the user taps "Notifications".  -->
+<LinearLayout android:id="@+id/tabIndicator" android:layout_width="0dp" android:layout_height="3dp" android:orientation="horizontal" app:layout_constraintTop_toBottomOf="@id/tabs" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent">
+<View android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:background="@android:color/transparent"/>
+<View android:id="@+id/tabIndicatorReviews" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:background="@color/techfix_orange"/>
+</LinearLayout>
+<!--  ===== Scrollable content (Reviews list) =====  -->
+<androidx.core.widget.NestedScrollView android:layout_width="0dp" android:layout_height="0dp" app:layout_constraintTop_toBottomOf="@id/tabIndicator" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintEnd_toEndOf="parent">
+<!--  NOTE: replace this LinearLayout with a RecyclerView
+             (id: rvReviews) bound to a ReviewAdapter reading from the
+             `reviews` Firestore collection. Swap in a second RecyclerView
+             (id: rvNotifications) when the "Notifications" tab is selected.  -->
+<LinearLayout android:id="@+id/reviewListContainer" android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+<!--  Review: Kasun Perera  -->
+<androidx.cardview.widget.CardView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="14dp" app:cardBackgroundColor="@color/techfix_white" app:cardCornerRadius="16dp" app:cardElevation="0dp">
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="18dp">
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal">
+<TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Kasun Perera" android:textColor="@color/techfix_navy" android:textSize="18sp" android:textStyle="bold"/>
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="@drawable/bg_pill_green_solid" android:paddingStart="16dp" android:paddingEnd="16dp" android:paddingTop="8dp" android:paddingBottom="8dp" android:text="Published" android:textColor="@color/techfix_white" android:textSize="13sp" android:textStyle="bold"/>
+</LinearLayout>
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="★★★★★" android:textColor="@color/techfix_orange" android:textSize="16sp"/>
+<TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="Technician: Nuwan Silva" android:textColor="@color/techfix_gray_text" android:textSize="14sp"/>
+<TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Excellent and fast screen replacement service!" android:textColor="@color/techfix_dark_text" android:textSize="15sp"/>
+</LinearLayout>
+</androidx.cardview.widget.CardView>
+<!--  Review: Amali Fernando  -->
+<androidx.cardview.widget.CardView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="14dp" app:cardBackgroundColor="@color/techfix_white" app:cardCornerRadius="16dp" app:cardElevation="0dp">
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="18dp">
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal">
+<TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Amali Fernando" android:textColor="@color/techfix_navy" android:textSize="18sp" android:textStyle="bold"/>
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="@drawable/bg_pill_red_solid" android:paddingStart="16dp" android:paddingEnd="16dp" android:paddingTop="8dp" android:paddingBottom="8dp" android:text="Flagged" android:textColor="@color/techfix_white" android:textSize="13sp" android:textStyle="bold"/>
+</LinearLayout>
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="★★☆☆☆" android:textColor="@color/techfix_orange" android:textSize="16sp"/>
+<TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="Technician: Chamara Perera" android:textColor="@color/techfix_gray_text" android:textSize="14sp"/>
+<TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Repair took longer than promised." android:textColor="@color/techfix_dark_text" android:textSize="15sp"/>
+</LinearLayout>
+</androidx.cardview.widget.CardView>
+<!--  Review: Dilan Fernando  -->
+<androidx.cardview.widget.CardView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginBottom="14dp" app:cardBackgroundColor="@color/techfix_white" app:cardCornerRadius="16dp" app:cardElevation="0dp">
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="18dp">
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal">
+<TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Dilan Fernando" android:textColor="@color/techfix_navy" android:textSize="18sp" android:textStyle="bold"/>
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="@drawable/bg_pill_green_solid" android:paddingStart="16dp" android:paddingEnd="16dp" android:paddingTop="8dp" android:paddingBottom="8dp" android:text="Published" android:textColor="@color/techfix_white" android:textSize="13sp" android:textStyle="bold"/>
+</LinearLayout>
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="★★★★☆" android:textColor="@color/techfix_orange" android:textSize="16sp"/>
+<TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="Technician: Nuwan Silva" android:textColor="@color/techfix_gray_text" android:textSize="14sp"/>
+<TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Good work, friendly staff at Colombo branch." android:textColor="@color/techfix_dark_text" android:textSize="15sp"/>
+</LinearLayout>
+</androidx.cardview.widget.CardView>
+<!--  Review: Ishara Gunasekara  -->
+<androidx.cardview.widget.CardView android:layout_width="match_parent" android:layout_height="wrap_content" app:cardBackgroundColor="@color/techfix_white" app:cardCornerRadius="16dp" app:cardElevation="0dp">
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="18dp">
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:gravity="center_vertical" android:orientation="horizontal">
+<TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Ishara Gunasekara" android:textColor="@color/techfix_navy" android:textSize="18sp" android:textStyle="bold"/>
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="@drawable/bg_pill_orange_solid" android:paddingStart="16dp" android:paddingEnd="16dp" android:paddingTop="8dp" android:paddingBottom="8dp" android:text="Pending Review" android:textColor="@color/techfix_white" android:textSize="13sp" android:textStyle="bold"/>
+</LinearLayout>
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="★☆☆☆☆" android:textColor="@color/techfix_orange" android:textSize="16sp"/>
+<TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="12dp" android:text="Technician: Ravindu Jayasuriya" android:textColor="@color/techfix_gray_text" android:textSize="14sp"/>
+<TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="4dp" android:text="Battery still drains fast after repair." android:textColor="@color/techfix_dark_text" android:textSize="15sp"/>
+</LinearLayout>
+</androidx.cardview.widget.CardView>
+</LinearLayout>
+</androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

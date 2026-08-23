@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="12dp"
+    android:layout_marginVertical="4dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="1dp"
+    app:strokeColor="@color/divider_color"
+    app:strokeWidth="1dp"
+    app:cardBackgroundColor="@color/card_bg">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tvDeviceAndService"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/tvStatusBadge"
+                android:layout_alignParentStart="true"
+                android:layout_marginEnd="4dp"
+                android:text="iPhone 13 · Screen Replacement"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                android:textColor="@color/navy_header" />
+
+            <TextView
+                android:id="@+id/tvStatusBadge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:text="URGENT"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                android:textColor="@color/badge_red_text"
+                android:background="@drawable/bg_badge_red"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="3dp" />
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/tvCustomerAndCode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="Kasun Perera · #TF-2026-00125"
+            android:textSize="12sp"
+            android:textColor="@color/text_muted" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="6dp"
+            android:background="@color/divider_color" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:src="@drawable/ic_pin"
+                android:layout_marginEnd="4dp"
+                app:tint="@color/badge_red_text" />
+
+            <TextView
+                android:id="@+id/tvDropOffAndTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Drop-off 9:00 AM · Est. 1.5 hrs"
+                android:textSize="12sp"
+                android:textColor="@color/text_secondary" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

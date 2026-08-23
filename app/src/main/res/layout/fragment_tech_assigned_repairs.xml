@@ -1,0 +1,20 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:background="#F2F3F5">
+<!--  Header  -->
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:background="#122040" android:padding="20dp" android:gravity="center_vertical">
+<LinearLayout android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:orientation="vertical">
+<TextView android:id="@+id/txtGreeting" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="👋 Nuwan Silva" android:textColor="#FFFFFF" android:textSize="22sp" android:textStyle="bold"/>
+<TextView android:id="@+id/txtRoleBranch" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Colombo 03 · Mobile &amp; Laptop Specialist" android:textColor="#AEB6C4" android:textSize="14sp"/>
+</LinearLayout>
+<ImageButton android:id="@+id/btnNotifications" android:layout_width="44dp" android:layout_height="44dp" android:background="@drawable/bg_icon_circle" android:src="@drawable/ic_bell" android:contentDescription="Notifications"/>
+</LinearLayout>
+<!--  Filter tabs  -->
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:padding="16dp">
+<TextView android:id="@+id/tabAll" android:layout_width="wrap_content" android:layout_height="wrap_content" android:background="@drawable/bg_chip_selected" android:paddingStart="16dp" android:paddingEnd="16dp" android:paddingTop="8dp" android:paddingBottom="8dp" android:text="All (5)" android:textColor="#FFFFFF" android:textStyle="bold"/>
+<TextView android:id="@+id/tabUrgent" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="8dp" android:background="@drawable/bg_chip_unselected" android:paddingStart="16dp" android:paddingEnd="16dp" android:paddingTop="8dp" android:paddingBottom="8dp" android:text="Urgent (2)" android:textColor="#8A93A8"/>
+<TextView android:id="@+id/tabToday" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginStart="8dp" android:background="@drawable/bg_chip_unselected" android:paddingStart="16dp" android:paddingEnd="16dp" android:paddingTop="8dp" android:paddingBottom="8dp" android:text="Today" android:textColor="#8A93A8"/>
+</LinearLayout>
+<!--  Repair job list  -->
+<androidx.recyclerview.widget.RecyclerView xmlns:tools="http://schemas.android.com/tools" android:id="@+id/rvRepairJobs" android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1" android:paddingStart="16dp" android:paddingEnd="16dp" android:clipToPadding="false" tools:listitem="@layout/item_repair_job"/>
+<!--  Bottom nav  -->
+<include layout="@layout/bottom_nav_bar"/>
+</LinearLayout>

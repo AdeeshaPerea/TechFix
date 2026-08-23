@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/loginFragment">
+
+    <!-- Unified Login -->
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.techfix.ui.main.LoginFragment"
+        android:label="TechFix Login"
+        tools:layout="@layout/login">
+        <action
+            android:id="@+id/action_login_to_adminDashboard"
+            app:destination="@id/adminDashboardFragment" />
+        <action
+            android:id="@+id/action_login_to_techDashboard"
+            app:destination="@id/techDashboardFragment" />
+    </fragment>
+
+
+    <!-- Technician Dashboard -->
+    <fragment
+        android:id="@+id/techDashboardFragment"
+        android:name="com.example.techfix.ui.tech.TechDashboardFragment"
+        android:label="Technician Dashboard"
+        tools:layout="@layout/fragment_tech_dashboard">
+        <action
+            android:id="@+id/action_techDashboard_to_techRepairDetail"
+            app:destination="@id/techRepairDetailFragment" />
+        <action
+            android:id="@+id/action_techDashboard_to_techRepairs"
+            app:destination="@id/techRepairsFragment" />
+    </fragment>
+
+    <!-- Assigned Repairs -->
+    <fragment
+        android:id="@+id/techRepairsFragment"
+        android:name="com.example.techfix.ui.tech.TechRepairsFragment"
+        android:label="Assigned Repairs"
+        tools:layout="@layout/fragment_tech_repairs">
+        <action
+            android:id="@+id/action_techRepairs_to_techRepairDetail"
+            app:destination="@id/techRepairDetailFragment" />
+    </fragment>
+
+    <!-- Repair Detail -->
+    <fragment
+        android:id="@+id/techRepairDetailFragment"
+        android:name="com.example.techfix.ui.tech.TechRepairDetailFragment"
+        android:label="Repair Details"
+        tools:layout="@layout/fragment_tech_repair_detail">
+        <action
+            android:id="@+id/action_techRepairDetail_to_techDiagnosis"
+            app:destination="@id/techDiagnosisFragment" />
+        <action
+            android:id="@+id/action_techRepairDetail_to_techRepairStatus"
+            app:destination="@id/techRepairStatusFragment" />
+        <action
+            android:id="@+id/action_techRepairDetail_to_techRepairNotes"
+            app:destination="@id/techRepairNotesFragment" />
+        <action
+            android:id="@+id/action_techRepairDetail_to_techSpareParts"
+            app:destination="@id/techSparePartsUsedFragment" />
+        <action
+            android:id="@+id/action_techRepairDetail_to_techGallery"
+            app:destination="@id/techRepairGalleryFragment" />
+    </fragment>
+
+    <!-- Diagnosis -->
+    <fragment
+        android:id="@+id/techDiagnosisFragment"
+        android:name="com.example.techfix.ui.tech.TechDiagnosisFragment"
+        android:label="Diagnosis"
+        tools:layout="@layout/fragment_tech_diagnosis" />
+
+    <!-- Repair Status -->
+    <fragment
+        android:id="@+id/techRepairStatusFragment"
+        android:name="com.example.techfix.ui.tech.TechRepairStatusFragment"
+        android:label="Repair Status Timeline"
+        tools:layout="@layout/fragment_tech_repair_status" />
+
+    <!-- Repair Notes -->
+    <fragment
+        android:id="@+id/techRepairNotesFragment"
+        android:name="com.example.techfix.ui.tech.TechRepairNotesFragment"
+        android:label="Repair Notes"
+        tools:layout="@layout/fragment_tech_repair_notes" />
+
+    <!-- Spare Parts Used -->
+    <fragment
+        android:id="@+id/techSparePartsUsedFragment"
+        android:name="com.example.techfix.ui.tech.TechSparePartsUsedFragment"
+        android:label="Spare Parts Used"
+        tools:layout="@layout/fragment_tech_spare_parts_used" />
+
+    <!-- Before / After Images -->
+    <fragment
+        android:id="@+id/techRepairGalleryFragment"
+        android:name="com.example.techfix.ui.tech.TechRepairGalleryFragment"
+        android:label="Before / After Photos"
+        tools:layout="@layout/fragment_tech_repair_gallery" />
+
+    <!-- Technician Profile -->
+    <fragment
+        android:id="@+id/techProfileFragment"
+        android:name="com.example.techfix.ui.tech.TechProfileFragment"
+        android:label="Technician Profile"
+        tools:layout="@layout/fragment_tech_profile" />
+
+    <!-- Technician Notifications -->
+    <fragment
+        android:id="@+id/techNotificationsFragment"
+        android:name="com.example.techfix.ui.tech.TechNotificationsFragment"
+        android:label="Notifications"
+        tools:layout="@layout/fragment_tech_notifications" />
+
+
+    <!-- Admin Dashboard -->
+    <fragment
+        android:id="@+id/adminDashboardFragment"
+        android:name="com.example.techfix.ui.admin.AdminDashboardFragment"
+        android:label="Admin Dashboard"
+        tools:layout="@layout/fragment_admin_dashboard">
+        <action
+            android:id="@+id/action_adminDashboard_to_adminAppointmentDetail"
+            app:destination="@id/adminAppointmentDetailFragment" />
+    </fragment>
+
+    <!-- Admin Appointments -->
+    <fragment
+        android:id="@+id/adminAppointmentsFragment"
+        android:name="com.example.techfix.ui.admin.AdminAppointmentsFragment"
+        android:label="Appointments"
+        tools:layout="@layout/fragment_admin_appointments">
+        <action
+            android:id="@+id/action_adminAppointments_to_adminAppointmentDetail"
+            app:destination="@id/adminAppointmentDetailFragment" />
+    </fragment>
+
+    <!-- Admin Appointment Detail -->
+    <fragment
+        android:id="@+id/adminAppointmentDetailFragment"
+        android:name="com.example.techfix.ui.admin.AdminAppointmentDetailFragment"
+        android:label="Appointment Detail"
+        tools:layout="@layout/fragment_admin_appointment_detail" />
+
+    <!-- Admin Branches -->
+    <fragment
+        android:id="@+id/adminBranchesFragment"
+        android:name="com.example.techfix.ui.admin.AdminBranchesFragment"
+        android:label="Branches"
+        tools:layout="@layout/fragment_admin_branches" />
+
+    <!-- Admin Technicians -->
+    <fragment
+        android:id="@+id/adminTechniciansFragment"
+        android:name="com.example.techfix.ui.admin.AdminTechniciansFragment"
+        android:label="Technicians"
+        tools:layout="@layout/fragment_admin_technicians" />
+
+    <!-- Admin Spare Parts -->
+    <fragment
+        android:id="@+id/adminSparePartsFragment"
+        android:name="com.example.techfix.ui.admin.AdminSparePartsFragment"
+        android:label="Spare Parts Inventory"
+        tools:layout="@layout/fragment_admin_spare_parts" />
+
+    <!-- Admin Services -->
+    <fragment
+        android:id="@+id/adminServicesFragment"
+        android:name="com.example.techfix.ui.admin.AdminServicesFragment"
+        android:label="Services &amp; Pricing"
+        tools:layout="@layout/fragment_admin_services" />
+
+    <!-- Admin Gallery -->
+    <fragment
+        android:id="@+id/adminGalleryFragment"
+        android:name="com.example.techfix.ui.admin.AdminGalleryFragment"
+        android:label="Repair Gallery"
+        tools:layout="@layout/fragment_admin_gallery" />
+
+    <!-- Admin Profile Settings -->
+    <fragment
+        android:id="@+id/adminProfileSettingsFragment"
+        android:name="com.example.techfix.ui.admin.AdminProfileSettingsFragment"
+        android:label="Admin Settings"
+        tools:layout="@layout/fragment_admin_profile_settings" />
+
+</navigation>

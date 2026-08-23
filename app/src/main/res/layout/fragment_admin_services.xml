@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg_app">
+
+    <!-- Compact Header Bar -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/navy_header"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="18dp"
+        android:paddingBottom="14dp">
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_arrow_back"
+            app:tint="@color/white" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Service Prices"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/tvServicesSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mobile, Laptop &amp; Desktop"
+                android:textSize="11sp"
+                android:textColor="@color/navy_header_sub" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/btnAddService"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:text="+"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:paddingHorizontal="4dp" />
+    </RelativeLayout>
+
+    <!-- Filter Category Tabs Row -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingHorizontal="12dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="2dp">
+
+        <TextView
+            android:id="@+id/tabMobile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_chip_active"
+            android:text="Mobile"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:paddingHorizontal="14dp"
+            android:paddingVertical="6dp"
+            android:layout_marginEnd="6dp" />
+
+        <TextView
+            android:id="@+id/tabLaptop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_chip_inactive"
+            android:text="Laptop"
+            android:textColor="@color/text_secondary"
+            android:textSize="12sp"
+            android:paddingHorizontal="14dp"
+            android:paddingVertical="6dp"
+            android:layout_marginEnd="6dp" />
+
+        <TextView
+            android:id="@+id/tabDesktop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_chip_inactive"
+            android:text="Desktop"
+            android:textColor="@color/text_secondary"
+            android:textSize="12sp"
+            android:paddingHorizontal="14dp"
+            android:paddingVertical="6dp" />
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvServicesList"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingVertical="4dp"
+        android:clipToPadding="false"
+        tools:listitem="@layout/item_service_card" />
+
+</LinearLayout>

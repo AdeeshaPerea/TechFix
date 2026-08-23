@@ -1,0 +1,36 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent" android:orientation="vertical" android:background="#F2F3F5">
+<!--  Header  -->
+<RelativeLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:background="#122040" android:padding="20dp">
+<ImageButton android:id="@+id/btnBack" android:layout_width="32dp" android:layout_height="32dp" android:layout_alignParentStart="true" android:layout_centerVertical="true" android:background="@android:color/transparent" android:src="@drawable/ic_arrow_back" android:contentDescription="Back"/>
+<LinearLayout android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_centerHorizontal="true" android:orientation="vertical" android:gravity="center_horizontal">
+<TextView android:id="@+id/txtScreenTitle" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Repair Photos" android:textColor="#FFFFFF" android:textSize="22sp" android:textStyle="bold"/>
+<TextView android:id="@+id/txtRepairId" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="#TF-2026-00125" android:textColor="#AEB6C4" android:textSize="14sp"/>
+</LinearLayout>
+</RelativeLayout>
+<ScrollView android:layout_width="match_parent" android:layout_height="0dp" android:layout_weight="1">
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="16dp">
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="center_horizontal" android:text="BEFORE REPAIR" android:textColor="#8A93A8" android:textStyle="bold" android:textSize="12sp"/>
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="8dp" android:weightSum="3">
+<ImageView android:id="@+id/imgBefore1" android:layout_width="0dp" android:layout_height="100dp" android:layout_weight="1" android:layout_marginEnd="6dp" android:background="@drawable/bg_thumb_filled" android:contentDescription="Before photo 1" android:scaleType="centerCrop"/>
+<ImageView android:id="@+id/imgBefore2" android:layout_width="0dp" android:layout_height="100dp" android:layout_weight="1" android:layout_marginStart="6dp" android:layout_marginEnd="6dp" android:background="@drawable/bg_thumb_filled" android:contentDescription="Before photo 2" android:scaleType="centerCrop"/>
+<FrameLayout android:id="@+id/btnAddBefore" android:layout_width="0dp" android:layout_height="100dp" android:layout_weight="1" android:layout_marginStart="6dp" android:background="@drawable/bg_thumb_dashed" android:clickable="true" android:focusable="true">
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="center" android:text="📷 Add" android:textColor="#8A93A8"/>
+</FrameLayout>
+</LinearLayout>
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="center_horizontal" android:layout_marginTop="20dp" android:text="AFTER REPAIR" android:textColor="#8A93A8" android:textStyle="bold" android:textSize="12sp"/>
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:layout_marginTop="8dp" android:weightSum="3">
+<ImageView android:id="@+id/imgAfter1" android:layout_width="0dp" android:layout_height="100dp" android:layout_weight="1" android:layout_marginEnd="6dp" android:background="@drawable/bg_thumb_filled" android:contentDescription="After photo 1" android:scaleType="centerCrop"/>
+<FrameLayout android:id="@+id/btnAddAfter1" android:layout_width="0dp" android:layout_height="100dp" android:layout_weight="1" android:layout_marginStart="6dp" android:layout_marginEnd="6dp" android:background="@drawable/bg_thumb_dashed" android:clickable="true" android:focusable="true">
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="center" android:text="📷 Add" android:textColor="#8A93A8"/>
+</FrameLayout>
+<FrameLayout android:id="@+id/btnAddAfter2" android:layout_width="0dp" android:layout_height="100dp" android:layout_weight="1" android:layout_marginStart="6dp" android:background="@drawable/bg_thumb_dashed" android:clickable="true" android:focusable="true">
+<TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="center" android:text="📷 Add" android:textColor="#8A93A8"/>
+</FrameLayout>
+</LinearLayout>
+<TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="20dp" android:background="@drawable/bg_card_rounded" android:padding="16dp" android:gravity="center" android:text="📸 Tap &quot;Add&quot; to open camera. Photos are uploaded to the repair record automatically." android:textColor="#5A6478" android:textSize="13sp"/>
+<Button android:id="@+id/btnMarkCompleted" android:layout_width="match_parent" android:layout_height="56dp" android:layout_marginTop="20dp" android:background="@drawable/bg_button_orange" android:text="MARK REPAIR COMPLETED" android:textColor="#FFFFFF" android:textStyle="bold"/>
+</LinearLayout>
+</ScrollView>
+<!--  Bottom nav  -->
+<include layout="@layout/bottom_nav_bar"/>
+</LinearLayout>
